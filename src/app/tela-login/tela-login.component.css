@@ -1,0 +1,152 @@
+.tela {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('src\app\tela-login\imagem\Design sem nome.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  body
+  {   
+      margin:0px;
+      padding: 0px;
+      -webkit-background-size: cover;
+      background-size: cover;
+      font-family: Tahoma,sans-serif;
+  }
+  
+  .form-area
+  {
+      position: fixed;
+      top:50%;
+      left: 20%;
+      transform: translate(-9%,-50%);
+      width:1000px;
+      height: 557px;
+      box-sizing: border-box;
+      background:rgba(0,0,0,0.5);
+      background-color: rgb(131, 131, 131) transparent;
+      padding: 20px; 
+      box-shadow: 30px 0px 20px 30px rgba(0, 0, 0, 0.192) ;
+  }
+  
+  h2{
+    margin:90px;
+     padding: 0 0 20px;
+    font-weight:bold;
+    color: whitesmoke;
+    position: relative;
+    left:5%;
+ }
+  
+  
+  
+  .form-area input,select
+  {
+      margin-bottom: 40px;
+      width: 100%;
+  }
+  
+  .form-area input[type=text],
+  .form-area input[type=password]
+  {
+      border:none;
+      border-bottom: 1px solid black;
+      
+      outline: none;
+      height: 40px;
+      width: 500px;
+      background-color: transparent;
+      color: #ffffff;
+      display: 16px;
+      border: 2px solid #e4f5e7;
+  border-radius: 4px;
+  }
+  
+  ::placeholder
+  {
+      color: white;
+  }
+  
+  
+  
+  
+  .button{
+    border:none;
+    height: 40px;
+    width: 90px;
+    outline: none;
+    color:black;
+    font-size: 15px;
+    background-color: whitesmoke;
+    cursor:pointer;
+    position: relative;
+   
+    padding: 10px 180px;
+    border-radius: 100px;
+    left: 0%;
+    margin:51px;
+  }
+  
+  .button[type=submit]:hover
+  {
+      background-color: #107521;
+      color: #ffffff;
+  }
+  
+  .form-area a
+  {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      position: relative;
+      left:10%;
+      
+  }
+
+  h5{
+  
+    margin:0px;
+     padding: 0 0 0px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    left:10%;
+ }
+.area1{
+    position: fixed;
+     background-color:whitesmoke ;
+    background-size: 160px;
+    top:50%;
+        left: -5%;
+        transform: translate(-1%,-50%);
+        width:750px;
+        height: 1250px;
+       
+      
+     
+}
+
+
+.img{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 550px;
+    background-image:url('src\app\tela-login\imagem\Story Amarelo e Preto de Conscientização do Setembro Amarelo.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Título da página</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="tela-cadastro.component.css">
+  </head>
+
+  <body>
+    <div class="tela">
+
+        
+      <div class="area1">
+  
+       <!--Area de cadastro-->
+            
+          <div >
+            <a class="a">Tipo de usuário</a>
+  
+  
+  
+  <label class="container">Coordenador(a) Técnico
+    <input type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+  
+  <label class="container">Coordenador(a) de Pesquisa
+    <input type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+  
+  <label class="container">Coordenador(a) de Extensão
+    <input type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+  
+  </div>
+  
+  <label class="container2">Professor(a)
+    <input type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+  <label class="container2">Diretor(a) de Ensino
+    <input type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+  
+  
+  
+  
+          <div class="camposdeinput">
+             <!--Campo de email-->
+  
+  
+           <div>
+              <h5>Email</h5>
+              <input id="email" type="email" class="input" placeholder="Email" [(ngModel)] = "email">
+            </div>
+  
+            <!--Campo de Senha-->
+          <div>
+              <h5>Senha</h5>
+              <input id="senha" type="password" class="input" placeholder="Senha"  [(ngModel)] = "senha"> 
+            </div>
+          
+           <!--Campo de Confirmação de Senha-->
+            <div > 
+              <h5>Senha</h5>
+              <input id="confirsenha" type="password" class="input" data-type="password" placeholder="Senha" [(ngModel)] = "confirsenha">
+          </div>
+  </div>
+  
+           <!--Botão-->
+             <button id="cadastrar" value="Cadastrar" type="submit" class="button" (click) = "cadastro()">Cadastrar</button>
+        
+             
+      </div>
+  
+  
+       
+  
+  </div>
+  </body>
+
+  </html>
