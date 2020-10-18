@@ -7,7 +7,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url('src\app\tela-login\imagem\Design sem nome.jpg');
+    background-image: url('src\app\imagens\working-4587754_960_720.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -26,13 +26,13 @@
       position: fixed;
       top:50%;
       left: 20%;
-      transform: translate(-9%,-50%);
-      width:1000px;
-      height: 557px;
+      transform: translate(60%,-50%);
+      width:630px;
+      height: 655px;
       box-sizing: border-box;
       background:rgba(0,0,0,0.5);
       background-color: rgb(131, 131, 131) transparent;
-      padding: 20px; 
+      padding: 10px; 
       box-shadow: 30px 0px 20px 30px rgba(0, 0, 0, 0.192) ;
   }
   
@@ -42,7 +42,7 @@
     font-weight:bold;
     color: whitesmoke;
     position: relative;
-    left:5%;
+    left:10%;
  }
   
   
@@ -58,7 +58,8 @@
   {
       border:none;
       border-bottom: 1px solid black;
-      
+      position :relative;
+      left: 5%;
       outline: none;
       height: 40px;
       width: 500px;
@@ -66,7 +67,7 @@
       color: #ffffff;
       display: 16px;
       border: 2px solid #e4f5e7;
-  border-radius: 4px;
+  border-radius: 10px;
   }
   
   ::placeholder
@@ -80,17 +81,19 @@
   .button{
     border:none;
     height: 40px;
-    width: 90px;
+    width: 80px;
     outline: none;
     color:black;
-    font-size: 15px;
+    font-size: 16px;
+    left: 10;
+    
     background-color: whitesmoke;
     cursor:pointer;
     position: relative;
    
     padding: 10px 180px;
     border-radius: 100px;
-    left: 0%;
+    left: 10%;
     margin:51px;
   }
   
@@ -149,4 +152,10 @@
     background-size: cover;
     background-position: center;
     
+}
+
+a{
+    position: relative;
+    top:90%;
+    left: 70%;
 }

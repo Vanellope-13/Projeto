@@ -8,12 +8,12 @@ import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
 
 import { environment } from '../environments/environment';
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
-
+import {UsuarioService} from './services/usuario.service';
 const routes: Routes = [
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
@@ -34,12 +34,13 @@ const routes: Routes = [
     FormsModule,
     AppRoutingModule,
     RouterModule.forRoot(routes), 
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase ,'angularfs'),
+    AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule
    
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

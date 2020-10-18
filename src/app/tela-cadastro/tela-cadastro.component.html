@@ -14,67 +14,44 @@
       <div class="area1">
   
        <!--Area de cadastro-->
-            
-          <div >
-            <a class="a">Tipo de usuário</a>
+      <form (ngSubmit)="onSubmit()">
+      
   
-  
-  
-  <label class="container">Coordenador(a) Técnico
-    <input type="checkbox">
-    <span class="checkmark"></span>
-  </label>
-  
-  <label class="container">Coordenador(a) de Pesquisa
-    <input type="checkbox">
-    <span class="checkmark"></span>
-  </label>
-  
-  <label class="container">Coordenador(a) de Extensão
-    <input type="checkbox">
-    <span class="checkmark"></span>
-  </label>
-  
-  </div>
-  
-  <label class="container2">Professor(a)
-    <input type="checkbox">
-    <span class="checkmark"></span>
-  </label>
-  <label class="container2">Diretor(a) de Ensino
-    <input type="checkbox">
-    <span class="checkmark"></span>
-  </label>
-  
-  
-  
-  
-          <div class="camposdeinput">
+          <div class="camposdeinput" >
              <!--Campo de email-->
-  
-  
+           
+             <h5>Tipo de Usuário</h5>
+             <div>
+              <select id=tipodeuser  type="tipo" [ngModelOptions]="{standalone: true}" [(ngModel)]="usuario.tipoDeUser">
+                <option>Professor</option>
+                <option>Coordenador de extensão</option>
+                <option>Coordenador de Pesquisa</option>
+                <option>Direção geral de ensino</option>
+            </select>
+            </div>
+      
            <div>
               <h5>Email</h5>
-              <input id="email" type="email" class="input" placeholder="Email" [(ngModel)] = "email">
+              <input id="email" type="email" class="input" placeholder="Email" [ngModelOptions]="{standalone: true}" [(ngModel)]="usuario.email">
             </div>
   
             <!--Campo de Senha-->
           <div>
               <h5>Senha</h5>
-              <input id="senha" type="password" class="input" placeholder="Senha"  [(ngModel)] = "senha"> 
+              <input id="senha" type="password" class="input" placeholder="Senha" [ngModelOptions]="{standalone: true}" [(ngModel)]="usuario.senha"> 
             </div>
           
            <!--Campo de Confirmação de Senha-->
             <div > 
               <h5>Senha</h5>
-              <input id="confirsenha" type="password" class="input" data-type="password" placeholder="Senha" [(ngModel)] = "confirsenha">
+              <input id="confirsenha" type="password" class="input" data-type="password" placeholder="Confirmação de senha" [ngModelOptions]="{standalone: true}"[(ngModel)]="usuario.confirsenha">
           </div>
   </div>
   
            <!--Botão-->
-             <button id="cadastrar" value="Cadastrar" type="submit" class="button" (click) = "cadastro()">Cadastrar</button>
+             <button id="cadastrar" value="Cadastrar" type="submit" class="button" (click) = "onSubmit()">Cadastrar</button>
         
-             
+            </form>
       </div>
   
   
@@ -82,5 +59,7 @@
   
   </div>
   </body>
+
+  
 
   </html>
