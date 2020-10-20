@@ -7,7 +7,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url('src\app\imagens\working-4587754_960_720.jpg');
+    background-image: url('src\app\imagens\Design sem nome (1).png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -26,14 +26,14 @@
       position: fixed;
       top:50%;
       left: 20%;
-      transform: translate(60%,-50%);
+      transform: translate(60%,-42%);
       width:630px;
       height: 655px;
       box-sizing: border-box;
       background:rgba(0,0,0,0.5);
       background-color: rgb(131, 131, 131) transparent;
       padding: 10px; 
-      box-shadow: 30px 0px 20px 30px rgba(0, 0, 0, 0.192) ;
+      box-shadow:  0px 20px 30px rgba(0, 0, 0, 0.192) ;
   }
   
   h2{
@@ -159,3 +159,15 @@ a{
     top:90%;
     left: 70%;
 }
+.barra{
+    background:#242424;
+    padding:10px;
+}
+.link{
+    background-color: #242424;
+    color:green;
+    border: 0;
+    position: relative;
+    left: 90%;
+}
+

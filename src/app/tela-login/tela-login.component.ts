@@ -31,4 +31,7 @@ export class TelaLoginComponent implements OnInit {
       console.dir(err); 
     }
   }
+  linkSobreNos(){
+    this.router.navigate([ '/sobreNosC']);
+  }
 }

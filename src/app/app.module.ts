@@ -14,7 +14,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
 import {UsuarioService} from './services/usuario.service';
+import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
 const routes: Routes = [
+  {path : 'sobreNosC', component : TelaSobreNosComponent},
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
   
@@ -27,7 +29,8 @@ const routes: Routes = [
     AppComponent,
     TelaLoginComponent,
     TelaCadastroComponent,
-    TelaPrincipalComponent 
+    TelaPrincipalComponent,
+    TelaSobreNosComponent 
   ],
   imports: [
     BrowserModule,
