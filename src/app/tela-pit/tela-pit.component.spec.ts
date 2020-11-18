@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TelaPrincipalComponent } from './tela-principal.component';
+import { TelaPitComponent } from './tela-pit.component';
 
-describe('TelaPrincipalComponent', () => {
-  let component: TelaPrincipalComponent;
-  let fixture: ComponentFixture<TelaPrincipalComponent>;
+describe('TelaPitComponent', () => {
+  let component: TelaPitComponent;
+  let fixture: ComponentFixture<TelaPitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TelaPrincipalComponent ]
+      declarations: [ TelaPitComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TelaPrincipalComponent);
+    fixture = TestBed.createComponent(TelaPitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

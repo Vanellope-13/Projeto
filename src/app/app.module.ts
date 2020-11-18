@@ -12,16 +12,25 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
 import {UsuarioService} from './services/usuario.service';
 import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
+import { TelaPerfilDeUsuarioComponent } from './tela-perfil-de-usuario/tela-perfil-de-usuario.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TelaDeAcessoComponent } from './tela-de-acesso/tela-de-acesso.component';
+import { TelaPitComponent } from './tela-pit/tela-pit.component';
+import { TelaRadComponent } from './tela-rad/tela-rad.component';
 const routes: Routes = [
+  {path : 'telaRad', component :TelaRadComponent},
+  {path : 'telaPit', component :TelaPitComponent},
+  {path : 'telaDeAcesso', component : TelaDeAcessoComponent},
+  {path : 'navbarC', component : NavbarComponent},
+  {path : 'telaPerfilC', component : TelaPerfilDeUsuarioComponent},
   {path : 'sobreNosC', component : TelaSobreNosComponent},
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
   
-  {path: '', redirectTo: '/telaloginC', pathMatch: 'full'},
-  {path : 'telaprincipalC', component : TelaPrincipalComponent}
+  {path: '', redirectTo: '/telacadastroC', pathMatch: 'full'},
+  
 ];
 
 @NgModule({
@@ -29,8 +38,12 @@ const routes: Routes = [
     AppComponent,
     TelaLoginComponent,
     TelaCadastroComponent,
-    TelaPrincipalComponent,
-    TelaSobreNosComponent 
+    TelaSobreNosComponent,
+    TelaPerfilDeUsuarioComponent,
+    NavbarComponent,
+    TelaDeAcessoComponent,
+    TelaPitComponent,
+    TelaRadComponent 
   ],
   imports: [
     BrowserModule,

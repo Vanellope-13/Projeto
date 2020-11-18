@@ -3,14 +3,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
 
-import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
+
 import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
+import { TelaPerfilDeUsuarioComponent } from './tela-perfil-de-usuario/tela-perfil-de-usuario.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TelaDeAcessoComponent } from './tela-de-acesso/tela-de-acesso.component';
+import { TelaPitComponent } from './tela-pit/tela-pit.component';
+import { TelaRadComponent } from './tela-rad/tela-rad.component';
 const routes: Routes = [
+  {path : 'telaRad', component :TelaRadComponent},
+  {path : 'telaPit', component :TelaPitComponent},
+  {path : 'telaDeAcesso', component : TelaDeAcessoComponent},
+  {path : 'navbarC', component : NavbarComponent},
+  {path : 'telaPerfilC', component : TelaPerfilDeUsuarioComponent},
   {path : 'sobreNosC', component : TelaSobreNosComponent},
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
-  {path: '', redirectTo: '/telaloginC', pathMatch: 'full'},
-  {path : 'telaprincipalC', component : TelaPrincipalComponent}
+  {path: '', redirectTo: '/telaPerfilC', pathMatch: 'full'},
+ 
 ];
 
 @NgModule({
