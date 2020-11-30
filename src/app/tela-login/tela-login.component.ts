@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 
 
@@ -24,9 +24,10 @@ export class TelaLoginComponent implements OnInit {
 
     const{ email, senha }= this
        try{
-    const res = await this.afAuth.signInWithEmailAndPassword( email, senha);
+    const res = await this.afAuth.auth.signInWithEmailAndPassword( email, senha);
       this.router.navigate([ '/telaPerfilC']);
-    
+       
+       
    } catch (err) { 
       console.dir(err); 
       if(err.code==="auth/wrong-password"){
@@ -40,7 +41,8 @@ export class TelaLoginComponent implements OnInit {
       }
       
     }
+    
   }
-
+  
 }
   

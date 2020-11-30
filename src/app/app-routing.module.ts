@@ -10,7 +10,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TelaDeAcessoComponent } from './tela-de-acesso/tela-de-acesso.component';
 import { TelaPitComponent } from './tela-pit/tela-pit.component';
 import { TelaRadComponent } from './tela-rad/tela-rad.component';
+import { TelaAtividadesComponent } from './tela-atividades/tela-atividades.component';
 const routes: Routes = [
+  {path : 'telaAtividades', component :TelaAtividadesComponent},
   {path : 'telaRad', component :TelaRadComponent},
   {path : 'telaPit', component :TelaPitComponent},
   {path : 'telaDeAcesso', component : TelaDeAcessoComponent},

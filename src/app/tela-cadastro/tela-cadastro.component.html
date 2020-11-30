@@ -18,8 +18,8 @@
     <div class=" col s1 m4 offset-m4">
       <div class="card">
 
-        <div class="card-action center-align">
-          <h3>Cadastro de usuário</h3>
+        <div class="card-action center-align green">
+          <h3>Cadastro de Atividades</h3>
         </div>
 
         <div class="card-content ">
@@ -44,7 +44,12 @@
     
     
     <br>
-
+    <div class="form-field">
+      <label for="senha">Nome</label>
+      <input id="nome" type="text" class="input" placeholder="Nome" [ngModelOptions]="{standalone: true}" [(ngModel)]="usuario.nome">
+    </div>
+    
+    <br>
 
     <div class="form-field">
       <label for="senha">EMAIL</label>

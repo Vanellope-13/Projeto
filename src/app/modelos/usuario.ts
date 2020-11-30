@@ -4,5 +4,6 @@ export interface Usuario{
   tipoDeUser?:string;
     email?  ;
   senha? : string ;
+  nome?:string;
   confirsenha? : string ;
 }

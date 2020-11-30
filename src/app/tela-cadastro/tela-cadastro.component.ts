@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 
-import {Usuario} from '../modeloDeUsuario/Usuario';
+import {Usuario} from '../modelos/Usuario';
 import {UsuarioService} from '../services/usuario.service';
 @Component({
   selector: 'app-tela-cadastro',
@@ -16,6 +16,7 @@ export class TelaCadastroComponent implements OnInit {
 
   usuario:Usuario={
     tipoDeUser:'',
+    nome:'',
     email:'' ,
   senha :'' ,
   confirsenha : ''
@@ -24,7 +25,7 @@ export class TelaCadastroComponent implements OnInit {
 
   ngOnInit() {
     this.usuarioService.getUsuarios().subscribe(usuarios =>{
-      //console.log(items);
+    // console.log(Usuario.email);
       this.usuarios=usuarios;
     });
   }
@@ -32,19 +33,21 @@ export class TelaCadastroComponent implements OnInit {
   
 
  async onSubmit(){
-  if(this.usuario.tipoDeUser !='' && this.usuario.email !='' && this.usuario.senha !='' && this.usuario.confirsenha !='' ){
+  if(this.usuario.nome!='' && this.usuario.tipoDeUser !='' && this.usuario.email !='' && this.usuario.senha !='' && this.usuario.confirsenha !='' ){
     const{usuario}= this
        if(usuario.senha !== usuario.confirsenha){
          
          return alert("As senhas não conferem");
        }
    try{
-    const res = await this.afAuth.createUserWithEmailAndPassword( usuario.email, usuario.senha);
+    const res = await this.afAuth.auth.createUserWithEmailAndPassword( usuario.email, usuario.senha);
     this.usuarioService.addUsuario(this.usuario);
+    this.usuario.nome='';
     this.usuario.tipoDeUser='';
     this.usuario.email='';
     this.usuario.senha='';
     this.usuario.confirsenha='';
+
     console.log(res)
     alert("Usuário cadastrado com sucesso!");
    } catch (error) { 
