@@ -36,7 +36,7 @@ const routes: Routes = [
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
   
-  {path: '', redirectTo: '/telacadastroC', pathMatch: 'full'},
+  {path: '', redirectTo: '/telaloginC', pathMatch: 'full'}
   
 ];
 

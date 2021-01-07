@@ -21,7 +21,7 @@ const routes: Routes = [
   {path : 'sobreNosC', component : TelaSobreNosComponent},
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
-  {path: '', redirectTo: '/telaPerfilC', pathMatch: 'full'},
+  {path: '', redirectTo: '/telaloginC', pathMatch: 'full'}
  
 ];
 

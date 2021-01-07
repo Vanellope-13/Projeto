@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-
-
+import { TelaPerfilDeUsuarioComponent } from '../tela-perfil-de-usuario/tela-perfil-de-usuario.component';
+import {UsuarioService} from '../services/usuario.service'
+import { Usuario } from '../modelos/Usuario';
 @Component({
   selector: 'app-tela-login',
   templateUrl: './tela-login.component.html',
@@ -12,22 +13,29 @@ import { auth } from 'firebase/app';
 export class TelaLoginComponent implements OnInit {
    email: "";
    senha:"";
+   emailUser:"";
+   usuario : Usuario = {};
+   user:Usuario[];
   constructor(public afAuth : AngularFireAuth, 
-              public router:Router){
+              public router:Router, public UsuarioService:UsuarioService){
 
   }
  ngOnInit() {
+  
   }
-
-
+ 
   async login(){
 
     const{ email, senha }= this
        try{
+       
     const res = await this.afAuth.auth.signInWithEmailAndPassword( email, senha);
+   
+    
+  
       this.router.navigate([ '/telaPerfilC']);
-       
-       
+    
+      
    } catch (err) { 
       console.dir(err); 
       if(err.code==="auth/wrong-password"){
@@ -43,6 +51,23 @@ export class TelaLoginComponent implements OnInit {
     }
     
   }
-  
+ 
+  async  getuser(){
+   
+      const{email}= this
+          try{
+          
+            this.UsuarioService.email=email;
+            
+            this.UsuarioService.pegarUser();
+      } catch (err) { 
+        console.log("deu erro")  ;
+      }
+         
+    
+   
+  }
+ 
+
 }
   

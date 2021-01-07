@@ -6,30 +6,26 @@ import { Subscription } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  usuario : Usuario = {};
-  usuarioId : string;
-  usuarioSubscription : Subscription;
+  posicao1;
+  posicao2;
+  posicao3;
+   posicao4;
+  posicao5;
+  link1;
+  link2;
   entrarSair : boolean;
 
-  constructor( private active : ActivatedRoute, private afs : AngularFirestore, public router:Router,private afAuth : AngularFireAuth,public  usuarioService : UsuarioService) { }
-
-  ngOnInit() {
-
-
-    //this.usuarioId ="3ht7U5MSo5PZEtR7E7nL";
-    this.usuarioId =this.afAuth.auth.currentUser.uid;
+  tipo : string;
+  constructor(  private afs : AngularFirestore, public router:Router,private afAuth : AngularFireAuth,public  usuarioService : UsuarioService) { }
   
-   this.usuarioSubscription = this.usuarioService.getUsuario(this.usuarioId).subscribe(data => {
-    this.usuario = data;
-    return this.usuario.tipoDeUser;
-     
-   });
+  ngOnInit() {
   
   }
   linkPerfil(){
@@ -63,5 +59,33 @@ closeSlideMenu(){
   document.getElementById('side-menu').style.width = '0px';
   document.getElementById('main').style.marginLeft='0px';
 }
+//Essa função pega o array de nomes dos components para usar na navbar
+async tipoDeUser(){
+  
 
+ this.usuarioService.pegarUser();
+ 
+ var a=this.usuarioService.users;
+if(a==1){
+this.posicao1="Cadastro";
+this.posicao2="Atividades";
+
+}if(a==2){
+  this.posicao1="PIT e RAD"
+
+}if(a==3){
+  
+}
+ return a  ;
+}
+
+funcao(posicao){
+if(posicao=="PIT e RAD"){
+ this.linkTelaDeAcesso()
+}if(posicao=="Cadastro"){
+  this.linkTelaCadastro()
+ }if(posicao=="Atividades"){
+  this. linkTelaAtividade()
+ }
+}
 }

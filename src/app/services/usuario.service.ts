@@ -4,13 +4,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { Usuario } from '../modelos/usuario';
 import 'rxjs/add/operator/map';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-
-
+ users; 
+  email:"";
+   tipo:"";
+  user:Usuario[];
+  usuario :Usuario;
+  tipoDeUser:"";
   usuariosCollection: AngularFirestoreCollection<Usuario>;
   usuarios: Observable<Usuario[]>;
   constructor(public afs: AngularFirestore, public afAuth: AngularFireAuth) {
@@ -27,16 +32,50 @@ export class UsuarioService {
   getUsuarios() {
     return this.usuarios;
   }
+  getUsuarioEmail(email) {
+ return this.usuariosCollection.doc<Usuario>(email).valueChanges();
+  
+  }
   getUsuario(id: string) {
     return this.usuariosCollection.doc<Usuario>(id).valueChanges();
   }
   addUsuario(usuario: Usuario) {
     this.usuariosCollection.add(usuario);
   }
-  getAuth() {
+  auth() {
    return this.afAuth.auth;
   }
-
-
+ 
+ 
+  pegarUser(){
+ 
+        
+  
+          this.getUsuarios().subscribe(usuario =>{
+          this.user=usuario;
+      
+        for(var cont=0;cont<=this.user.length;cont++){
+        
+          if(this.user[cont].email==this.email){ 
+       
+           var tp=this.user[cont].tipoDeUser;
+          
+      
+           if(tp=="Administrador"){
+            this.users=1;
+           
+           }  if(tp=="Professor"){
+            this.users=2;
+        
+           
+          }if(tp=="Coordenador"){
+            this.users=3;
+           }
+           console.log(tp)
+           return tp;
+          }}
+          
+         });   
+}
 
 }

@@ -36,15 +36,16 @@
           <div class="card-content ">
             <div class="form-field">
         <label for="email">email</label>
-        <input type="text" name="" placeholder="Email" [(ngModel)]="email">
+        <input type="text" name="" placeholder="Email" [(ngModel)]="email" >
       </div><br>
       <div class="form-field">
         <label for="senha">senha</label>
         <input type="password" name="" placeholder="Senha" [(ngModel)]="senha">
       </div><br>
       <div class="form-field center-align">
-         <button value="Logar" type="submit" class="btn-large green" (click) = "login()">Logar</button>
-
+         <button value="Logar" type="submit" class="btn-large green" (click) = "login();getuser();">Logar</button>
+       
+        
       </div>
           </div>
 
