@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class UsuarioService {
-
+nome;
  users; 
   email:"";
    tipo:"";
@@ -60,7 +60,7 @@ export class UsuarioService {
        
            var tp=this.user[cont].tipoDeUser;
           
-      
+           this.nome=this.user[cont].nome;
            if(tp=="Administrador"){
             this.users=1;
            

@@ -8,6 +8,8 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+ 
 </head>
 
 <body>
@@ -23,16 +25,24 @@
 
       <form (ngSubmit)="onSubmit()" class="col s6">
         <div class="input-field col s6">
-          <input type="text" placeholder="Adicionar Nome" [(ngModel)]="atividade.nome" name="Nome">
+          <h5>Descrição da Atividade</h5>
+          <input type="text" placeholder="Descrição da Atividade" [(ngModel)]="atividade.nome" name="Nome" required>
         </div>
 
         <div class="input-field col s6">
+          <h5>Carga horária</h5>
           <input type="text" placeholder="Adicionar carga horária" [(ngModel)]="atividade.ch" name="Carga Horária">
         </div>
 
         <div class="input-field col s6">
+          <h5>Tipo de Atividade</h5>
+          <select class="form-control" id="" type="text" placeholder="Adicionar tipo"  name="Tipo" [(ngModel)]="atividade.tipo" required>
+          <option>Atividades de apoio ao ensino</option>
+          <option>Atividades de extensão</option>
+          <option>Atividades de pesquisa e pós-graduação</option>
+          <option>Atividades administrativo-pedagógicas</option>
+          </select>
          
-          <input type="text" placeholder="Adicionar tipo" [(ngModel)]="atividade.tipo" name="Tipo">
         </div>
         <br>
         <input type="submit" value="Cadastrar" class="btn green" >
@@ -56,7 +66,7 @@
       <ul class="collection-atividade">
         <li><a class="titulo">Nome:</a> {{atividade.nome}}     
           <button class="secondary-content">
-          <i (click)="editAtividade($event,atividade)" class="material-icons">border_color</i>
+          <i (click)="editAtividade($event,atividade)" class="material-icons">editar</i>
         </button>
         <button class="secondary-content">
           <i *ngIf="editState && atividadeToEdit.id == atividade.id" (click)="clearState()" class="material-icons">clear</i>

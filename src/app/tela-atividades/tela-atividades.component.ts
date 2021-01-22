@@ -26,7 +26,7 @@ export class TelaAtividadesComponent implements OnInit {
     
   }
 onSubmit(){
-  if(this.atividade.nome != '' && this.atividade.ch !='' && this.atividade.tipo!=''){
+  if(this.atividade.nome != '' && this.atividade.tipo!=''){
       this.AtividadesService.addAtividade(this.atividade);
       this.atividade.nome='';
       this.atividade.ch='';

@@ -9,6 +9,10 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class AtividadesService {
+ativid:Atividade[];
+atividade:Atividade;
+
+ArrayAtivDeApoioAoEnsino:Atividade[];
 
   atividadesCollection:AngularFirestoreCollection<Atividade>;
   atividades: Observable<Atividade[]>;
@@ -40,4 +44,8 @@ export class AtividadesService {
     this.atividadeDoc=this.afs.doc(`atividades/${atividade.id}`);
     this.atividadeDoc.update(atividade);
   }
+
+
+
+  
 }

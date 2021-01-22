@@ -14,7 +14,7 @@
       </head>
       <body>
         <app-navbar></app-navbar>
-
+       
 
         <div class="card">
           <div class="card-action center-align green">
@@ -22,8 +22,8 @@
           </div>
           <div class="car-content">
           
-          <p class="titulo">Professor: Puxar do banco </p>
-          <p class="titulo">Campus: Puxar do banco </p>
+          <p class="titulo">Professor:{{nomeDeUsuario}} </p>
+          <p class="titulo">Campus: Garanhuns </p>
           <p class="titulo">Coordenação: Puxar do banco </p>
           <p class="titulo">Grupo:puxar do banco</p>
           <p class="titulo">Regime de trabalho:puxar do bacno </p>
@@ -32,7 +32,7 @@
         </div>
 
    
-
+<!-- ______________________________________Aulas__________________________________________ -->
 
         <div class="card">
           <div class="card-action center-align green">
@@ -58,33 +58,39 @@
     </div>
 
 
-
+<!-- ______________________________________Atividade de apoio ao Ensino___________________________________________ -->
 
     <div class="card">
-      <div class="card-action center-align green">
+      <div class="card-action center-align green" value="Atividades de Apoio ao Ensino">
         <h3>Atividades de Apoio ao Ensino</h3>
       </div>
       <div class="car-content">
-    
+
+    <div >
         <p>Atividade : </p>
-        <select class="form-control" id="">
-          <option value="valor1"></option>
-          <option value="Valor2"></option>
-          <option value="Vallor3"></option>
-    </select>
+    <select class="form-control" [(ngModel)]="atividadeApoio" (change)="preencheChApoio()">
+      <option *ngFor="let atividade of ArrayAtivDeApoioAoEnsino"  >
+        {{atividade.nome}} 
+      </option>
+   </select>
+   <br><br>
+   <p>C.H Semanal: </p>
+    <input value={{chApoio}} *ngIf="chApoio==''">
+     <input value={{chApoio}} *ngIf="chApoio!=null"disabled="disabled"/>
+  </div>
+
     <br><br>
     <p>Local/Horário/Portaria : </p>
     <input>
     <br><br>
-    <p>C.H Semanal: </p>
-    <input>
-    <br><br>
     <input type="submit" value="Adicionar" class="btn green" >
     <br><br>
+  
 </div>
 </div>
 
 
+<!-- ______________________________________Atividade de pesquisa e pós graduação___________________________________________ -->
 
 
 <div class="card">
@@ -94,11 +100,15 @@
   <div class="car-content">
        
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="">
+          <select class="form-control" id="" [(ngModel)]="atividadePesquisa" (change)="preencheChPesquisa()">
+            <option  *ngFor="let atividade of ArrayAtivDePesquisa" >
+              {{atividade.nome}}
+            </option>
           </select>
           <br>
     <p>C.H Semanal : </p>
-    <input>
+    <input value={{chPesquisa}} *ngIf="chPesquisa==''">
+    <input value={{chPesquisa}} *ngIf="chPesquisa!=null"disabled="disabled"/>
     <br><br>
     <input type="submit" value="Adicionar" class="btn green" >
     <br><br>
@@ -108,7 +118,7 @@
 
 
 
-
+<!-- ______________________________________Atividades de extensão___________________________________________ -->
 
 <div class="card">
   <div class="card-action center-align green">
@@ -117,8 +127,10 @@
   <div class="car-content">
        
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="">
-            
+          <select class="form-control" id="" [(ngModel)]="atividadeExtensao" (change)="preencheChExtensao()">
+            <option  *ngFor="let atividade of ArrayAtivDeExtensao" >
+              {{atividade.nome}}
+            </option>
     </select>
     <p>Inicio(M/A) : </p>
     <input>
@@ -130,9 +142,8 @@
     <input>
     <br>
     <p>C.H Semanal : </p>
-    <input>
-
-
+    <input value={{chExtensao}} *ngIf="chExtensao==''"/>
+    <input value={{chExtensao}} *ngIf="chExtensao!=null"disabled="disabled"/>
     <br><br>
     <input type="submit" value="Adicionar" class="btn green" >
     <br><br>
@@ -142,7 +153,7 @@
 
 
 
-
+<!-- ______________________________________Atividades Administrativo-Pedagógicas___________________________________________ -->
 
 
 <div class="card">
@@ -150,10 +161,12 @@
     <h3>Atividades Administrativo-Pedagógicas</h3>
   </div>
   <div class="car-content">
-       
+      
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="">
-            
+          <select class="form-control" id="selectAdministrativos" [(ngModel)]="atividadeAdministrativo" (change)="preencheChAdministrativo()" >
+            <option  *ngFor="let atividade of ArrayAtivAdministrativo"   >
+              {{atividade.nome}}
+            </option>
     </select>
     <br>
     <p>Portaria : </p>
@@ -166,12 +179,12 @@
     <input>
     <br>
     <p>C.H Semanal : </p>
-    <input>
+    <input value={{chAdministrativo}} *ngIf="chAdministrativo==''">
+    <input value={{chAdministrativo}} *ngIf="chAdministrativo!=null"disabled="disabled"/>
+    <br><br> 
+    <br><br>
 
 
-    <br><br>
-    <input type="submit" value="Adicionar" class="btn green" >
-    <br><br>
 </div>
 </div>
 
@@ -209,6 +222,9 @@
          <br><br>
             <button type="submit" value="Enviar para Validação" class="btn green " >Enviar para Validação</button>
             <br><br>
+
+
+            
 
       </body>
     </html>
