@@ -9,8 +9,7 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class AtividadesService {
-ativid:Atividade[];
-atividade:Atividade;
+
 
 ArrayAtivDeApoioAoEnsino:Atividade[];
 

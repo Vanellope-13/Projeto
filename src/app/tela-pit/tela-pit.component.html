@@ -38,25 +38,30 @@
           <div class="card-action center-align green">
         <h3> Aulas </h3>
     </div>
+    
     <div class="car-content">
+      <form (ngSubmit)="onSubmitAulas()" class="col s6">
         <p>Componente Curricular: </p>
-        <input >
+        <input [(ngModel)]="aulas.componenteCurricular" name="componenteCurricular">
         <p>Curso: </p>
-        <input >
+        <input [(ngModel)]="aulas.curso" name="curso">
         <p>C.H Total do component: </p>
-        <input >
+        <input [(ngModel)]="aulas.chTotaldoComponente" name="chTotaldoComponente" >
         <p>C.H Semanal: </p>
-        <input >
-        <p>C.H de Preparação das Aulas: </p>
-        <input >
+        <input [(ngModel)]="aulas.chSemanal" name="chSemanal">
+        <p>C.H de Preparação das Aulas: </p> 
+        <input [(ngModel)]="aulas.chDePreparacao"  name="chDePreparacao">
         <br><br>
+        <input value={{email}}  [(ngModel)]="aulas.emailProfessor" disabled="disabled" class="invisible">
         <input type="submit" value="Adicionar" class="btn green" >
         <br><br>
+      </form>
+</div>
 
-        
-    </div>
-    </div>
 
+    
+    </div>
+  
 
 <!-- ______________________________________Atividade de apoio ao Ensino___________________________________________ -->
 
@@ -68,7 +73,7 @@
 
     <div >
         <p>Atividade : </p>
-    <select class="form-control" [(ngModel)]="atividadeApoio" (change)="preencheChApoio()">
+    <select class="form-control" [(ngModel)]="nomeApoio" (change)="preencheChApoio()">
       <option *ngFor="let atividade of ArrayAtivDeApoioAoEnsino"  >
         {{atividade.nome}} 
       </option>
@@ -100,7 +105,7 @@
   <div class="car-content">
        
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="" [(ngModel)]="atividadePesquisa" (change)="preencheChPesquisa()">
+          <select class="form-control" id="" [(ngModel)]="nomePesquisa" (change)="preencheChPesquisa()">
             <option  *ngFor="let atividade of ArrayAtivDePesquisa" >
               {{atividade.nome}}
             </option>
@@ -127,7 +132,7 @@
   <div class="car-content">
        
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="" [(ngModel)]="atividadeExtensao" (change)="preencheChExtensao()">
+          <select class="form-control" id="" [(ngModel)]="nomeExtensao" (change)="preencheChExtensao()">
             <option  *ngFor="let atividade of ArrayAtivDeExtensao" >
               {{atividade.nome}}
             </option>
@@ -163,7 +168,7 @@
   <div class="car-content">
       
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="selectAdministrativos" [(ngModel)]="atividadeAdministrativo" (change)="preencheChAdministrativo()" >
+          <select class="form-control" id="selectAdministrativos" [(ngModel)]="nomeAdministrativo" (change)="preencheChAdministrativo()" >
             <option  *ngFor="let atividade of ArrayAtivAdministrativo"   >
               {{atividade.nome}}
             </option>

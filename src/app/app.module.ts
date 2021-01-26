@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
 
 import {UsuarioService} from './services/usuario.service';
 import {AtividadesService} from './services/atividades.service';
+import {AulasService} from './services/aulas.service';
 
 import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
 import { TelaPerfilDeUsuarioComponent } from './tela-perfil-de-usuario/tela-perfil-de-usuario.component';
@@ -64,7 +65,7 @@ const routes: Routes = [
     AngularFireAuthModule
    
   ],
-  providers: [UsuarioService, AtividadesService],
+  providers: [UsuarioService, AtividadesService,AulasService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })
