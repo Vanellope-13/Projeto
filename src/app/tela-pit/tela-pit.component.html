@@ -52,7 +52,7 @@
         <p>C.H de Preparação das Aulas: </p> 
         <input [(ngModel)]="aulas.chDePreparacao"  name="chDePreparacao">
         <br><br>
-        <input value={{email}}  [(ngModel)]="aulas.emailProfessor" disabled="disabled" class="invisible">
+        <input value={{email}}  [(ngModel)]="aulas.emailProfessor" disabled="disabled" class="invisible" name="email">
         <input type="submit" value="Adicionar" class="btn green" >
         <br><br>
       </form>
@@ -70,27 +70,28 @@
         <h3>Atividades de Apoio ao Ensino</h3>
       </div>
       <div class="car-content">
-
+        <form (ngSubmit)="onSubmitApoioAoEnsino()" class="col s6">
     <div >
         <p>Atividade : </p>
-    <select class="form-control" [(ngModel)]="nomeApoio" (change)="preencheChApoio()">
+    <select class="form-control" [(ngModel)]="apoioAoEnsino.atividade" (change)="preencheChApoio()" name="atividade">
       <option *ngFor="let atividade of ArrayAtivDeApoioAoEnsino"  >
         {{atividade.nome}} 
       </option>
    </select>
    <br><br>
    <p>C.H Semanal: </p>
-    <input value={{chApoio}} *ngIf="chApoio==''">
-     <input value={{chApoio}} *ngIf="chApoio!=null"disabled="disabled"/>
-  </div>
+   
+    <input value={{apoioAoEnsino.chSemanal}} [(ngModel)]="apoioAoEnsino.chSemanal" name="chSemanal">
+   </div>
 
     <br><br>
     <p>Local/Horário/Portaria : </p>
-    <input>
+    <input [(ngModel)]="apoioAoEnsino.lhp" name="lhp">
     <br><br>
+    <input value={{email}}  [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible" name="email">
     <input type="submit" value="Adicionar" class="btn green" >
     <br><br>
-  
+  </form>
 </div>
 </div>
 
@@ -103,20 +104,22 @@
     <h3>Atividades de Pesquisa e Pós-graduação</h3>
   </div>
   <div class="car-content">
-       
+    <form (ngSubmit)="onSubmitPesquisa()" class="col s6">
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="" [(ngModel)]="nomePesquisa" (change)="preencheChPesquisa()">
+          <select class="form-control"  [(ngModel)]="pesquisa.atividade" (change)="preencheChPesquisa()" name="atividade">
             <option  *ngFor="let atividade of ArrayAtivDePesquisa" >
               {{atividade.nome}}
             </option>
           </select>
           <br>
     <p>C.H Semanal : </p>
-    <input value={{chPesquisa}} *ngIf="chPesquisa==''">
-    <input value={{chPesquisa}} *ngIf="chPesquisa!=null"disabled="disabled"/>
+    <input value={{pesquisa.chSemanal}} [(ngModel)]="pesquisa.chSemanal" name="chSemanal">
+  
     <br><br>
+    <input value={{email}}  [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible" name="email">
     <input type="submit" value="Adicionar" class="btn green" >
     <br><br>
+</form>
 </div>
 </div>
 
@@ -130,28 +133,30 @@
     <h3>Atividades de Extensão</h3>
   </div>
   <div class="car-content">
-       
+    <form (ngSubmit)="onSubmitExtensao()" class="col s6">
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="" [(ngModel)]="nomeExtensao" (change)="preencheChExtensao()">
+          <select class="form-control"  [(ngModel)]="extensao.projeto" (change)="preencheChExtensao()" name="projeto">
             <option  *ngFor="let atividade of ArrayAtivDeExtensao" >
               {{atividade.nome}}
             </option>
     </select>
-    <p>Inicio(M/A) : </p>
-    <input>
+    <p>Tipo de Participação : </p>
+    <input type="text" name="participacao"  [(ngModel)]="extensao.participacao">
     <br>
     <p>Inicio(M/A) : </p>
-    <input>
+    <input type="date" name="inicio"  [(ngModel)]="extensao.inicio">
     <br>
     <p>Término(M/A) : </p>
-    <input>
+    <input type="date" name="termino"  [(ngModel)]="extensao.termino">
     <br>
     <p>C.H Semanal : </p>
-    <input value={{chExtensao}} *ngIf="chExtensao==''"/>
-    <input value={{chExtensao}} *ngIf="chExtensao!=null"disabled="disabled"/>
+    <input value={{extensao.chSemanal}} [(ngModel)]="extensao.chSemanal" name="chSemanal">
+    
     <br><br>
+    <input value={{email}}  [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible" name="email">
     <input type="submit" value="Adicionar" class="btn green" >
     <br><br>
+    </form>
 </div>
 </div>
 
@@ -166,30 +171,32 @@
     <h3>Atividades Administrativo-Pedagógicas</h3>
   </div>
   <div class="car-content">
-      
+    <form (ngSubmit)="onSubmitAdministrativo()" class="col s6">
           <p for="cars">Descrição da Atividade : </p>
-          <select class="form-control" id="selectAdministrativos" [(ngModel)]="nomeAdministrativo" (change)="preencheChAdministrativo()" >
+          <select class="form-control" id="selectAdministrativos" name="atividade" [(ngModel)]="administrativo.atividade" (change)="preencheChAdministrativo()" >
             <option  *ngFor="let atividade of ArrayAtivAdministrativo"   >
               {{atividade.nome}}
             </option>
     </select>
     <br>
     <p>Portaria : </p>
-    <input>
+    <input name="portaria" [(ngModel)]="administrativo.portaria">
     <br>
     <p>Inicio(M/A) : </p>
-    <input>
+    <input type="date" name="inicio" [(ngModel)]="administrativo.inico">
     <br>
     <p>Término(M/A) : </p>
-    <input>
+    <input type="date"name="termino" [(ngModel)]="administrativo.termino">
     <br>
     <p>C.H Semanal : </p>
-    <input value={{chAdministrativo}} *ngIf="chAdministrativo==''">
-    <input value={{chAdministrativo}} *ngIf="chAdministrativo!=null"disabled="disabled"/>
+    <input value={{administrativo.chSemanal}} name="chSemanal" [(ngModel)]="administrativo.chSemanal">
+   
     <br><br> 
     <br><br>
-
-
+    <input value={{email}}  [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible" name="email">
+    <input type="submit" value="Adicionar" class="btn green" >
+    <br><br>
+</form>
 </div>
 </div>
 

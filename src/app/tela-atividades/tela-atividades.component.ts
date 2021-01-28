@@ -9,7 +9,7 @@ import {AtividadesService} from '../services/atividades.service'
 export class TelaAtividadesComponent implements OnInit {
  atividade:Atividade={
    nome:'',
-   ch:'',
+   ch:0,
    tipo:''
  }
 
@@ -29,7 +29,7 @@ onSubmit(){
   if(this.atividade.nome != '' && this.atividade.tipo!=''){
       this.AtividadesService.addAtividade(this.atividade);
       this.atividade.nome='';
-      this.atividade.ch='';
+      this.atividade.ch=0;
       this.atividade.tipo='';
   }
   

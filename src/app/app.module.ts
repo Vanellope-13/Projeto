@@ -18,6 +18,10 @@ import { environment } from '../environments/environment';
 import {UsuarioService} from './services/usuario.service';
 import {AtividadesService} from './services/atividades.service';
 import {AulasService} from './services/aulas.service';
+import {ApoioAoEnsinoService} from './services/apoio-ao-ensino.service';
+import {PesquisaService} from './services/pesquisa.service';
+import {ExtensaoService} from './services/extensao.service';
+import {AdministrativoService} from './services/administrativo.service';
 
 import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
 import { TelaPerfilDeUsuarioComponent } from './tela-perfil-de-usuario/tela-perfil-de-usuario.component';
@@ -65,7 +69,7 @@ const routes: Routes = [
     AngularFireAuthModule
    
   ],
-  providers: [UsuarioService, AtividadesService,AulasService],
+  providers: [UsuarioService, AtividadesService,AulasService,ApoioAoEnsinoService,PesquisaService,ExtensaoService,AdministrativoService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })
