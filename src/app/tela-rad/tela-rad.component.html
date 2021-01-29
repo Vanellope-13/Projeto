@@ -3,188 +3,107 @@
 <html>
 <head>
 <title>RAD</title>
+<meta charset="utf-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <app-navbar></app-navbar>
-    <div class="row">
-      <form class="col s12">
-         <div class="row">
+   
 
-          <div class="input-field col s6">
-            <input  id="semestre" type="text" class="validate">
-            <label for="semestre">Semestre:</label>
-          </div>
 
-      <div class="row">
-        <div class="input-field col s6">
-          <input  id="campus" type="text" class="validate">
-          <label for="campus">Campus:</label>
+    <div class="card">
+      <div class="card-action center-align">
+        <h4>Quadro de informações</h4>
+      </div>
+      <br><br>
+      <div class="car-content">
+      
+      <p class="titulo">Professor:puxar do banco </p>
+      <p class="titulo">Campus: Garanhuns </p>
+      <p class="titulo">Coordenação: Puxar do banco </p>
+      <p class="titulo">Grupo:puxar do banco</p>
+      <p class="titulo">Regime de trabalho:puxar do bacno </p>
+      <p class="titulo">Semestre:puxar do bacno </p>
         </div>
     </div>
 
-        <div class="row">
-          <div class="input-field col s6">
-            <input  id="campus" type="text" class="validate">
-            <label for="campus">Coordenação:</label>
-          </div>
-          </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <input  id="professor" type="text" class="validate">
-        <label for="professor">Professor(a):</label>
+    <div class="card">
+      <div class="card-action">
+        <h6>ATIVIDADES DE ENSINO: </h6><p>Listar disciplinas ministradas,orientações a alunos concluídas no decorrer do
+           semestre ou em andamento,horários disponibilizados para o atendimento a alunos  e demais atividades de ensino
+            descritas no PIT</p>
       </div>
+      <br><br>
+      <div class="car-content">
+      
+     
+        </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <input  id="Grupo" type="text" class="validate">
-        <label for="Grupo">Grupo:</label>
+
+
+    <div class="card">
+      <div class="card-action">
+        <h6>ATIVIDADES DE PESQUISA: </h6><p>Relatar o andamento dos projetos e demais atividades de pesquisa aplicada 
+          listadas no PIT.No caso de projetos, indicar o cronograma de execução (prazos atuais) e as atividades 
+          desenvolvidas no decorrer do semestre</p>
       </div>
+      <br><br>
+      <div class="car-content">
+      
+     
+        </div>
     </div>
 
-    <div class="custom-select" style="width:200px;">
-      <select>
-        <option value="0">Selecione a carga horaria.</option>
-        <option value="1">20h</option>
-        <option value="2">40h</option>
-        <option value="3">DE</option>
-      </select>
-    </div>
-  
-
-<script>
-  var x, i, j, l, ll, selElmnt, a, b, c;
-
-  x = document.getElementsByClassName("custom-select");
-  l = x.length;
-  for (i = 0; i < l; i++) {
-    selElmnt = x[i].getElementsByTagName("select")[0];
-    ll = selElmnt.length;
-
-    a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected");
-    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-    x[i].appendChild(a);
-
-    b = document.createElement("DIV");
-    b.setAttribute("class", "select-items select-hide");
-    for (j = 1; j < ll; j++) {
-
-      c = document.createElement("DIV");
-      c.innerHTML = selElmnt.options[j].innerHTML;
-      c.addEventListener("click", function(e) {
- 
-          var y, i, k, s, h, sl, yl;
-          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-          sl = s.length;
-          h = this.parentNode.previousSibling;
-          for (i = 0; i < sl; i++) {
-            if (s.options[i].innerHTML == this.innerHTML) {
-              s.selectedIndex = i;
-              h.innerHTML = this.innerHTML;
-              y = this.parentNode.getElementsByClassName("same-as-selected");
-              yl = y.length;
-              for (k = 0; k < yl; k++) {
-                y[k].removeAttribute("class");
-              }
-              this.setAttribute("class", "same-as-selected");
-              break;
-            }
-          }
-          h.click();
-      });
-      b.appendChild(c);
-    }
-    x[i].appendChild(b);
-    a.addEventListener("click", function(e) {
-        e.stopPropagation();
-        closeAllSelect(this);
-        this.nextSibling.classList.toggle("select-hide");
-        this.classList.toggle("select-arrow-active");
-      });
-  }
-  function closeAllSelect(elmnt) {
-  
-    var x, y, i, xl, yl, arrNo = [];
-    x = document.getElementsByClassName("select-items");
-    y = document.getElementsByClassName("select-selected");
-    xl = x.length;
-    yl = y.length;
-    for (i = 0; i < yl; i++) {
-      if (elmnt == y[i]) {
-        arrNo.push(i)
-      } else {
-        y[i].classList.remove("select-arrow-active");
-      }
-    }
-    for (i = 0; i < xl; i++) {
-      if (arrNo.indexOf(i)) {
-        x[i].classList.add("select-hide");
-      }
-    }
-  }
-
-  document.addEventListener("click", closeAllSelect);
-  </script>
-
-  <h1> TODAS AS ATIVIDADES DESENVOLVIDAS DEVERÃO SER COMPROVADOS (ART. 21)</h1>
-
-  <div class="row">
-    <label class="required" for="message">ATIVIDADES DE ENSINO <br>(Listar disciplinas ministradas, 
-      orientações a alunos concluídas no decorrer do semestre ou em andamento,<br>
-       horários disponibilizados para o atendimento a alunos  e demais atividades de ensino descritas no PIT)</label><br>
-       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">...</label>
-            </div>
-          </div>
-        </form>
+    <div class="card">
+      <div class="card-action">
+        <h6>ATIVIDADES DE EXTENSÃO: </h6><p>Relatar o andamento dos projetos e demais atividades de extensão listadas no 
+          PIT.No caso de projetos ou programas, indicar o cronograma de execução (prazos atuais) e as atividades 
+          desenvolvidas no decorrer do semestre.</p>
       </div>
-  </div>
-
-  <div class="row">
-    <label class="required" for="message">ATIVIDADES DE PESQUISA <br> 
-      (Relatar o andamento dos projetos e demais atividades de pesquisa aplicada listadas no PIT. <br>
-      No caso de projetos, indicar o cronograma de execução (prazos atuais)<br>
-       e as atividades desenvolvidas no decorrer do semestre)</label><br>
-       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">...</label>
-            </div>
-          </div>
-        </form>
-      </div>
-  </div>
-
-  <div class="row">
-    <label class="required" for="message">ATIVIDADES DE EXTENSÃO <br> 
-      (Relatar o andamento dos projetos e demais atividades de extensão listadas no PIT. <br> 
-      No caso de projetos ou programas, indicar o cronograma de execução (prazos atuais)<br>
-       e as atividades desenvolvidas no decorrer do semestre.)</label><br>
-    <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br>
-    <span id="message_validation" class="error_message"></span>
-  </div>
-
-  <div class="row">
-    <label class="required" for="message">ATIVIDADES ADMINISTRATIVO-PEDAGÓGICAS <br>
-       (Descrever as principais atividades desenvolvidas na gestão institucional do IFPE<br>
-        de acordo com a função; ou atividades em comissões/fiscalizações realizadas no<br>
-       decorrer do semestre de acordo com o PIT)</label><br>
-    <textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
-    <span id="message_validation" class="error_message"></span>
-  </div>
-      <a class="waves-effect waves-light btn" href="#">Criar</a>
+      <br><br>
+      <div class="car-content">
+      
+     
+        </div>
     </div>
-</form>
-</div>
+
+    <div class="card">
+      <div class="card-action">
+        <h6>ATIVIDADES ADMINISTRATIVO-PEDAGÓGICAS: </h6> <p>Descrever as principais atividades desenvolvidas na gestão 
+          institucional do IFPE de acordo com a função; ou atividades em comissões/fiscalizações realizadas no
+         decorrer do semestre de acordo com o PIT</p>
+      </div>
+      <br><br>
+      <div class="car-content">
+      
+     
+        </div>
+    </div>
+
+    <div class="card">
+      <div class="card-action center-align ">
+        <h3>Complemento/Observações</h3>
+      </div>
+      <br><br>
+      <div class="car-content">
+        <input type="text" name="Nome"/> 
+      
+
+        </div>
+        </div>
+       <br><br>
+          <button type="submit" value="Enviar para Validação" class="btn green " >Enviar para Validação</button>
+          <br><br>
+
+
+    
 
 </body>
 </html>
