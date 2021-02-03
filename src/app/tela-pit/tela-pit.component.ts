@@ -81,18 +81,26 @@ export class TelaPitComponent implements OnInit {
   editState:boolean =false;
   ArrayAulas=[];
   aulaToEdit: Aulas;
-  
+  chTotalDeAulas:number=0;
+  chTotalDePreparacaoDeAulas;
+
   ArrayApoioAoEnsino=[];
   apoioAoEnsinoToEdit: ApoioAoEnsino;
-    
+  chTotalDeApoioAoEnsino;
+
   ArrayPesquisa=[];
   pesquisaToEdit: Pesquisa;
+  chTotalDePesquisa;
    
   ArrayExtensao=[];
   extensaoToEdit: Extensao;
+  chTotalDeExtensao;
 
   ArrayAdministrativo=[];
   administrativoToEdit: Administrativo;
+  chTotalDeAdministrativo;
+
+
 
 
 
@@ -107,7 +115,16 @@ export class TelaPitComponent implements OnInit {
 
     this.aulasService.getAulas().subscribe(aulas =>{
       this.ArrayAulas=aulas;
+
+     // for(var cont=0;cont<=this.ArrayAulas.length;cont++){
+     //   if(this.ArrayAulas[cont].emailProfessor==this.email){
+     //   this.chTotalDeAulas+=this.ArrayAulas[cont].chSemanal;
+      //  }
+      //  }
+          
+      
     });
+  
 
     this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
       this.ArrayApoioAoEnsino= apoioAoEnsino;
@@ -140,7 +157,7 @@ onSubmitAulas(){
  
 }
   
-deleteAtividade( event, atividade :Aulas){
+deleteAula( event, atividade :Aulas){
   this.clearStateAula();
   this.aulasService.deleteAula(atividade);
 }
@@ -182,8 +199,8 @@ clearStateApoioAoEnsino(){
 this.editState=false;
 this.apoioAoEnsinoToEdit=null;
 }
-updateApoioAoEnsino(aula:Aulas){
-this.aulasService.updateAula(aula);
+updateApoioAoEnsino(apoioAoEnsino:ApoioAoEnsino){
+this.apoioAoEnsinoService.updateApoioAoEnsino(apoioAoEnsino);
 this.clearStateApoioAoEnsino();
 }
 
@@ -268,14 +285,6 @@ updateAdministrativo(administrativo:Administrativo){
 this.administrativoService.updateAdministrativo(administrativo);
 this.clearStateAdministrativo();
 }
-
-
-
-
-
-
-
-
 
 
 

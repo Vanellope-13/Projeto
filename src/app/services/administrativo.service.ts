@@ -15,7 +15,7 @@ export class AdministrativoService {
   constructor(public afs: AngularFirestore) {
     //this.atividadesCollection=this.afs.collection('atividades');
     this.administrativoCollection = this.afs.collection('administrativo', ref => ref.orderBy('nome','asc'));
-  this.administrativo=this.administrativoCollection.snapshotChanges().map(changes =>{
+  this.administrativo=this.afs.collection('administrativo').snapshotChanges().map(changes =>{
     return changes.map(a =>{
       const data= a.payload.doc.data() as Administrativo;
       data.id = a.payload.doc.id;

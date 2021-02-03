@@ -15,7 +15,7 @@ export class PesquisaService {
   constructor(public afs: AngularFirestore) {
     //this.atividadesCollection=this.afs.collection('atividades');
     this.pesquisaCollection = this.afs.collection('pesquisa', ref => ref.orderBy('nome','asc'));
-  this.pesquisa=this.pesquisaCollection.snapshotChanges().map(changes =>{
+  this.pesquisa=this.afs.collection('pesquisa').snapshotChanges().map(changes =>{
     return changes.map(a =>{
       const data= a.payload.doc.data() as Pesquisa;
       data.id = a.payload.doc.id;

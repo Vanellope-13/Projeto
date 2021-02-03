@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 export class AtividadesService {
 
 
-ArrayAtivDeApoioAoEnsino:Atividade[];
+
 
   atividadesCollection:AngularFirestoreCollection<Atividade>;
   atividades: Observable<Atividade[]>;
@@ -19,6 +19,8 @@ ArrayAtivDeApoioAoEnsino:Atividade[];
   constructor(public afs: AngularFirestore) {
     //this.atividadesCollection=this.afs.collection('atividades');
     this.atividadesCollection = this.afs.collection('atividades', ref => ref.orderBy('nome','asc'));
+
+    
   this.atividades=this.atividadesCollection.snapshotChanges().map(changes =>{
     return changes.map(a =>{
       const data= a.payload.doc.data() as Atividade;
@@ -29,6 +31,7 @@ ArrayAtivDeApoioAoEnsino:Atividade[];
    }
 
   getAtividades(){
+    
     return this.atividades;
   }
 
@@ -45,6 +48,6 @@ ArrayAtivDeApoioAoEnsino:Atividade[];
   }
 
 
-
   
 }
+

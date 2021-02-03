@@ -25,6 +25,7 @@ export class TelaAtividadesComponent implements OnInit {
     });
     
   }
+
 onSubmit(){
   if(this.atividade.nome != '' && this.atividade.tipo!=''){
       this.AtividadesService.addAtividade(this.atividade);
@@ -34,18 +35,22 @@ onSubmit(){
   }
   
 }
+
 deleteAtividade( event, atividade :Atividade){
     this.clearState();
     this.AtividadesService.deleteAtividade(atividade);
 }
+
 editAtividade( event, atividade:Atividade){
 this.editState=true;
 this.atividadeToEdit=atividade;
 }
+
 clearState(){
   this.editState=false;
   this.atividadeToEdit=null;
 }
+
 updateAtividade(atividade:Atividade){
 this.AtividadesService.updateAtividade(atividade);
 this.clearState();

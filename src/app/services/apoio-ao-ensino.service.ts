@@ -10,12 +10,14 @@ import 'rxjs/add/operator/map';
 export class ApoioAoEnsinoService {
 
   apoioAoEnsinoCollection:AngularFirestoreCollection<ApoioAoEnsino>;
-  apoioAoEnsino: Observable<ApoioAoEnsino[]>;
-  apoioAoEnsinoDoc: AngularFirestoreDocument<ApoioAoEnsino>;
+  apoioAoEnsinos: Observable<ApoioAoEnsino[]>;
+ apoioAoEnsinoDoc: AngularFirestoreDocument<ApoioAoEnsino>;
+
   constructor(public afs: AngularFirestore) {
-    //this.atividadesCollection=this.afs.collection('atividades');
+  
     this.apoioAoEnsinoCollection = this.afs.collection('apoioAoEnsino', ref => ref.orderBy('nome','asc'));
-  this.apoioAoEnsino=this.apoioAoEnsinoCollection.snapshotChanges().map(changes =>{
+    
+  this.apoioAoEnsinos=this.afs.collection('apoioAoEnsino').snapshotChanges().map(changes =>{
     return changes.map(a =>{
       const data= a.payload.doc.data() as ApoioAoEnsino;
       data.id = a.payload.doc.id;
@@ -25,7 +27,8 @@ export class ApoioAoEnsinoService {
    }
 
   getApoioAoEnsino(){
-    return this.apoioAoEnsino;
+    return this.apoioAoEnsinos;
+   
   }
 
   addApoioAoEnsino(apoioAoEnsino:ApoioAoEnsino){
@@ -39,6 +42,23 @@ export class ApoioAoEnsinoService {
     this.apoioAoEnsinoDoc=this.afs.doc(`apoioAoEnsino/${apoioAoEnsino.id}`);
     this.apoioAoEnsinoDoc.update(apoioAoEnsino);
   }
+
+
+
+
+
+  apoio=[];
+  pegarApoio(){
+    this.getApoioAoEnsino().subscribe(apoio =>{ 
+    this.apoio=apoio;
+    
+  for(var cont=0;cont<=this.apoio.length;cont++){
+     console.log(this.apoio[cont]);
+     
+    }
+   
+   });   
+}
 
 
 }

@@ -6,13 +6,14 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AulasService {
+ 
   aulasCollection:AngularFirestoreCollection<Aulas>;
   aulas: Observable<Aulas[]>;
   aulasDoc: AngularFirestoreDocument<Aulas>;
   constructor(public afs: AngularFirestore) {
     //this.aulas = this.afs.collection('aulas').valueChanges();
     this.aulasCollection = this.afs.collection('aulas', ref => ref.orderBy('nome','asc'));
-    this.aulas=this.aulasCollection.snapshotChanges().map(changes =>{
+    this.aulas=this.afs.collection('aulas').snapshotChanges().map(changes =>{
       return changes.map(a =>{
         const data= a.payload.doc.data() as Aulas;
         data.id = a.payload.doc.id;
@@ -39,4 +40,5 @@ export class AulasService {
    }
  
  
-}
+  
+  }

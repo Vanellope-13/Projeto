@@ -14,7 +14,7 @@ export class ExtensaoService {
   constructor(public afs: AngularFirestore) {
     //this.atividadesCollection=this.afs.collection('atividades');
     this.extensaoCollection = this.afs.collection('extensao', ref => ref.orderBy('nome','asc'));
-  this.extensao=this.extensaoCollection.snapshotChanges().map(changes =>{
+  this.extensao=this.afs.collection('extensao').snapshotChanges().map(changes =>{
     return changes.map(a =>{
       const data= a.payload.doc.data() as Extensao;
       data.id = a.payload.doc.id;
@@ -38,6 +38,8 @@ export class ExtensaoService {
     this.extensaoDoc=this.afs.doc(`extensao/${extensao.id}`);
     this.extensaoDoc.update(extensao);
   }
+
+ 
 
 
 }

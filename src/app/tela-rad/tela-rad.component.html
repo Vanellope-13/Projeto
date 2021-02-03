@@ -32,7 +32,7 @@
         </div>
     </div>
 
-
+<!----------------------------------------Atividade de ensino-------------------------------------------->
     <div class="card">
       <div class="card-action">
         <h6>ATIVIDADES DE ENSINO: </h6><p>Listar disciplinas ministradas,orientações a alunos concluídas no decorrer do
@@ -42,9 +42,48 @@
       <br><br>
       <div class="car-content">
       
+      
+      <div *ngIf="arrayApoioAoEnsino?.length > 0;else noAtividades">
+        <ul *ngFor="let apoioAoEnsino of arrayApoioAoEnsino" class="collection">
+          <ul class="collection-atividade">
+            <li><a class="titulo">Nome:</a> {{apoioAoEnsino.atividade}}     
+              <button class="secondary-content">
+              <i (click)="editApoioAoEnsino($event,apoioAoEnsino)" class="material-icons">editar</i>
+            </button>
+            <button class="secondary-content">
+              <i *ngIf="editState && apoioAoEnsinoToEdit.id == apoioAoEnsino.id" (click)="clearStateApoioAoEnsino()" class="material-icons">clear</i>
+            </button></li>
+    
+            <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanl}}</li>
+            <li><a class="titulo">definir:</a> {{apoioAoEnsino.lhp}}</li>
+           
+           
+          </ul>
+       
+        </ul>
+      </div>
+   <ng-template #noAtividades>
+    <hr>
+    <h5>Não há atividades cadastradas</h5>
+  </ng-template>
      
         </div>
     </div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,6 +16,7 @@ nome;
   user:Usuario[];
   usuario :Usuario;
   tipoDeUser:"";
+  
   usuariosCollection: AngularFirestoreCollection<Usuario>;
   usuarios: Observable<Usuario[]>;
   constructor(public afs: AngularFirestore, public afAuth: AngularFireAuth) {
