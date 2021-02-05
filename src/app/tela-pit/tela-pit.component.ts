@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from '../services/usuario.service';
 import {AtividadesService} from '../services/atividades.service';
 import { Atividade } from '../modelos/atividade';
-
+import { Router } from '@angular/router';
 import { Aulas } from '../modelos/aulas';
 import { AulasService } from '../services/aulas.service';
 
@@ -104,7 +104,7 @@ export class TelaPitComponent implements OnInit {
 
 
 
-  constructor(public  usuarioService : UsuarioService, public atividadesService:AtividadesService,public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, public administrativoService:AdministrativoService) { 
+  constructor(public  usuarioService : UsuarioService,public router:Router,public atividadesService:AtividadesService,public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, public administrativoService:AdministrativoService) { 
   
   }
  
@@ -114,20 +114,17 @@ export class TelaPitComponent implements OnInit {
 
 
     this.aulasService.getAulas().subscribe(aulas =>{
-      this.ArrayAulas=aulas;
-
-     // for(var cont=0;cont<=this.ArrayAulas.length;cont++){
-     //   if(this.ArrayAulas[cont].emailProfessor==this.email){
-     //   this.chTotalDeAulas+=this.ArrayAulas[cont].chSemanal;
-      //  }
-      //  }
-          
       
-    });
+      this.ArrayAulas=aulas;
+    
+    }
+    );
   
 
     this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
       this.ArrayApoioAoEnsino= apoioAoEnsino;
+
+      
     });
 
 
@@ -392,4 +389,8 @@ this.administrativo.chSemanal=atividades[cont].ch;
 
 
 }
+telaListagem(){
+  this.router.navigate([ '/listagemC']);
 }
+}
+

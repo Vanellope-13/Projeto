@@ -51,6 +51,15 @@ export class NavbarComponent implements OnInit {
   linkTelaAtividade(){
     this.router.navigate([ '/telaAtividades']);
   }
+  linkTelaPit(){
+    this.router.navigate([ '/telaPit']);
+  }
+  linkTelaRad(){
+    this.router.navigate([ '/telaRad']);
+  }
+  linkTelaPerfil(){
+    this.router.navigate([ '/telaPerfilC']);
+  }
   openSlideMenu(){
     document.getElementById('side-menu').style.width='250px';
     document.getElementById('main').style.marginLeft='250px';
@@ -71,8 +80,9 @@ this.posicao1="Cadastro";
 this.posicao2="Atividades";
 
 }if(a==2){
-  this.posicao1="PIT e RAD"
-
+  this.posicao1="Perfil";
+  this.posicao2="PIT";
+  this.posicao3="RAD"
 }if(a==3){
   
 }
@@ -80,12 +90,16 @@ this.posicao2="Atividades";
 }
 
 funcao(posicao){
-if(posicao=="PIT e RAD"){
- this.linkTelaDeAcesso()
+if(posicao=="PIT"){
+ this.linkTelaPit()
 }if(posicao=="Cadastro"){
   this.linkTelaCadastro()
  }if(posicao=="Atividades"){
   this. linkTelaAtividade()
- }
+ }if(posicao=="RAD"){
+  this.linkTelaRad()
+ }if(posicao=="Perfil"){
+  this.linkTelaPerfil()
+}
 }
 }

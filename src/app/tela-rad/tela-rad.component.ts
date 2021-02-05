@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from '../services/usuario.service';
 import {AtividadesService} from '../services/atividades.service';
 import { Atividade } from '../modelos/atividade';
-
+import { Router } from '@angular/router';
 import { Aulas } from '../modelos/aulas';
 import { AulasService } from '../services/aulas.service';
 
@@ -75,7 +75,8 @@ export class TelaRadComponent implements OnInit {
 
 
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
- 
+atividades:Atividade[];
+posicao=0;
 
   editState:boolean =false;
   
@@ -99,7 +100,7 @@ export class TelaRadComponent implements OnInit {
   constructor(public  usuarioService : UsuarioService, public atividadesService:AtividadesService,
     public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, 
     public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, 
-    public administrativoService:AdministrativoService) { 
+    public administrativoService:AdministrativoService,public router:Router) { 
    
   
   }
@@ -277,8 +278,100 @@ this.clearStateAdministrativo();
 
 
 
+//------Direcionamentos:Eles pegam o array de atividades e distribuem de acordo com o tipo dela------------------------//
+ArrayAtivDeApoioAoEnsino=[];
+  ArrayAtivDePesquisa=[];
+  ArrayAtivDeExtensao=[];
+  ArrayAtivAdministrativo=[];
 
+direcionamentoDeAtividades(){
+    this.atividadesService.getAtividades().subscribe(atividades =>{
+    
+      this.atividades=atividades;
 
+   for(var cont=0;cont<=this.atividades.length;cont++){
+   
+  if(this.atividades[cont].tipo=="Atividades de apoio ao ensino"){
+      this.ArrayAtivDeApoioAoEnsino.push(this.atividades[cont]);   
+  }if(this.atividades[cont].tipo=="Atividades de pesquisa e pós-graduação"){
+    this.ArrayAtivDePesquisa.push(this.atividades[cont]);   
+  }if(this.atividades[cont].tipo=="Atividades de extensão"){
+  this.ArrayAtivDeExtensao.push(this.atividades[cont]);   
+  }if(this.atividades[cont].tipo=="Atividades administrativo-pedagógicas"){
+  this.ArrayAtivAdministrativo.push(this.atividades[cont]);   
+}
+    }
+  });
+}
+
+preencheChApoio(){
+  this.atividadesService.getAtividades().subscribe(atividades =>{
+    
+    this.atividades=atividades;
+    
+    for(var cont=0;cont<=this.atividades.length;cont++){
+if(this.atividades[cont].nome==this.apoioAoEnsino.atividade){
+this.apoioAoEnsino.chSemanal=atividades[cont].ch;
+}
+}
+    });
 
 
 }
+
+
+preencheChPesquisa(){
+  this.atividadesService.getAtividades().subscribe(atividades =>{
+    
+    this.atividades=atividades;
+    
+    for(var cont=0;cont<=this.atividades.length;cont++){
+if(this.atividades[cont].nome==this.pesquisa.atividade){
+this.pesquisa.chSemanal=atividades[cont].ch;
+}
+}
+    });
+
+
+}
+
+
+preencheChExtensao(){
+  this.atividadesService.getAtividades().subscribe(atividades =>{
+    
+    this.atividades=atividades;
+    
+    for(var cont=0;cont<=this.atividades.length;cont++){
+if(this.atividades[cont].nome==this.extensao.projeto){
+this.extensao.chSemanal=atividades[cont].ch;
+}
+}
+    });
+
+
+}
+
+
+preencheChAdministrativo(){
+  this.atividadesService.getAtividades().subscribe(atividades =>{
+    
+    this.atividades=atividades;
+    
+    for(var cont=0;cont<=this.atividades.length;cont++){
+if(this.atividades[cont].nome==this.administrativo.atividade){
+this.administrativo.chSemanal=atividades[cont].ch;
+}
+}
+    });
+
+
+}
+telaListagem(){
+  this.router.navigate([ '/listagemC']);
+}
+}
+
+
+
+
+

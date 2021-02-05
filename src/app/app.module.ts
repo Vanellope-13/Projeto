@@ -30,7 +30,11 @@ import { TelaDeAcessoComponent } from './tela-de-acesso/tela-de-acesso.component
 import { TelaPitComponent } from './tela-pit/tela-pit.component';
 import { TelaRadComponent } from './tela-rad/tela-rad.component';
 import { TelaAtividadesComponent } from './tela-atividades/tela-atividades.component';
+import { ListagemDeAtividadesComponent } from './listagem-de-atividades/listagem-de-atividades.component';
+import { FinalizacaoDeEnvioComponent } from './finalizacao-de-envio/finalizacao-de-envio.component';
 const routes: Routes = [
+  {path : 'finalizacao', component :  FinalizacaoDeEnvioComponent },
+  {path : 'listagemC', component :  ListagemDeAtividadesComponent},
   {path : 'telaAtividades', component :TelaAtividadesComponent},
   {path : 'telaRad', component :TelaRadComponent},
   {path : 'telaPit', component :TelaPitComponent},
@@ -56,7 +60,9 @@ const routes: Routes = [
     TelaDeAcessoComponent,
     TelaPitComponent,
     TelaRadComponent,
-    TelaAtividadesComponent 
+    TelaAtividadesComponent,
+    ListagemDeAtividadesComponent,
+    FinalizacaoDeEnvioComponent 
   ],
   imports: [
     BrowserModule,

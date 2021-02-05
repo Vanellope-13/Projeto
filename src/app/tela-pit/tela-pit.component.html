@@ -16,21 +16,7 @@
   <app-navbar></app-navbar>
 
 
-  <div class="card">
-    <div class="card-action center-align">
-      <h3>Quadro de informações</h3>
-    </div>
-    <br><br>
-    <div class="car-content">
-
-      <p class="titulo">Professor:{{nomeDeUsuario}} </p>
-      <p class="titulo">Campus: Garanhuns </p>
-      <p class="titulo">Coordenação: Puxar do banco </p>
-      <p class="titulo">Grupo:puxar do banco</p>
-      <p class="titulo">Regime de trabalho:puxar do bacno </p>
-
-    </div>
-  </div>
+  
 
 
   <!-- ______________________________________Aulas__________________________________________ -->
@@ -348,43 +334,13 @@
 
 
 
-<!-----------------------------------Distribuição da carga horária------------------------------------------->
+  <br><br>
+  
   <div class="card">
-    <div class="card-action center-align ">
-      <h3>Distribuição da Carga-Horária</h3>
-    </div>
-    <br><br>
-    <div class="car-content">
-      <p>Aulas: {{chTotalDeAulas}}</p>
-      <p>Preparação de Aulas: somatório de todas </p>
-      <p>Apoio ao Ensino: somatório de todas </p>
-      <p>Pesquisa: somatório de todas </p>
-      <p>Extensão: somatório de todas </p>
-      <p>Administrativo-Pedagógicas: somatório de todas </p>
-      <p>Soma Total: somatório de todas </p>
-    </div>
-  </div>
-
-
-
-  <div class="card">
-    <div class="card-action center-align ">
-      <h3>Complemento/Observações</h3>
-    </div>
-    <br><br>
-    <div class="car-content">
-      <input type="text" name="Nome" />
-
-
-    </div>
+  <button type="submit" value="Finalizar" class="btn green " (click)="telaListagem()">Finalizar</button>
   </div>
   <br><br>
-  <button type="submit" value="Enviar para Validação" class="btn green ">Enviar para Validação</button>
-  <br><br>
-
-
-
 
 </body>
 
-</html>
+</html> 

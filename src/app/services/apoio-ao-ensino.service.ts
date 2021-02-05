@@ -47,18 +47,4 @@ export class ApoioAoEnsinoService {
 
 
 
-  apoio=[];
-  pegarApoio(){
-    this.getApoioAoEnsino().subscribe(apoio =>{ 
-    this.apoio=apoio;
-    
-  for(var cont=0;cont<=this.apoio.length;cont++){
-     console.log(this.apoio[cont]);
-     
-    }
-   
-   });   
-}
-
-
 }
