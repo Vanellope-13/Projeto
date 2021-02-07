@@ -79,12 +79,12 @@ export class TelaPitComponent implements OnInit {
 
 
   editState:boolean =false;
-  ArrayAulas=[];
+  ArrayAulas:Aulas[];
   aulaToEdit: Aulas;
   chTotalDeAulas:number=0;
   chTotalDePreparacaoDeAulas;
-
-  ArrayApoioAoEnsino=[];
+  
+  ArrayApoioAoEnsino:ApoioAoEnsino[];
   apoioAoEnsinoToEdit: ApoioAoEnsino;
   chTotalDeApoioAoEnsino;
 
@@ -101,7 +101,7 @@ export class TelaPitComponent implements OnInit {
   chTotalDeAdministrativo;
 
 
-
+  AulasDoProf:Aulas[];
 
 
   constructor(public  usuarioService : UsuarioService,public router:Router,public atividadesService:AtividadesService,public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, public administrativoService:AdministrativoService) { 
@@ -110,26 +110,22 @@ export class TelaPitComponent implements OnInit {
  
 //------------------Aqui os arrays de cada tipo de atividade recebe suas atividades específicas-----------//
   ngOnInit(): void {
-    this.direcionamentoDeAtividades();
+ 
+   this.direcionamentoDeAtividades();
+ 
+   this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoio =>{  
+    this.ArrayApoioAoEnsino=apoio;
+  });
 
 
-    this.aulasService.getAulas().subscribe(aulas =>{
-      
+
+    this.aulasService.getAulas().subscribe(aulas =>{  
       this.ArrayAulas=aulas;
-    
-    }
-    );
-  
-
-    this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
-      this.ArrayApoioAoEnsino= apoioAoEnsino;
-
-      
     });
 
 
     this.pesquisaService.getPesquisa().subscribe(pesquisa =>{
-      this.ArrayPesquisa= pesquisa;
+      this.ArrayPesquisa=pesquisa ;
     });
 
     this.extensaoService.getExtensao().subscribe(extensao =>{
@@ -157,6 +153,7 @@ onSubmitAulas(){
 deleteAula( event, atividade :Aulas){
   this.clearStateAula();
   this.aulasService.deleteAula(atividade);
+ 
 }
 editAula( event, aula:Aulas){
 this.editState=true;
@@ -187,6 +184,8 @@ onSubmitApoioAoEnsino(){
 deleteApoioAoEnsino( event, atividade :ApoioAoEnsino){
   this.clearStateAula();
   this.apoioAoEnsinoService.deleteApoioAoEnsino(atividade);
+  
+ 
 }
 editApoioAoEnsino( event, apoioAoEnsino:ApoioAoEnsino){
 this.editState=true;

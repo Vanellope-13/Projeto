@@ -1,148 +1,346 @@
 
 <!DOCTYPE html>
-<html>
-<head>
-<title>RAD</title>
-<meta charset="utf-8">
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<html lang="pt-br">
 
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+  <title>Pit</title>
+  <meta charset="utf-8">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
   <app-navbar></app-navbar>
-   
 
 
-    <div class="card">
-      <div class="card-action center-align">
-        <h4>Quadro de informações</h4>
-      </div>
-      <br><br>
-      <div class="car-content">
-      
-      <p class="titulo">Professor:puxar do banco </p>
-      <p class="titulo">Campus: Garanhuns </p>
-      <p class="titulo">Coordenação: Puxar do banco </p>
-      <p class="titulo">Grupo:puxar do banco</p>
-      <p class="titulo">Regime de trabalho:puxar do bacno </p>
-      <p class="titulo">Semestre:puxar do bacno </p>
-        </div>
+  
+
+
+  <!-- ______________________________________Aulas__________________________________________ -->
+
+  <div class="card">
+    <div class="card-action center-align ">
+      <h3> Aulas </h3>
     </div>
+    <br><br>
+    <div class="car-content">
+      <form (ngSubmit)="onSubmitAulas()" class="col s6">
+        <p>Componente Curricular: </p>
+        <input [(ngModel)]="aulas.componenteCurricular" name="componenteCurricular">
+        <p>Curso: </p>
+        <input [(ngModel)]="aulas.curso" name="curso">
+        <p>C.H Total do component: </p>
+        <input [(ngModel)]="aulas.chTotaldoComponente" name="chTotaldoComponente">
+        <p>C.H Semanal: </p>
+        <input [(ngModel)]="aulas.chSemanal" name="chSemanal">
+        <p>C.H de Preparação das Aulas: </p>
+        <input [(ngModel)]="aulas.chDePreparacao" name="chDePreparacao">
+        <br><br>
+        <input value={{email}} [(ngModel)]="aulas.emailProfessor" disabled="disabled" class="invisible" name="email">
+        <input type="submit" value="Adicionar" class="btn green">
+        <br><br>
+      </form>
+    </div>
+  </div>
 
-<!----------------------------------------Atividade de ensino-------------------------------------------->
-    <div class="card">
-      <div class="card-action">
-        <h6>ATIVIDADES DE ENSINO: </h6><p>Listar disciplinas ministradas,orientações a alunos concluídas no decorrer do
-           semestre ou em andamento,horários disponibilizados para o atendimento a alunos  e demais atividades de ensino
-            descritas no PIT</p>
+  <!---Parte da listagem--->
+  <div class="card">
+    <div *ngIf="ArrayAulas?.length > 0;else noAtividades">
+      <div class="center-align">
+        <h4>Listagem de Atividades de Aulas</h4>
       </div>
-      <br><br>
-      <div class="car-content">
-      
-      
-      <div *ngIf="arrayApoioAoEnsino?.length > 0;else noAtividades">
-        <ul *ngFor="let apoioAoEnsino of arrayApoioAoEnsino" class="collection">
-          <ul class="collection-atividade">
-            <li><a class="titulo">Nome:</a> {{apoioAoEnsino.atividade}}     
-              <button class="secondary-content">
-              <i (click)="editApoioAoEnsino($event,apoioAoEnsino)" class="material-icons">editar</i>
-            </button>
-            <button class="secondary-content">
-              <i *ngIf="editState && apoioAoEnsinoToEdit.id == apoioAoEnsino.id" (click)="clearStateApoioAoEnsino()" class="material-icons">clear</i>
-            </button></li>
-    
-            <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanl}}</li>
-            <li><a class="titulo">definir:</a> {{apoioAoEnsino.lhp}}</li>
-           
-           
-          </ul>
-       
+
+      <div *ngFor="let aulas of ArrayAulas" >
+        <ul *ngIf=" aulas.emailProfessor==email" class="collection">
+
+          <li><a class="titulo">Componente Currícular:</a> {{aulas.componenteCurricular}}</li>
+          <li><a class="titulo">Curso:</a> {{aulas.curso}}</li>
+          <li><a class="titulo">CH Total do Componente:</a> {{aulas.chTotaldoComponente}}</li>
+          <li><a class="titulo">CH Semanal:</a> {{aulas.chSemanal}}</li>
+          <li><a class="titulo">CH de Preparação de Aulas:</a> {{aulas.chDePreparacao}}</li>
+          <br>
+          <li><button (click)="deleteAula($event,aulas)" class="btn red">Deletar Atividade</button></li>
+          <br>
         </ul>
       </div>
-   <ng-template #noAtividades>
+    </div>
+  </div>
+
+  <ng-template #noAtividades>
     <hr>
     <h5>Não há atividades cadastradas</h5>
   </ng-template>
-     
-        </div>
+
+
+  <!-- ______________________________________Atividade de apoio ao Ensino___________________________________________ -->
+
+  <div class="card">
+    <div class="card-action center-align" value="Atividades de Apoio ao Ensino">
+      <h3>Atividades de Apoio ao Ensino</h3>
     </div>
+    <br><br>
 
+    <form (ngSubmit)="onSubmitApoioAoEnsino()" class="col s6">
+      <div>
+        <p>Atividade : </p>
+        <select class="form-control" [(ngModel)]="apoioAoEnsino.atividade" (change)="preencheChApoio()"
+          name="atividade">
+          <option *ngFor="let atividade of ArrayAtivDeApoioAoEnsino">
+            {{atividade.nome}}
+          </option>
+        </select>
+        <br><br>
+        <p>C.H Semanal: </p>
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="card">
-      <div class="card-action">
-        <h6>ATIVIDADES DE PESQUISA: </h6><p>Relatar o andamento dos projetos e demais atividades de pesquisa aplicada 
-          listadas no PIT.No caso de projetos, indicar o cronograma de execução (prazos atuais) e as atividades 
-          desenvolvidas no decorrer do semestre</p>
+        <input value={{apoioAoEnsino.chSemanal}} [(ngModel)]="apoioAoEnsino.chSemanal" name="chSemanal">
       </div>
+
       <br><br>
-      <div class="car-content">
-      
-     
-        </div>
+      <p>Local/Horário/Portaria : </p>
+      <input [(ngModel)]="apoioAoEnsino.lhp" name="lhp">
+      <br><br>
+      <input value={{email}} [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible"
+        name="email">
+      <input type="submit" value="Adicionar" class="btn green">
+      <br><br>
+    </form>
+  </div>
+
+  <!---Parte da listagem--->
+  <div class="card">
+    <div *ngIf="ArrayApoioAoEnsino?.length > 0;else noAtividades">
+      <div class="center-align">
+        <h4>Listagem de Atividades de Apoio ao Ensino</h4>
+      </div>
+<div *ngFor="let apoioAoEnsino of ArrayApoioAoEnsino" >
+      <ul *ngIf=" apoioAoEnsino.emailProfessor==email" class="collection">
+          <li><a class="titulo">Nome:</a> {{apoioAoEnsino.atividade}}</li>
+          <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanal}}</li>
+          <li><a class="titulo">definir:</a> {{apoioAoEnsino.lhp}}</li>
+          <br>
+          <li><button (click)="deleteApoioAoEnsino($event,apoioAoEnsino)" class="btn red">Deletar Atividade</button>
+          </li>
+          <br>
+        
+      </ul>
     </div>
-
-    <div class="card">
-      <div class="card-action">
-        <h6>ATIVIDADES DE EXTENSÃO: </h6><p>Relatar o andamento dos projetos e demais atividades de extensão listadas no 
-          PIT.No caso de projetos ou programas, indicar o cronograma de execução (prazos atuais) e as atividades 
-          desenvolvidas no decorrer do semestre.</p>
-      </div>
-      <br><br>
-      <div class="car-content">
-      
-     
-        </div>
     </div>
+  </div>
 
-    <div class="card">
-      <div class="card-action">
-        <h6>ATIVIDADES ADMINISTRATIVO-PEDAGÓGICAS: </h6> <p>Descrever as principais atividades desenvolvidas na gestão 
-          institucional do IFPE de acordo com a função; ou atividades em comissões/fiscalizações realizadas no
-         decorrer do semestre de acordo com o PIT</p>
-      </div>
-      <br><br>
-      <div class="car-content">
-      
-     
-        </div>
+  <ng-template #noAtividades>
+    <hr>
+    <h5>Não há atividades cadastradas</h5>
+  </ng-template>
+
+  <!-- ______________________________________Atividade de pesquisa e pós graduação___________________________________________ -->
+
+
+  <div class="card">
+    <div class="card-action center-align ">
+      <h3>Atividades de Pesquisa e Pós-graduação</h3>
     </div>
+    <br><br>
+    <div class="car-content">
+      <form (ngSubmit)="onSubmitPesquisa()" class="col s6">
+        <p for="cars">Descrição da Atividade : </p>
+        <select class="form-control" [(ngModel)]="pesquisa.atividade" (change)="preencheChPesquisa()" name="atividade">
+          <option *ngFor="let atividade of ArrayAtivDePesquisa">
+            {{atividade.nome}}
+          </option>
+        </select>
+        <br>
+        <p>C.H Semanal : </p>
+        <input value={{pesquisa.chSemanal}} [(ngModel)]="pesquisa.chSemanal" name="chSemanal">
 
-    <div class="card">
-      <div class="card-action center-align ">
-        <h3>Complemento/Observações</h3>
+        <br><br>
+        <input value={{email}} [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible"
+          name="email">
+        <input type="submit" value="Adicionar" class="btn green">
+        <br><br>
+      </form>
+    </div>
+  </div>
+
+  <!---Parte da listagem--->
+  <div class="card">
+    <div *ngIf="ArrayPesquisa?.length > 0;else noAtividades">
+      <div class="center-align">
+        <h4>Listagem de Atividades de Pesquisa</h4>
       </div>
-      <br><br>
-      <div class="car-content">
-        <input type="text" name="Nome"/> 
-      
 
-        </div>
-        </div>
-       <br><br>
-          <button type="submit" value="Enviar para Validação" class="btn green " >Enviar para Validação</button>
-          <br><br>
+      <div *ngFor="let pesquisa of ArrayPesquisa" >
+        <ul *ngIf=" pesquisa.emailProfessor==email" class="collection">
+
+          <li><a class="titulo">Descrição:</a> {{pesquisa.atividade}}</li>
+          <li><a class="titulo">Carga Horária:</a> {{pesquisa.chSemanal}}</li>
+          <br>
+          <li><button (click)="deletePesquisa($event,pesquisa)" class="btn red">Deletar Atividade</button>
+          </li>
+          <br>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noAtividades>
+    <hr>
+    <h5>Não há atividades cadastradas</h5>
+  </ng-template>
 
 
-    
+  <!-- ______________________________________Atividades de extensão___________________________________________ -->
+
+  <div class="card">
+    <div class="card-action center-align ">
+      <h3>Atividades de Extensão</h3>
+    </div>
+    <br><br>
+    <div class="car-content">
+      <form (ngSubmit)="onSubmitExtensao()" class="col s6">
+        <p for="cars">Descrição da Atividade : </p>
+        <select class="form-control" [(ngModel)]="extensao.projeto" (change)="preencheChExtensao()" name="projeto">
+          <option *ngFor="let atividade of ArrayAtivDeExtensao">
+            {{atividade.nome}}
+          </option>
+        </select>
+        <p>Tipo de Participação : </p>
+        <input type="text" name="participacao" [(ngModel)]="extensao.participacao">
+        <br>
+        <p>Inicio(M/A) : </p>
+        <input type="date" name="inicio" [(ngModel)]="extensao.inicio">
+        <br>
+        <p>Término(M/A) : </p>
+        <input type="date" name="termino" [(ngModel)]="extensao.termino">
+        <br>
+        <p>C.H Semanal : </p>
+        <input value={{extensao.chSemanal}} [(ngModel)]="extensao.chSemanal" name="chSemanal">
+
+        <br><br>
+        <input value={{email}} [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible"
+          name="email">
+        <input type="submit" value="Adicionar" class="btn green">
+        <br><br>
+      </form>
+    </div>
+  </div>
+
+
+  
+  <!---Parte da listagem--->
+  <div class="card">
+    <div *ngIf="ArrayExtensao?.length > 0;else noAtividades">
+      <div class="center-align">
+        <h4>Listagem de Atividades de Extensão</h4>
+      </div>
+
+      <div *ngFor="let extensao of ArrayExtensao" >
+        <ul *ngIf=" extensao.emailProfessor==email" class="collection">
+
+          <li><a class="titulo">Projeto:</a> {{extensao.projeto}}</li>
+          <li><a class="titulo">Carga Horária Semanal:</a> {{extensao.chSemanal}}</li>
+          <li><a class="titulo">início:</a> {{extensao.inicio}}</li>
+          <li><a class="titulo">Término:</a> {{extensao.termino}}</li>
+          <li><a class="titulo">Participação:</a> {{extensao.participacao}}</li>
+          <br>
+          <li><button (click)="deleteExtensao($event,extensao)" class="btn red">Deletar Atividade</button>
+          </li>
+          <br>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noAtividades>
+    <hr>
+    <h5>Não há atividades cadastradas</h5>
+  </ng-template>
+
+
+
+  <!-- ______________________________________Atividades Administrativo-Pedagógicas___________________________________________ -->
+
+
+  <div class="card">
+    <div class="card-action center-align ">
+      <h3>Atividades Administrativo-Pedagógicas</h3>
+    </div>
+    <br><br>
+    <div class="car-content">
+      <form (ngSubmit)="onSubmitAdministrativo()" class="col s6">
+        <p for="cars">Descrição da Atividade : </p>
+        <select class="form-control" id="selectAdministrativos" name="atividade" [(ngModel)]="administrativo.atividade"
+          (change)="preencheChAdministrativo()">
+          <option *ngFor="let atividade of ArrayAtivAdministrativo">
+            {{atividade.nome}}
+          </option>
+        </select>
+        <br>
+        <p>Portaria : </p>
+        <input name="portaria" [(ngModel)]="administrativo.portaria">
+        <br>
+        <p>Inicio(M/A) : </p>
+        <input type="date" name="inicio" [(ngModel)]="administrativo.inicio">
+        <br>
+        <p>Término(M/A) : </p>
+        <input type="date" name="termino" [(ngModel)]="administrativo.termino">
+        <br>
+        <p>C.H Semanal : </p>
+        <input value={{administrativo.chSemanal}} name="chSemanal" [(ngModel)]="administrativo.chSemanal">
+
+        <br><br>
+        <br><br>
+        <input value={{email}} [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible"
+          name="email">
+        <input type="submit" value="Adicionar" class="btn green">
+        <br><br>
+      </form>
+    </div>
+  </div>
+
+  
+  
+  <!---Parte da listagem--->
+  <div class="card">
+    <div *ngIf="ArrayAdministrativo?.length > 0;else noAtividades">
+      <div class="center-align">
+        <h4>Listagem de Atividades de Atividades Administrativo-Pedagógicas</h4>
+      </div>
+
+      <div *ngFor="let administrativo of ArrayAdministrativo" >
+        <ul *ngIf=" administrativo.emailProfessor==email" class="collection">
+
+          <li><a class="titulo">Projeto:</a> {{administrativo.projeto}}</li>
+          <li><a class="titulo">Carga Horária Semanal:</a> {{administrativo.chSemanal}}</li>
+          <li><a class="titulo">início:</a> {{administrativo.inicio}}</li>
+          <li><a class="titulo">Término:</a> {{administrativo.termino}}</li>
+          <li><a class="titulo">Portaria:</a> {{administrativo.portaria}}</li>
+          <br>
+          <li><button (click)="deleteAdministrativo($event,administrativo)" class="btn red">Deletar Atividade</button>
+          </li>
+          <br>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noAtividades>
+    <hr>
+    <h5>Não há atividades cadastradas</h5>
+  </ng-template>
+
+
+
+  <br><br>
+  
+  <div class="card">
+  <button type="submit" value="Finalizar" class="btn green " (click)="telaListagemRAD()">Finalizar</button>
+  </div>
+  <br><br>
 
 </body>
-</html>
+
+</html> 

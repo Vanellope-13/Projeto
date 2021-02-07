@@ -53,8 +53,8 @@
         <h4>Listagem de Atividades de Aulas</h4>
       </div>
 
-      <ul *ngFor="let aulas of ArrayAulas" class="collection">
-        <ul class="collection-atividade">
+      <div *ngFor="let aulas of ArrayAulas" >
+        <ul *ngIf=" aulas.emailProfessor==email" class="collection">
 
           <li><a class="titulo">Componente Currícular:</a> {{aulas.componenteCurricular}}</li>
           <li><a class="titulo">Curso:</a> {{aulas.curso}}</li>
@@ -65,7 +65,7 @@
           <li><button (click)="deleteAula($event,aulas)" class="btn red">Deletar Atividade</button></li>
           <br>
         </ul>
-      </ul>
+      </div>
     </div>
   </div>
 
@@ -115,19 +115,18 @@
       <div class="center-align">
         <h4>Listagem de Atividades de Apoio ao Ensino</h4>
       </div>
-
-      <ul *ngFor="let apoioAoEnsino of ArrayApoioAoEnsino" class="collection">
-        <ul class="collection-atividade">
-
+<div *ngFor="let apoioAoEnsino of ArrayApoioAoEnsino" >
+      <ul *ngIf=" apoioAoEnsino.emailProfessor==email" class="collection">
           <li><a class="titulo">Nome:</a> {{apoioAoEnsino.atividade}}</li>
-          <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanl}}</li>
+          <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanal}}</li>
           <li><a class="titulo">definir:</a> {{apoioAoEnsino.lhp}}</li>
           <br>
           <li><button (click)="deleteApoioAoEnsino($event,apoioAoEnsino)" class="btn red">Deletar Atividade</button>
           </li>
           <br>
-        </ul>
+        
       </ul>
+    </div>
     </div>
   </div>
 
@@ -172,8 +171,8 @@
         <h4>Listagem de Atividades de Pesquisa</h4>
       </div>
 
-      <ul *ngFor="let pesquisa of ArrayPesquisa" class="collection">
-        <ul class="collection-atividade">
+      <div *ngFor="let pesquisa of ArrayPesquisa" >
+        <ul *ngIf=" pesquisa.emailProfessor==email" class="collection">
 
           <li><a class="titulo">Descrição:</a> {{pesquisa.atividade}}</li>
           <li><a class="titulo">Carga Horária:</a> {{pesquisa.chSemanal}}</li>
@@ -182,7 +181,7 @@
           </li>
           <br>
         </ul>
-      </ul>
+      </div>
     </div>
   </div>
 
@@ -237,8 +236,8 @@
         <h4>Listagem de Atividades de Extensão</h4>
       </div>
 
-      <ul *ngFor="let extensao of ArrayExtensao" class="collection">
-        <ul class="collection-atividade">
+      <div *ngFor="let extensao of ArrayExtensao" >
+        <ul *ngIf=" extensao.emailProfessor==email" class="collection">
 
           <li><a class="titulo">Projeto:</a> {{extensao.projeto}}</li>
           <li><a class="titulo">Carga Horária Semanal:</a> {{extensao.chSemanal}}</li>
@@ -250,7 +249,7 @@
           </li>
           <br>
         </ul>
-      </ul>
+      </div>
     </div>
   </div>
 
@@ -310,8 +309,8 @@
         <h4>Listagem de Atividades de Atividades Administrativo-Pedagógicas</h4>
       </div>
 
-      <ul *ngFor="let administrativo of ArrayAdministrativo" class="collection">
-        <ul class="collection-atividade">
+      <div *ngFor="let administrativo of ArrayAdministrativo" >
+        <ul *ngIf=" administrativo.emailProfessor==email" class="collection">
 
           <li><a class="titulo">Projeto:</a> {{administrativo.projeto}}</li>
           <li><a class="titulo">Carga Horária Semanal:</a> {{administrativo.chSemanal}}</li>
@@ -323,7 +322,7 @@
           </li>
           <br>
         </ul>
-      </ul>
+      </div>
     </div>
   </div>
 

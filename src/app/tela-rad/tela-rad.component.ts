@@ -83,7 +83,7 @@ posicao=0;
   ArrayAulas=[];
   aulaToEdit: Aulas;
   
-  arrayApoioAoEnsino:ApoioAoEnsino[];
+  ArrayApoioAoEnsino:ApoioAoEnsino[];
   apoioAoEnsinoToEdit: ApoioAoEnsino;
     
   ArrayPesquisa=[];
@@ -110,7 +110,7 @@ posicao=0;
   
 
     this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
-      this.arrayApoioAoEnsino= apoioAoEnsino;
+      this.ArrayApoioAoEnsino= apoioAoEnsino;
       
     });
 
@@ -147,7 +147,7 @@ onSubmitAulas(){
  
 }
   
-deleteAtividade( event, atividade :Aulas){
+deleteAula( event, atividade :Aulas){
   this.clearStateAula();
   this.aulasService.deleteAula(atividade);
 }
@@ -366,8 +366,8 @@ this.administrativo.chSemanal=atividades[cont].ch;
 
 
 }
-telaListagem(){
-  this.router.navigate([ '/listagemC']);
+telaListagemRAD(){
+  this.router.navigate([ '/finalizacaoRAD']);
 }
 }
 

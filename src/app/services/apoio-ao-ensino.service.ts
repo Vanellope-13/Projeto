@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { ApoioAoEnsino } from '../modelos/apoioAoEnsino';
+import {UsuarioService} from '../services/usuario.service';
 import 'rxjs/add/operator/map';
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class ApoioAoEnsinoService {
   apoioAoEnsinoCollection:AngularFirestoreCollection<ApoioAoEnsino>;
   apoioAoEnsinos: Observable<ApoioAoEnsino[]>;
  apoioAoEnsinoDoc: AngularFirestoreDocument<ApoioAoEnsino>;
-
-  constructor(public afs: AngularFirestore) {
+ 
+  constructor(public afs: AngularFirestore,public UsuarioService:UsuarioService) {
   
     this.apoioAoEnsinoCollection = this.afs.collection('apoioAoEnsino', ref => ref.orderBy('nome','asc'));
     
@@ -43,8 +44,17 @@ export class ApoioAoEnsinoService {
     this.apoioAoEnsinoDoc.update(apoioAoEnsino);
   }
 
+  
+
+
+  
+    
+  }
+   
+    
+    
+  
+  
 
 
 
-
-}

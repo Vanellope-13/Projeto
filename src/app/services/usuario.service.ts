@@ -72,7 +72,7 @@ nome;
           }if(tp=="Coordenador"){
             this.users=3;
            }
-           console.log(tp)
+          
            return tp;
           }}
           

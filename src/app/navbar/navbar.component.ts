@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([ '/telaPit']);
   }
   linkTelaRad(){
-    this.router.navigate([ '/telaRad']);
+    this.router.navigate([ '/finalizacaoRAD']);
   }
   linkTelaPerfil(){
     this.router.navigate([ '/telaPerfilC']);
