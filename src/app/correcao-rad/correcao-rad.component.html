@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Título da página</title>
+    <meta charset="utf-8">
+       <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  </head>
+  <body>
+    
+       <app-navbar></app-navbar>
+
+       <div class="row">
+        <div class="col s12 m6">
+          <div class="card green darken-1">
+            <div class="card-content ">
+             
+
+           
+
+
+
+
+
+<div class="card card-green">
+       <div class="card">
+        <div class="card-action center-align">
+          <h4>Quadro de informações</h4>
+        </div>
+        <br><br>
+        <div class="car-content">
+        
+        <p class="titulo">Professor:puxar do banco</p>
+        <p class="titulo">Campus: Garanhuns </p>
+        <p class="titulo">Coordenação: Puxar do banco </p>
+        <p class="titulo">Grupo:puxar do banco</p>
+        <p class="titulo">Regime de trabalho:puxar do bacno </p>
+        <p class="titulo">Semestre:puxar do bacno </p>
+          </div>
+      </div>
+  
+  
+      <!----------------------Atividades de Ensino:Aulas + Apoio ao Ensino-------------------------------------------->
+      <div class="card">
+        <div class="card-action center-align">
+          <h4>Atividades de Ensino </h4>
+        </div>
+        <br><br>         
+        
+        <div *ngIf="ArrayAulas?.length > 0;else noAtividades">
+          <div class="center-align">
+            <h4>Listagem de Atividades de Aulas</h4>
+          </div>
+    
+          <div *ngFor="let aulas of ArrayAulas" >
+            <ul *ngIf=" aulas.emailProfessor==email" class="collection">
+    
+              <li><a class="titulo">Componente Currícular:</a> {{aulas.componenteCurricular}}</li>
+              <li><a class="titulo">Curso:</a> {{aulas.curso}}</li>
+              <li><a class="titulo">CH Total do Componente:</a> {{aulas.chTotaldoComponente}}</li>
+              <li><a class="titulo">CH Semanal:</a> {{aulas.chSemanal}}</li>
+              <li><a class="titulo">CH de Preparação de Aulas:</a> {{aulas.chDePreparacao}}</li>
+              <br>
+             
+              <br>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="ArrayApoioAoEnsino?.length > 0;else noAtividades">
+          <div class="center-align">
+            <h4>Listagem de Atividades de Apoio ao Ensino</h4>
+          </div>
+    <div *ngFor="let apoioAoEnsino of ArrayApoioAoEnsino" >
+          <ul *ngIf=" apoioAoEnsino.emailProfessor==email" class="collection">
+              <li><a class="titulo">Nome:</a> {{apoioAoEnsino.atividade}}</li>
+              <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanal}}</li>
+              <li><a class="titulo">definir:</a> {{apoioAoEnsino.lhp}}</li>
+              <br>
+            
+              <br>
+            
+          </ul>
+        </div>
+        </div>
+     <ng-template #noAtividades>
+      <hr>
+      <h5>Não há atividades cadastradas</h5>
+    </ng-template>        
+      </div>
+  
+      <!----------------------------------------Atividade de Pesquisa e Pós-------------------------------------------->
+      <div class="card">
+        <div class="card-action center-align">
+          <h4>Atividades de Pesquisa e Pós-Graduação </h4>
+        </div>
+        <br><br>         
+        <div *ngIf="ArrayPesquisa?.length > 0;else noAtividades">
+          
+          <div *ngFor="let pesquisa of ArrayPesquisa" >
+            <ul *ngIf=" pesquisa.emailProfessor==email" class="collection">
+    
+              <li><a class="titulo">Descrição:</a> {{pesquisa.atividade}}</li>
+              <li><a class="titulo">Carga Horária:</a> {{pesquisa.chSemanal}}</li>
+              <br>
+              <br>
+            </ul>
+          </div>
+        </div>
+      
+     <ng-template #noAtividades>
+      <hr>
+      <h5>Não há atividades cadastradas</h5>
+    </ng-template>        
+      </div>
+  
+  
+         <!----------------------------------------Atividade de Extensao-------------------------------------------->
+         <div class="card">
+          <div class="card-action center-align">
+            <h4>Atividades de Extensão </h4>
+          </div>
+          <br><br>         
+          <div *ngIf="ArrayExtensao?.length > 0;else noAtividades">
+            <ul *ngFor="let extensao of ArrayExtensao" class="collection">
+              <ul class="collection-atividade">
+               
+                <li><a class="titulo">Projeto:</a> {{extensao.projeto}}</li>
+                <li><a class="titulo">Carga Horária Semanal:</a> {{extensao.chSemanal}}</li>
+                <li><a class="titulo">início:</a> {{extensao.inicio}}</li>
+                <li><a class="titulo">Término:</a> {{extensao.termino}}</li>
+                <li><a class="titulo">Participação:</a> {{extensao.participacao}}</li>
+              </ul>
+           
+            </ul>
+          </div>
+       <ng-template #noAtividades>
+        <hr>
+        <h5>Não há atividades cadastradas</h5>
+      </ng-template>        
+        </div>
+    
+        <!----------------------------------------Atividade de Administrativo-------------------------------------------->
+        <div class="card">
+          <div class="card-action center-align">
+            <h4>Atividades Administrativo-Pedagógicas</h4>
+          </div>
+          <br><br>         
+          <div *ngFor="let administrativo of ArrayAdministrativo" >
+            <ul *ngIf=" administrativo.emailProfessor==email" class="collection">
+              <ul class="collection-atividade">
+               
+            <li><a class="titulo">Projeto:</a> {{administrativo.atividade}}</li>
+            <li><a class="titulo">Carga Horária Semanal:</a> {{administrativo.chSemanal}}</li>
+            <li><a class="titulo">início:</a> {{administrativo.inicio}}</li>
+            <li><a class="titulo">Término:</a> {{administrativo.termino}}</li>
+            <li><a class="titulo">Portaria:</a> {{administrativo.portaria}}</li>
+              </ul>
+           
+            </ul>
+          </div>
+       <ng-template #noAtividades>
+        <hr>
+        <h5>Não há atividades cadastradas</h5>
+      </ng-template>        
+        </div>
+    
+    
+  
+      <!-----------------------------------Distribuição da carga horária------------------------------------------->
+    <div class="card">
+      <div class="card-action center-align ">
+        <h4>Distribuição da Carga-Horária</h4>
+      </div>
+      <br><br>
+      <div class="car-content">
+        <p>Aulas: somatório</p>
+        <p>Preparação de Aulas: somatório de todas </p>
+        <p>Apoio ao Ensino: somatório de todas </p>
+        <p>Pesquisa: somatório de todas </p>
+        <p>Extensão: somatório de todas </p>
+        <p>Administrativo-Pedagógicas: somatório de todas </p>
+        <p>Soma Total: somatório de todas </p>
+      </div>
+    </div>
+
+    
+</div>
+
+
+
+
+</div>
+<div class="card-action">
+</div>
+</div>
+</div>
+
+
+
+
+    <div class="col s12 m6  ">
+      <div class="card green darken-1">
+        <form (ngSubmit)="enviarCorrecaoParaProfessor()" >
+        <div class="card-content  white-text">
+            <span class="card-title ">RAD</span> 
+          <span class="card-title ">Informe aqui as modificações que o servidor deve fazer.</span> 
+        </div>
+        <textarea [(ngModel)]="comentario.comentario" class="textarea white" name="textarea"></textarea>
+        <input value={{email}} [(ngModel)]="comentario.emailProfessor" disabled="disabled" class="invisible"
+        name="email">
+        <div class="card black">
+           
+            <input type="submit" value="Enviar"  name="enviar"class="btn black" >
+        </div>
+    </form>
+      </div>
+    </div>
+  
+
+</div>
+
+
+       </body>
+       </html>
+

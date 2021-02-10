@@ -37,6 +37,7 @@ nome;
  return this.usuariosCollection.doc<Usuario>(email).valueChanges();
   
   }
+ 
   getUsuario(id: string) {
     return this.usuariosCollection.doc<Usuario>(id).valueChanges();
   }
@@ -78,5 +79,8 @@ nome;
           
          });   
 }
+
+
+
 
 }

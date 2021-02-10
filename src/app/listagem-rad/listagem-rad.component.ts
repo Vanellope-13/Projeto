@@ -5,7 +5,8 @@ import { Atividade } from '../modelos/atividade';
 import { Router } from '@angular/router';
 import { Aulas } from '../modelos/aulas';
 import { AulasService } from '../services/aulas.service';
-
+import{EstadoDoRadService} from '../services/estado-do-rad.service';
+import {EstadoDoRad} from '../modelos/estadoDoRad'
 import { ApoioAoEnsino } from '../modelos/apoioAoEnsino';
 import { ApoioAoEnsinoService } from '../services/apoio-ao-ensino.service';
 
@@ -71,7 +72,10 @@ export class ListagemRADComponent implements OnInit {
    emailProfessor:this.email
  }
 
- 
+ estado:EstadoDoRad={
+  enviado:true,
+  emailProfessor:this.email
+}
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
 
 
@@ -105,7 +109,7 @@ chTotalDeAdministrativo;
  constructor(public  usuarioService : UsuarioService, public atividadesService:AtividadesService,
    public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, 
    public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, 
-   public administrativoService:AdministrativoService,public router:Router) { 
+   public administrativoService:AdministrativoService,public router:Router, public estadoRad:EstadoDoRadService) { 
   
  
  }
@@ -145,10 +149,11 @@ chTotalDeAdministrativo;
      this.ArrayAdministrativo= administrativo;
    });
 }
-telaRAD(){
+telaRad(){
  this.router.navigate([ '/telaRad']);
 }
 enviarParaAnalise(){
+  this.estadoRad.addEstadoDoRad(this.estado);
  this.router.navigate([ '/finalizacao']);
 }
 

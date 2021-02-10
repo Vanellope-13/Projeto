@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import {UsuarioService} from '../services/usuario.service';
+
 import {AtividadesService} from '../services/atividades.service';
 import { Atividade } from '../modelos/atividade';
+
 import { Router } from '@angular/router';
+
 import { Aulas } from '../modelos/aulas';
 import { AulasService } from '../services/aulas.service';
 

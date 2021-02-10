@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { ActivatedRoute } from '@angular/router';
+import {EstadoDoPitService} from '../services/estado-do-pit.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,18 +22,25 @@ export class NavbarComponent implements OnInit {
   link1;
   link2;
   entrarSair : boolean;
+  ArrayEstadoPit=[];
 
-  tipo : string;
-  constructor(  private afs : AngularFirestore, public router:Router,private afAuth : AngularFireAuth,public  usuarioService : UsuarioService) { }
+ 
+  constructor(  private afs : AngularFirestore, public router:Router,private afAuth : AngularFireAuth,public  usuarioService : UsuarioService,public estadoPit : EstadoDoPitService) { }
   
   ngOnInit() {
   
+
   }
   linkPerfil(){
     this.router.navigate([ '/telaPerfilC']);
   
   }
-
+  linkTelalistagemPit(){
+    this.router.navigate([ '/listagemDePit']);
+  }
+  linkTelalistagemRad(){
+    this.router.navigate([ '/listagemDeRad']);
+  }
   linkSair(){
     this.router.navigate([ '/telaloginC']);
   }
@@ -51,6 +59,9 @@ export class NavbarComponent implements OnInit {
   linkTelaAtividade(){
     this.router.navigate([ '/telaAtividades']);
   }
+  linkTelaListagemPit(){
+    this.router.navigate([ '/listagemC']);
+  }
   linkTelaPit(){
     this.router.navigate([ '/telaPit']);
   }
@@ -59,6 +70,12 @@ export class NavbarComponent implements OnInit {
   }
   linkTelaPerfil(){
     this.router.navigate([ '/telaPerfilC']);
+  }
+  linkComentariosPit(){
+    this.router.navigate([ '/comentariosPit']);
+  }
+  linkComentariosRad(){
+    this.router.navigate([ '/comentariosRad']);
   }
   openSlideMenu(){
     document.getElementById('side-menu').style.width='250px';
@@ -83,15 +100,20 @@ this.posicao2="Atividades";
   this.posicao1="Perfil";
   this.posicao2="PIT";
   this.posicao3="RAD"
+  this.posicao4="Comentários do Pit"
+  this.posicao5="Comentários do Rad"
 }if(a==3){
-  
+  this.posicao1="Plano Individual de Trabalho"
+  this.posicao2="Relatório de Atividades Desenvolvidas"
 }
  return a  ;
 }
 
 funcao(posicao){
 if(posicao=="PIT"){
- this.linkTelaPit()
+ 
+    this.linkTelaPit()
+
 }if(posicao=="Cadastro"){
   this.linkTelaCadastro()
  }if(posicao=="Atividades"){
@@ -100,6 +122,13 @@ if(posicao=="PIT"){
   this.linkTelaRad()
  }if(posicao=="Perfil"){
   this.linkTelaPerfil()
-}
-}
-}
+}if(posicao=="Plano Individual de Trabalho"){
+  this.linkTelalistagemPit()}
+
+if(posicao=="Comentários do Pit"){
+  this.linkComentariosPit()}
+if(posicao=="Relatório de Atividades Desenvolvidas"){
+  this.linkTelalistagemRad()
+}if(posicao=="Comentários do Rad"){
+  this.linkComentariosRad()}
+}}

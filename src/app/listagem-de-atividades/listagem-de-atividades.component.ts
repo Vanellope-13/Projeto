@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import {UsuarioService} from '../services/usuario.service';
+import{EstadoDoPitService} from '../services/estado-do-pit.service';
+import {EstadoDoPit} from '../modelos/estadoDoPit'
 import {AtividadesService} from '../services/atividades.service';
 import { Atividade } from '../modelos/atividade';
 import { Router } from '@angular/router';
+
 import { Aulas } from '../modelos/aulas';
 import { AulasService } from '../services/aulas.service';
 
@@ -72,7 +76,10 @@ export class ListagemDeAtividadesComponent implements OnInit {
     emailProfessor:this.email
   }
 
-  
+  estado:EstadoDoPit={
+    enviado:true,
+    emailProfessor:this.email
+  }
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
 
 
@@ -106,7 +113,7 @@ chTotalDeAdministrativo;
   constructor(public  usuarioService : UsuarioService, public atividadesService:AtividadesService,
     public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, 
     public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, 
-    public administrativoService:AdministrativoService,public router:Router) { 
+    public administrativoService:AdministrativoService,public router:Router, public estadoPit:EstadoDoPitService) { 
    
   
   }
@@ -146,10 +153,11 @@ chTotalDeAdministrativo;
       this.ArrayAdministrativo= administrativo;
     });
 }
-telaRad(){
+telaPit(){
   this.router.navigate([ '/telaPit']);
 }
 enviarParaAnalise(){
+  this.estadoPit.addEstadoDoPit(this.estado);
   this.router.navigate([ '/finalizacao']);
 }
 
