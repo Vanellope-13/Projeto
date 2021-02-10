@@ -111,7 +111,7 @@
         <br><br>         
         <div *ngIf="ArrayExtensao?.length > 0;else noAtividades">
           <ul *ngFor="let extensao of ArrayExtensao" class="collection">
-            <ul class="collection-atividade">
+            <ul *ngIf=" extensao.emailProfessor==email" class="collection-atividade">
              
               <li><a class="titulo">Projeto:</a> {{extensao.projeto}}</li>
               <li><a class="titulo">Carga Horária Semanal:</a> {{extensao.chSemanal}}</li>
@@ -163,12 +163,12 @@
     <br><br>
     <div class="car-content">
       <p>Aulas: {{chTotalDeAulas}}</p>
-      <p>Preparação de Aulas: somatório de todas </p>
-      <p>Apoio ao Ensino: somatório de todas </p>
-      <p>Pesquisa: somatório de todas </p>
-      <p>Extensão: somatório de todas </p>
-      <p>Administrativo-Pedagógicas: somatório de todas </p>
-      <p>Soma Total: somatório de todas </p>
+      <p>Preparação de Aulas: {{chTotalDePreparacaoDeAulas}} </p>
+      <p>Apoio ao Ensino: {{chTotalDeApoioAoEnsino}} </p>
+      <p>Pesquisa: {{chTotalDePesquisa}} </p>
+      <p>Extensão: {{chTotalDeExtensao}} </p>
+      <p>Administrativo-Pedagógicas: {{chTotalDeAdministrativo}} </p>
+      <p>Soma Total: {{chTotal}} </p>
     </div>
   </div>
 

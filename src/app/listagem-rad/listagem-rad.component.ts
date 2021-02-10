@@ -30,6 +30,7 @@ export class ListagemRADComponent implements OnInit {
  email=this.usuarioService.email;
  nomeCoordenador=this.usuarioService.nomeCoordenador;
 
+
  //------------------Objetos para cadastro das atividades----------------------------//
  aulas:Aulas={
    chDePreparacao:0,
@@ -83,24 +84,26 @@ export class ListagemRADComponent implements OnInit {
 editState:boolean =false;
 ArrayAulas=[];
 aulaToEdit: Aulas;
-chTotalDeAulas:number=0;
-chTotalDePreparacaoDeAulas;
+chTotalDeAulas=0;
+chTotalDePreparacaoDeAulas=0;
 
 arrayApoioAoEnsino=[];
 apoioAoEnsinoToEdit: ApoioAoEnsino;
-chTotalDeApoioAoEnsino;
+chTotalDeApoioAoEnsino=0;
 
 ArrayPesquisa=[];
 pesquisaToEdit: Pesquisa;
-chTotalDePesquisa;
-
+chTotalDePesquisa=0;
+ 
 ArrayExtensao=[];
 extensaoToEdit: Extensao;
-chTotalDeExtensao;
+chTotalDeExtensao=0;
 
 ArrayAdministrativo=[];
 administrativoToEdit: Administrativo;
-chTotalDeAdministrativo;
+chTotalDeAdministrativo=0;
+
+chTotal=0;
 
 
 
@@ -118,36 +121,81 @@ chTotalDeAdministrativo;
  ngOnInit(){
  
 
-   this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
-     this.arrayApoioAoEnsino= apoioAoEnsino;
-     
-     
-     for(var cont=0;cont<=this.ArrayAulas.length;cont++){
-       if(this.ArrayAulas[cont].emailProfessor==this.email){
-       this.chTotalDeAulas+=this.ArrayAulas[cont].chSemanal;
-       }
-       }
-        
-   });
+  
+  this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
+    this.arrayApoioAoEnsino= apoioAoEnsino;
+    
+    for(var cont=0;cont<=this.arrayApoioAoEnsino.length;cont++){
+      if(this.arrayApoioAoEnsino[cont].emailProfessor==this.email){
+      this.chTotalDeApoioAoEnsino=this.chTotalDeApoioAoEnsino + parseInt(this.arrayApoioAoEnsino[cont].chSemanal);
+      this.chTotal=this.chTotal+ parseInt(this.arrayApoioAoEnsino[cont].chSemanal);
+      }
+      }
+       
+  });
 
-   this.aulasService.getAulas().subscribe(aulas =>{
-     this.ArrayAulas=aulas;
-   });
+  this.aulasService.getAulas().subscribe(aulas =>{
+    this.ArrayAulas=aulas;
+     
+    for(var cont=0;cont<=this.ArrayAulas.length;cont++){
+      if(this.ArrayAulas[cont].emailProfessor==this.email){
+      this.chTotalDeAulas=this.chTotalDeAulas + parseInt(this.ArrayAulas[cont].chSemanal);
+      this.chTotalDePreparacaoDeAulas=this.chTotalDePreparacaoDeAulas + parseInt(this.ArrayAulas[cont].chDePreparacao);
+      this.chTotal=this.chTotal+parseInt(this.ArrayAulas[cont].chSemanal);
+      this.chTotal=this.chTotal+parseInt(this.ArrayAulas[cont].chDePreparacao);
+    }
+      }
+     
+  });
+
+
+  
+
+  this.pesquisaService.getPesquisa().subscribe(pesquisa =>{
+    this.ArrayPesquisa= pesquisa;
+    for(var cont=0;cont<=this.ArrayPesquisa.length;cont++){
+      if(this.ArrayPesquisa[cont].emailProfessor==this.email){
+      this.chTotalDePesquisa=this.chTotalDePesquisa + parseInt(this.ArrayPesquisa[cont].chSemanal);
+      this.chTotal=this.chTotal+parseInt(this.ArrayPesquisa[cont].chSemanal);
+    }
+      }
+  });
+
+  this.extensaoService.getExtensao().subscribe(extensao =>{
+    this.ArrayExtensao= extensao;
+    for(var cont=0;cont<=this.ArrayExtensao.length;cont++){
+      if(this.ArrayExtensao[cont].emailProfessor==this.email){
+      this.chTotalDeExtensao=this.chTotalDeExtensao + parseInt(this.ArrayExtensao[cont].chSemanal);
+      this.chTotal=this.chTotal+parseInt(this.ArrayExtensao[cont].chSemanal);
+    }
+      }
+  });
+
+  this.administrativoService.getAdministrativo().subscribe(administrativo =>{
+    this.ArrayAdministrativo= administrativo;
+    for(var cont=0;cont<=this.ArrayAdministrativo.length;cont++){
+      if(this.ArrayAdministrativo[cont].emailProfessor==this.email){
+      this.chTotalDeAdministrativo=this.chTotalDeAdministrativo + parseInt(this.ArrayAdministrativo[cont].chSemanal);
+      this.chTotal=this.chTotal+ parseInt(this.ArrayAdministrativo[cont].chSemanal);
+    }
+      }
+      
+  
+
+  
+  });
+
+
+
+this.chTotal=this.chTotalDeAdministrativo+this.chTotalDeApoioAoEnsino+this.chTotalDeAulas+this.chTotalDeExtensao+this.chTotalDePesquisa+this.chTotalDePreparacaoDeAulas;
+
 
  
    
 
-   this.pesquisaService.getPesquisa().subscribe(pesquisa =>{
-     this.ArrayPesquisa= pesquisa;
-   });
+  
 
-   this.extensaoService.getExtensao().subscribe(extensao =>{
-     this.ArrayExtensao= extensao;
-   });
 
-   this.administrativoService.getAdministrativo().subscribe(administrativo =>{
-     this.ArrayAdministrativo= administrativo;
-   });
 }
 telaRad(){
  this.router.navigate([ '/telaRad']);

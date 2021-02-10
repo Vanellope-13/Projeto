@@ -12,6 +12,6 @@ export class FinalizacaoDeEnvioComponent implements OnInit {
   ngOnInit(): void {
   }
   perfil(){
-    this.router.navigate([ '/telaPerfilC']);
+    this.router.navigate([ '/quadroDeAvisos']);
   }
 }
