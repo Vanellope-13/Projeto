@@ -28,7 +28,7 @@ export class ListagemRADComponent implements OnInit {
  //---------------------------Nome do professor---------------------------------- //
  nomeDeUsuario=this.usuarioService.nome;
  email=this.usuarioService.email;
-
+ nomeCoordenador=this.usuarioService.nomeCoordenador;
 
  //------------------Objetos para cadastro das atividades----------------------------//
  aulas:Aulas={

@@ -5,7 +5,7 @@ import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
 
 
 import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
-import { TelaPerfilDeUsuarioComponent } from './tela-perfil-de-usuario/tela-perfil-de-usuario.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { TelaPitComponent } from './tela-pit/tela-pit.component';
 import { TelaRadComponent } from './tela-rad/tela-rad.component';
@@ -19,7 +19,9 @@ import { ComentariosPitComponent } from './comentarios-pit/comentarios-pit.compo
 import { TelaListagemDeRadComponent } from './tela-listagem-de-rad/tela-listagem-de-rad.component';
 import { CorrecaoRadComponent } from './correcao-rad/correcao-rad.component';
 import { ComentariosRadComponent } from './comentarios-rad/comentarios-rad.component';
+import { EditorQuadroDeAvisosComponent } from './editor-quadro-de-avisos/editor-quadro-de-avisos.component';
 const routes: Routes = [
+  {path : 'editorQuadroDeAvisos', component :  EditorQuadroDeAvisosComponent },
   {path : 'comentariosRad', component :  ComentariosRadComponent },
   {path : 'correcaoRad', component :  CorrecaoRadComponent },
   {path : 'listagemDeRad', component :  TelaListagemDeRadComponent },
@@ -33,7 +35,7 @@ const routes: Routes = [
   {path : 'telaRad', component :TelaRadComponent},
   {path : 'telaPit', component :TelaPitComponent},
   {path : 'navbarC', component : NavbarComponent},
-  {path : 'telaPerfilC', component : TelaPerfilDeUsuarioComponent},
+
   {path : 'sobreNosC', component : TelaSobreNosComponent},
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},

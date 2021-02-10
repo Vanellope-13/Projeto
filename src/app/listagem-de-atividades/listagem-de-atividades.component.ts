@@ -31,6 +31,7 @@ export class ListagemDeAtividadesComponent implements OnInit {
    
   //---------------------------Nome do professor---------------------------------- //
   nomeDeUsuario=this.usuarioService.nome;
+  nomeCoordenador=this.usuarioService.nomeCoordenador;
   email=this.usuarioService.email;
 
 
@@ -87,7 +88,7 @@ export class ListagemDeAtividadesComponent implements OnInit {
 editState:boolean =false;
 ArrayAulas=[];
 aulaToEdit: Aulas;
-chTotalDeAulas:number=0;
+chTotalDeAulas;
 chTotalDePreparacaoDeAulas;
 
 arrayApoioAoEnsino=[];
@@ -125,17 +126,18 @@ chTotalDeAdministrativo;
     this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
       this.arrayApoioAoEnsino= apoioAoEnsino;
       
-      
-     // for(var cont=0;cont<=this.ArrayAulas.length;cont++){
-     //   if(this.ArrayAulas[cont].emailProfessor==this.email){
-     //   this.chTotalDeAulas+=this.ArrayAulas[cont].chSemanal;
-      //  }
-      //  }
+    
          
     });
 
     this.aulasService.getAulas().subscribe(aulas =>{
       this.ArrayAulas=aulas;
+       
+      for(var cont=0;cont<=this.ArrayAulas.length;cont++){
+        if(this.ArrayAulas[cont].emailProfessor==this.email){
+        this.chTotalDeAulas+=this.ArrayAulas[cont].chSemanal;
+        }
+        }
     });
 
   

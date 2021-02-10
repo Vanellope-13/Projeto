@@ -26,7 +26,7 @@ import {AdministrativoService} from './services/administrativo.service';
 import {ComentariosService} from './services/comentarios.service'
 import {EstadoDoRadService} from './services/estado-do-rad.service'
 import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
-import { TelaPerfilDeUsuarioComponent } from './tela-perfil-de-usuario/tela-perfil-de-usuario.component';
+import {AvisosService} from './services/avisos.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TelaPitComponent } from './tela-pit/tela-pit.component';
 import { TelaRadComponent } from './tela-rad/tela-rad.component';
@@ -41,7 +41,11 @@ import { ComentariosPitComponent } from './comentarios-pit/comentarios-pit.compo
 import { TelaListagemDeRadComponent } from './tela-listagem-de-rad/tela-listagem-de-rad.component';
 import { CorrecaoRadComponent } from './correcao-rad/correcao-rad.component';
 import { ComentariosRadComponent } from './comentarios-rad/comentarios-rad.component';
+import { QuadroDeAvisosComponent } from './quadro-de-avisos/quadro-de-avisos.component';
+import { EditorQuadroDeAvisosComponent } from './editor-quadro-de-avisos/editor-quadro-de-avisos.component';
 const routes: Routes = [
+  {path : 'editorQuadroDeAvisos', component :  EditorQuadroDeAvisosComponent },
+  {path : 'quadroDeAvisos', component :  QuadroDeAvisosComponent },
   {path : 'comentariosRad', component :  ComentariosRadComponent },
   {path : 'correcaoRad', component :  CorrecaoRadComponent },
   {path : 'listagemDeRad', component :  TelaListagemDeRadComponent },
@@ -55,7 +59,6 @@ const routes: Routes = [
   {path : 'telaRad', component :TelaRadComponent},
   {path : 'telaPit', component :TelaPitComponent},
   {path : 'navbarC', component : NavbarComponent},
-  {path : 'telaPerfilC', component : TelaPerfilDeUsuarioComponent},
   {path : 'sobreNosC', component : TelaSobreNosComponent},
   {path : 'telaloginC', component : TelaLoginComponent},
   {path : 'telacadastroC', component : TelaCadastroComponent},
@@ -70,8 +73,7 @@ const routes: Routes = [
     TelaLoginComponent,
     TelaCadastroComponent,
     TelaSobreNosComponent,
-    TelaPerfilDeUsuarioComponent,
-    NavbarComponent,
+      NavbarComponent,
     TelaPitComponent,
     TelaRadComponent,
     TelaAtividadesComponent,
@@ -83,7 +85,9 @@ const routes: Routes = [
     ComentariosPitComponent,
     TelaListagemDeRadComponent,
     CorrecaoRadComponent,
-    ComentariosRadComponent
+    ComentariosRadComponent,
+    QuadroDeAvisosComponent,
+    EditorQuadroDeAvisosComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +100,7 @@ const routes: Routes = [
     AngularFireAuthModule
    
   ],
-  providers: [UsuarioService, AtividadesService,AulasService,ApoioAoEnsinoService,PesquisaService,ExtensaoService,AdministrativoService,EstadoDoPitService,ComentariosService,EstadoDoRadService],
+  providers: [UsuarioService, AtividadesService,AulasService,ApoioAoEnsinoService,PesquisaService,ExtensaoService,AdministrativoService,EstadoDoPitService,ComentariosService,EstadoDoRadService,AvisosService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

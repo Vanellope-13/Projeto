@@ -31,8 +31,12 @@ export class NavbarComponent implements OnInit {
   
 
   }
-  linkPerfil(){
-    this.router.navigate([ '/telaPerfilC']);
+  linkQuadroDeAvisos(){
+    this.router.navigate([ '/quadroDeAvisos']);
+  
+  }
+  linkEditorQuadroDeAvisos(){
+    this.router.navigate([ '/editorQuadroDeAvisos']);
   
   }
   linkTelalistagemPit(){
@@ -97,14 +101,16 @@ this.posicao1="Cadastro";
 this.posicao2="Atividades";
 
 }if(a==2){
-  this.posicao1="Perfil";
+  this.posicao1="Quadro de Avisos";
   this.posicao2="PIT";
   this.posicao3="RAD"
   this.posicao4="Comentários do Pit"
   this.posicao5="Comentários do Rad"
 }if(a==3){
-  this.posicao1="Plano Individual de Trabalho"
-  this.posicao2="Relatório de Atividades Desenvolvidas"
+  this.posicao1="Quadro de Avisos";
+  this.posicao2="Plano Individual de Trabalho"
+  this.posicao3="Relatório de Atividades Desenvolvidas"
+  this.posicao4="Editor de Avisos"
 }
  return a  ;
 }
@@ -120,8 +126,8 @@ if(posicao=="PIT"){
   this. linkTelaAtividade()
  }if(posicao=="RAD"){
   this.linkTelaRad()
- }if(posicao=="Perfil"){
-  this.linkTelaPerfil()
+ }if(posicao=="Quadro de Avisos"){
+  this.linkQuadroDeAvisos()
 }if(posicao=="Plano Individual de Trabalho"){
   this.linkTelalistagemPit()}
 
@@ -130,5 +136,7 @@ if(posicao=="Comentários do Pit"){
 if(posicao=="Relatório de Atividades Desenvolvidas"){
   this.linkTelalistagemRad()
 }if(posicao=="Comentários do Rad"){
-  this.linkComentariosRad()}
+  this.linkComentariosRad()
+}if(posicao=="Editor de Avisos"){
+    this.linkEditorQuadroDeAvisos()}
 }}

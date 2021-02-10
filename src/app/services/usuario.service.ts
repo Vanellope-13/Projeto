@@ -16,7 +16,7 @@ nome;
   user:Usuario[];
   usuario :Usuario;
   tipoDeUser:"";
-  
+  nomeCoordenador="";
   usuariosCollection: AngularFirestoreCollection<Usuario>;
   usuarios: Observable<Usuario[]>;
   constructor(public afs: AngularFirestore, public afAuth: AngularFireAuth) {
@@ -75,8 +75,13 @@ nome;
            }
           
            return tp;
-          }}
-          
+          }
+
+          if(this.user[cont].tipoDeUser=="Coordenador"){ 
+            this.nomeCoordenador=this.user[cont].nome;
+          }
+        }
+         
          });   
 }
 

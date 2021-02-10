@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-import { TelaPerfilDeUsuarioComponent } from '../tela-perfil-de-usuario/tela-perfil-de-usuario.component';
+
 import {UsuarioService} from '../services/usuario.service'
 import { Usuario } from '../modelos/Usuario';
 @Component({
@@ -33,7 +33,7 @@ export class TelaLoginComponent implements OnInit {
    
     
   
-      this.router.navigate([ '/telaPerfilC']);
+      this.router.navigate([ '/quadroDeAvisos']);
     
       
    } catch (err) { 
