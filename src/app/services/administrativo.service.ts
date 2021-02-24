@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class AdministrativoService {
-
+periodo;
+ano;
   administrativoCollection:AngularFirestoreCollection<Administrativo>;
   administrativo: Observable<Administrativo[]>;
   administrativoDoc: AngularFirestoreDocument<Administrativo>;

@@ -12,8 +12,8 @@ export class ComentariosService {
   comentarioDoc: AngularFirestoreDocument<Comentario>;
   constructor(public afs: AngularFirestore) {
     //this.aulas = this.afs.collection('aulas').valueChanges();
-    this.comentarioCollection = this.afs.collection('comentarios', ref => ref.orderBy('nome','asc'));
-    this.comentario=this.afs.collection('comentarios').snapshotChanges().map(changes =>{
+    this.comentarioCollection = this.afs.collection('comentariosPit', ref => ref.orderBy('nome','asc'));
+    this.comentario=this.afs.collection('comentariosPit').snapshotChanges().map(changes =>{
       return changes.map(a =>{
         const data= a.payload.doc.data() as Comentario;
         data.id = a.payload.doc.id;
@@ -31,11 +31,11 @@ export class ComentariosService {
 
   
    deleteComentario(comentario:Comentario){
-      this.comentarioDoc=this.afs.doc(`comentarios/${comentario.id}`);
+      this.comentarioDoc=this.afs.doc(`comentariosPit/${comentario.id}`);
       this.comentarioDoc.delete();
    }
    updateComentario(comentario:Comentario){
-     this.comentarioDoc=this.afs.doc(`comentarios/${comentario.id}`);
+     this.comentarioDoc=this.afs.doc(`comentariosPit/${comentario.id}`);
      this.comentarioDoc.update(comentario);
    }
  

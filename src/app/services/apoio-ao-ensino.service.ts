@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class ApoioAoEnsinoService {
-
+  periodo;
+  ano;
   apoioAoEnsinoCollection:AngularFirestoreCollection<ApoioAoEnsino>;
   apoioAoEnsinos: Observable<ApoioAoEnsino[]>;
  apoioAoEnsinoDoc: AngularFirestoreDocument<ApoioAoEnsino>;

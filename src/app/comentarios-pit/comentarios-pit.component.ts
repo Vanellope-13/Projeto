@@ -9,12 +9,14 @@ import {UsuarioService} from '../services/usuario.service'
 export class ComentariosPitComponent implements OnInit {
   email=this.usuarioService.email;
 ArrayComentarios=[];
+pit="pit"
   constructor(public comentariosService:ComentariosService, public usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
     
     this.comentariosService.getComentario().subscribe(comentarios =>{
       this.ArrayComentarios= comentarios;
+      
     });
   }
   deletarComentario(comentario){

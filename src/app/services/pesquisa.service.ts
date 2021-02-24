@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class PesquisaService {
-
+  periodo;
+  ano;
   pesquisaCollection:AngularFirestoreCollection<Pesquisa>;
   pesquisa: Observable<Pesquisa[]>;
   pesquisaDoc: AngularFirestoreDocument<Pesquisa>;

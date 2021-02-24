@@ -11,7 +11,7 @@ export class FinalizacaoDeEnvioComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  perfil(){
+  quadroDeAvisos(){
     this.router.navigate([ '/quadroDeAvisos']);
   }
 }

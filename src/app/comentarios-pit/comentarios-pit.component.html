@@ -16,22 +16,26 @@
     <app-navbar></app-navbar>
 
   
-    <div class="row"  *ngFor="let comentario of ArrayComentarios">
-        <div *ngIf="comentario.emailProfessor==email">
-
-     <div class="col s12 m6">
-       <div class="card green darken-1">
+    <div  *ngFor="let comentario of ArrayComentarios">
+        <div *ngIf="comentario.emailProfessor==email && comentario.documento==pit">
+      
+          <div class="col s12 m6">
+       <div class="card darken-1">
          <div class="card-content black-text">
-           <span class="card-title">Prano Individual de Trabalho</span>
-           <p> {{comentario.comentario}}</p>
+           <span class="card-title">Plano Individual de Trabalho</span>
+           <p>Perído:{{comentario.periodo}}</p>
+           <p>Ano:{{comentario.ano}}</p>
+           <p>Avaliação: {{comentario.comentario}}</p>
+          
          </div>
          <div class="card-action black-text">
-        <button value="deletar" name="deletar" class="btn-large green" (click)="deletarComentario(comentario)">Deletar</button>
+        <button value="deletar" name="deletar" class="btn-large green" (click)="deletarComentario(comentario)">Ok</button>
+         </div>
+         
          </div>
        </div>
      </div>
 
-   </div>
 </div>
     
     

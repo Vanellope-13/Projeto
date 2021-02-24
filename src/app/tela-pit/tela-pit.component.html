@@ -28,10 +28,22 @@
     <br><br>
     <div class="car-content">
       <form (ngSubmit)="onSubmitAulas()" class="col s6">
-        <p>Componente Curricular: </p>
-        <input [(ngModel)]="aulas.componenteCurricular" name="componenteCurricular">
         <p>Curso: </p>
-        <input [(ngModel)]="aulas.curso" name="curso">
+        <select class="form-control" [(ngModel)]="aulas.curso" name="curso" (click)="pegarComponentes(aulas.curso)" >
+          <option></option>
+          <option *ngFor="let curso of cursos">
+            {{curso.nome}}
+          </option>
+        </select>
+        <br>
+        <p>Componente Curricular: </p>
+        <select type="text" class="form-control" [(ngModel)]="aulas.componenteCurricular" name="componenteCurricular" >
+          <option></option>
+          <option *ngFor="let componente of componentesCurricularesDoCurso">
+            {{componente}}
+          </option>
+        </select>
+        <br>
         <p>C.H Total do component: </p>
         <input [(ngModel)]="aulas.chTotaldoComponente" name="chTotaldoComponente">
         <p>C.H Semanal: </p>
@@ -45,36 +57,8 @@
       </form>
     </div>
   </div>
-
-  <!---Parte da listagem--->
-  <div class="card">
-    <div *ngIf="ArrayAulas?.length > 0;else noAtividades">
-      <div class="center-align">
-        <h4>Listagem de Atividades de Aulas</h4>
-      </div>
-
-      <div *ngFor="let aulas of ArrayAulas" >
-        <ul *ngIf=" aulas.emailProfessor==email" class="collection">
-
-          <li><a class="titulo">Componente Currícular:</a> {{aulas.componenteCurricular}}</li>
-          <li><a class="titulo">Curso:</a> {{aulas.curso}}</li>
-          <li><a class="titulo">CH Total do Componente:</a> {{aulas.chTotaldoComponente}}</li>
-          <li><a class="titulo">CH Semanal:</a> {{aulas.chSemanal}}</li>
-          <li><a class="titulo">CH de Preparação de Aulas:</a> {{aulas.chDePreparacao}}</li>
-          <br>
-          <li><button (click)="deleteAula($event,aulas)" class="btn red">Deletar Atividade</button></li>
-          <br>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <ng-template #noAtividades>
-    <hr>
-    <h5>Não há atividades cadastradas.</h5>
-  </ng-template>
-
-
+ 
+          
   <!-- ______________________________________Atividade de apoio ao Ensino___________________________________________ -->
 
   <div class="card">
@@ -83,11 +67,12 @@
     </div>
     <br><br>
 
-    <form (ngSubmit)="onSubmitApoioAoEnsino()" class="col s6">
+    <form  (ngSubmit)="onSubmitApoioAoEnsino()" class="col s6">
       <div>
         <p>Atividade : </p>
         <select class="form-control" [(ngModel)]="apoioAoEnsino.atividade" (change)="preencheChApoio()"
           name="atividade">
+          <option></option>
           <option *ngFor="let atividade of ArrayAtivDeApoioAoEnsino">
             {{atividade.nome}}
           </option>
@@ -104,36 +89,12 @@
       <br><br>
       <input value={{email}} [(ngModel)]="apoioAoEnsino.emailProfessor" disabled="disabled" class="invisible"
         name="email">
-      <input type="submit" value="Adicionar" class="btn green">
+      <input  type="submit" value="Adicionar" class="btn green">
+     
       <br><br>
     </form>
   </div>
 
-  <!---Parte da listagem--->
-  <div class="card">
-    <div *ngIf="ArrayApoioAoEnsino?.length > 0;else noAtividades">
-      <div class="center-align">
-        <h4>Listagem de Atividades de Apoio ao Ensino</h4>
-      </div>
-<div *ngFor="let apoioAoEnsino of ArrayApoioAoEnsino" >
-      <ul *ngIf=" apoioAoEnsino.emailProfessor==email" class="collection">
-          <li><a class="titulo">Nome:</a> {{apoioAoEnsino.atividade}}</li>
-          <li><a class="titulo">Carga Horária:</a> {{apoioAoEnsino.chSemanal}}</li>
-          <li><a class="titulo">definir:</a> {{apoioAoEnsino.lhp}}</li>
-          <br>
-          <li><button (click)="deleteApoioAoEnsino($event,apoioAoEnsino)" class="btn red">Deletar Atividade</button>
-          </li>
-          <br>
-        
-      </ul>
-    </div>
-    </div>
-  </div>
-
-  <ng-template #noAtividades>
-    <hr>
-    <h5>Não há atividades cadastradas</h5>
-  </ng-template>
 
   <!-- ______________________________________Atividade de pesquisa e pós graduação___________________________________________ -->
 
@@ -147,6 +108,7 @@
       <form (ngSubmit)="onSubmitPesquisa()" class="col s6">
         <p for="cars">Descrição da Atividade : </p>
         <select class="form-control" [(ngModel)]="pesquisa.atividade" (change)="preencheChPesquisa()" name="atividade">
+          <option></option>
           <option *ngFor="let atividade of ArrayAtivDePesquisa">
             {{atividade.nome}}
           </option>
@@ -164,31 +126,6 @@
     </div>
   </div>
 
-  <!---Parte da listagem--->
-  <div class="card">
-    <div *ngIf="ArrayPesquisa?.length > 0;else noAtividades">
-      <div class="center-align">
-        <h4>Listagem de Atividades de Pesquisa</h4>
-      </div>
-
-      <div *ngFor="let pesquisa of ArrayPesquisa" >
-        <ul *ngIf=" pesquisa.emailProfessor==email" class="collection">
-
-          <li><a class="titulo">Descrição:</a> {{pesquisa.atividade}}</li>
-          <li><a class="titulo">Carga Horária:</a> {{pesquisa.chSemanal}}</li>
-          <br>
-          <li><button (click)="deletePesquisa($event,pesquisa)" class="btn red">Deletar Atividade</button>
-          </li>
-          <br>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <ng-template #noAtividades>
-    <hr>
-    <h5>Não há atividades cadastradas</h5>
-  </ng-template>
 
 
   <!-- ______________________________________Atividades de extensão___________________________________________ -->
@@ -202,6 +139,7 @@
       <form (ngSubmit)="onSubmitExtensao()" class="col s6">
         <p for="cars">Descrição da Atividade : </p>
         <select class="form-control" [(ngModel)]="extensao.projeto" (change)="preencheChExtensao()" name="projeto">
+          <option></option>
           <option *ngFor="let atividade of ArrayAtivDeExtensao">
             {{atividade.nome}}
           </option>
@@ -229,34 +167,7 @@
 
 
   
-  <!---Parte da listagem--->
-  <div class="card">
-    <div *ngIf="ArrayExtensao?.length > 0;else noAtividades">
-      <div class="center-align">
-        <h4>Listagem de Atividades de Extensão</h4>
-      </div>
-
-      <div *ngFor="let extensao of ArrayExtensao" >
-        <ul *ngIf=" extensao.emailProfessor==email" class="collection">
-
-          <li><a class="titulo">Projeto:</a> {{extensao.projeto}}</li>
-          <li><a class="titulo">Carga Horária Semanal:</a> {{extensao.chSemanal}}</li>
-          <li><a class="titulo">início:</a> {{extensao.inicio}}</li>
-          <li><a class="titulo">Término:</a> {{extensao.termino}}</li>
-          <li><a class="titulo">Participação:</a> {{extensao.participacao}}</li>
-          <br>
-          <li><button (click)="deleteExtensao($event,extensao)" class="btn red">Deletar Atividade</button>
-          </li>
-          <br>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <ng-template #noAtividades>
-    <hr>
-    <h5>Não há atividades cadastradas</h5>
-  </ng-template>
+  
 
 
 
@@ -273,6 +184,7 @@
         <p for="cars">Descrição da Atividade : </p>
         <select class="form-control" id="selectAdministrativos" name="atividade" [(ngModel)]="administrativo.atividade"
           (change)="preencheChAdministrativo()">
+          <option></option>
           <option *ngFor="let atividade of ArrayAtivAdministrativo">
             {{atividade.nome}}
           </option>
@@ -302,34 +214,8 @@
 
   
   
-  <!---Parte da listagem--->
-  <div class="card">
-    <div *ngIf="ArrayAdministrativo?.length > 0;else noAtividades">
-      <div class="center-align">
-        <h4>Listagem de Atividades de Atividades Administrativo-Pedagógicas</h4>
-      </div>
 
-      <div *ngFor="let administrativo of ArrayAdministrativo" >
-        <ul *ngIf=" administrativo.emailProfessor==email" class="collection">
-
-          <li><a class="titulo">Projeto:</a> {{administrativo.projeto}}</li>
-          <li><a class="titulo">Carga Horária Semanal:</a> {{administrativo.chSemanal}}</li>
-          <li><a class="titulo">início:</a> {{administrativo.inicio}}</li>
-          <li><a class="titulo">Término:</a> {{administrativo.termino}}</li>
-          <li><a class="titulo">Portaria:</a> {{administrativo.portaria}}</li>
-          <br>
-          <li><button (click)="deleteAdministrativo($event,administrativo)" class="btn red">Deletar Atividade</button>
-          </li>
-          <br>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <ng-template #noAtividades>
-    <hr>
-    <h5>Não há atividades cadastradas</h5>
-  </ng-template>
+ 
 
 
 

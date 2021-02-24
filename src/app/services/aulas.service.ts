@@ -6,7 +6,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AulasService {
- 
+  periodo;
+  ano;
   aulasCollection:AngularFirestoreCollection<Aulas>;
   aulas: Observable<Aulas[]>;
   aulasDoc: AngularFirestoreDocument<Aulas>;

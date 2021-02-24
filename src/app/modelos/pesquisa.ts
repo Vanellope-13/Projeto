@@ -3,6 +3,8 @@ export interface Pesquisa{
     atividade?:String;
     chSemanal:number;
     emailProfessor:string;
-
+    periodo?:string;
+    ano?:string;
+    
     
 }

@@ -4,5 +4,6 @@ export interface ApoioAoEnsino{
     lhp?:string;
     chSemanal?:number;
     emailProfessor:string;
-
+    periodo?:string;
+    ano?:string;
   }

@@ -6,4 +6,6 @@ export interface Administrativo{
     emailProfessor?:string;
     portaria?:string;
     chSemanal?:number;
+    periodo?:string;
+    ano?:string;
   }

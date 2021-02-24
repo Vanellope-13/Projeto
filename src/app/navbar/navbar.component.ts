@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([ '/telaPit']);
   }
   linkTelaRad(){
-    this.router.navigate([ '/finalizacaoRAD']);
+    this.router.navigate([ '/TelaSelecaoDoPitParaRad']);
   }
   linkTelaPerfil(){
     this.router.navigate([ '/telaPerfilC']);
@@ -80,6 +80,15 @@ export class NavbarComponent implements OnInit {
   }
   linkComentariosRad(){
     this.router.navigate([ '/comentariosRad']);
+  }
+  linkTelaEscolhaDoPit(){
+    this.router.navigate([ '/escolhaDoPit']);
+  }
+  linkTelaCadastroDeCursos(){
+    this.router.navigate([ '/cadastroDeCursos']);
+  }
+  linkTelaCadastroDeComponente(){
+    this.router.navigate([ '/cadastroDeComponenteCurricular']);
   }
   openSlideMenu(){
     document.getElementById('side-menu').style.width='250px';
@@ -97,9 +106,11 @@ async tipoDeUser(){
  
  var a=this.usuarioService.users;
 if(a==1){
-this.posicao1="Cadastro";
-this.posicao2="Atividades";
-
+this.posicao1="Quadro de Avisos";
+this.posicao2="Cadastro de Servidores";
+this.posicao3="Cadastro de Atividades";
+this.posicao4="Cadastro de Cursos"
+this.posicao5="Cadastrar Componente Currícular"
 }if(a==2){
   this.posicao1="Quadro de Avisos";
   this.posicao2="PIT";
@@ -118,11 +129,11 @@ this.posicao2="Atividades";
 funcao(posicao){
 if(posicao=="PIT"){
  
-    this.linkTelaPit()
+    this.linkTelaEscolhaDoPit()
 
-}if(posicao=="Cadastro"){
+}if(posicao=="Cadastro de Servidores"){
   this.linkTelaCadastro()
- }if(posicao=="Atividades"){
+ }if(posicao=="Cadastro de Atividades"){
   this. linkTelaAtividade()
  }if(posicao=="RAD"){
   this.linkTelaRad()
@@ -138,5 +149,10 @@ if(posicao=="Relatório de Atividades Desenvolvidas"){
 }if(posicao=="Comentários do Rad"){
   this.linkComentariosRad()
 }if(posicao=="Editor de Avisos"){
-    this.linkEditorQuadroDeAvisos()}
+    this.linkEditorQuadroDeAvisos()
+  }if(posicao=="Cadastro de Cursos"){
+    this.linkTelaCadastroDeCursos()
+  }if(posicao=="Cadastrar Componente Currícular"){
+    this.linkTelaCadastroDeComponente()
+  }
 }}

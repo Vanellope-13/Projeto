@@ -25,16 +25,21 @@ import {ExtensaoService} from './services/extensao.service';
 import {AdministrativoService} from './services/administrativo.service';
 import {ComentariosService} from './services/comentarios.service'
 import {EstadoDoRadService} from './services/estado-do-rad.service'
-import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
+import { EstadoDoPitService } from './services/estado-do-pit.service';
 import {AvisosService} from './services/avisos.service';
+import {PeriodoService} from './services/periodo.service';
+import {CursosService} from './services/cursos.service';
+import {ComponenteCurricularService} from './services/componente-curricular.service'
+import {ComentariosRadService} from './services/comentarios-rad.service'
+
+
+import { TelaSobreNosComponent } from './tela-sobre-nos/tela-sobre-nos.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TelaPitComponent } from './tela-pit/tela-pit.component';
 import { TelaRadComponent } from './tela-rad/tela-rad.component';
 import { TelaAtividadesComponent } from './tela-atividades/tela-atividades.component';
 import { ListagemDeAtividadesComponent } from './listagem-de-atividades/listagem-de-atividades.component';
 import { FinalizacaoDeEnvioComponent } from './finalizacao-de-envio/finalizacao-de-envio.component';
-import { ListagemRADComponent } from './listagem-rad/listagem-rad.component';
-import { EstadoDoPitService } from './services/estado-do-pit.service';
 import { TelaListagemDePitComponent } from './tela-listagem-de-pit/tela-listagem-de-pit.component';
 import { CorrecaoPitComponent } from './correcao-pit/correcao-pit.component';
 import { ComentariosPitComponent } from './comentarios-pit/comentarios-pit.component';
@@ -43,7 +48,17 @@ import { CorrecaoRadComponent } from './correcao-rad/correcao-rad.component';
 import { ComentariosRadComponent } from './comentarios-rad/comentarios-rad.component';
 import { QuadroDeAvisosComponent } from './quadro-de-avisos/quadro-de-avisos.component';
 import { EditorQuadroDeAvisosComponent } from './editor-quadro-de-avisos/editor-quadro-de-avisos.component';
+import { TelaEscolhaDoPeriodoDoPitComponent } from './tela-escolha-do-periodo-do-pit/tela-escolha-do-periodo-do-pit.component';
+import { EscolhaDoPitComponent } from './escolha-do-pit/escolha-do-pit.component';
+import { TelaCadastroDeCursosComponent } from './tela-cadastro-de-cursos/tela-cadastro-de-cursos.component';
+import { TelaCadastroDeComponenteCurricularComponent } from './tela-cadastro-de-componente-curricular/tela-cadastro-de-componente-curricular.component';
+import { TelaSelecaoDoPitParaRadComponent } from './tela-selecao-do-pit-para-rad/tela-selecao-do-pit-para-rad.component';
 const routes: Routes = [
+  {path : 'TelaSelecaoDoPitParaRad', component : TelaSelecaoDoPitParaRadComponent},
+  {path : 'cadastroDeComponenteCurricular', component : TelaCadastroDeComponenteCurricularComponent},
+  {path : 'cadastroDeCursos', component : TelaCadastroDeCursosComponent },
+   {path : 'escolhaDoPit', component :  EscolhaDoPitComponent },
+  {path : 'telaDeEscolhaDoPeriodo', component :  TelaEscolhaDoPeriodoDoPitComponent },
   {path : 'editorQuadroDeAvisos', component :  EditorQuadroDeAvisosComponent },
   {path : 'quadroDeAvisos', component :  QuadroDeAvisosComponent },
   {path : 'comentariosRad', component :  ComentariosRadComponent },
@@ -52,7 +67,6 @@ const routes: Routes = [
   {path : 'comentariosPit', component :  ComentariosPitComponent },
   {path : 'correcaoPit', component :  CorrecaoPitComponent },
    {path : 'listagemDePit', component :  TelaListagemDePitComponent },
-  {path : 'finalizacaoRAD', component :  ListagemRADComponent },
   {path : 'finalizacao', component :  FinalizacaoDeEnvioComponent },
   {path : 'listagemC', component :  ListagemDeAtividadesComponent},
   {path : 'telaAtividades', component :TelaAtividadesComponent},
@@ -79,7 +93,6 @@ const routes: Routes = [
     TelaAtividadesComponent,
     ListagemDeAtividadesComponent,
     FinalizacaoDeEnvioComponent,
-    ListagemRADComponent,
     TelaListagemDePitComponent,
     CorrecaoPitComponent,
     ComentariosPitComponent,
@@ -87,7 +100,12 @@ const routes: Routes = [
     CorrecaoRadComponent,
     ComentariosRadComponent,
     QuadroDeAvisosComponent,
-    EditorQuadroDeAvisosComponent
+    EditorQuadroDeAvisosComponent,
+    TelaEscolhaDoPeriodoDoPitComponent,
+    EscolhaDoPitComponent,
+    TelaCadastroDeCursosComponent,
+    TelaCadastroDeComponenteCurricularComponent,
+    TelaSelecaoDoPitParaRadComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +118,7 @@ const routes: Routes = [
     AngularFireAuthModule
    
   ],
-  providers: [UsuarioService, AtividadesService,AulasService,ApoioAoEnsinoService,PesquisaService,ExtensaoService,AdministrativoService,EstadoDoPitService,ComentariosService,EstadoDoRadService,AvisosService],
+  providers: [UsuarioService, AtividadesService,AulasService,ApoioAoEnsinoService,PesquisaService,ExtensaoService,AdministrativoService,EstadoDoPitService,ComentariosService,EstadoDoRadService,AvisosService,PeriodoService,CursosService,ComponenteCurricularService,ComentariosRadService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

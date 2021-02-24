@@ -6,6 +6,7 @@ export interface Extensao{
     inicio?:String;
     termino:String;
     emailProfessor:string;
-
+    periodo?:string;
+    ano?:string;
     
 }

@@ -12,7 +12,7 @@ import { TelaRadComponent } from './tela-rad/tela-rad.component';
 import { TelaAtividadesComponent } from './tela-atividades/tela-atividades.component';
 import { ListagemDeAtividadesComponent } from './listagem-de-atividades/listagem-de-atividades.component';
 import { FinalizacaoDeEnvioComponent } from './finalizacao-de-envio/finalizacao-de-envio.component';
-import { ListagemRADComponent } from './listagem-rad/listagem-rad.component';
+
 import { TelaListagemDePitComponent } from './tela-listagem-de-pit/tela-listagem-de-pit.component';
 import { CorrecaoPitComponent } from './correcao-pit/correcao-pit.component';
 import { ComentariosPitComponent } from './comentarios-pit/comentarios-pit.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path : 'comentariosPit', component :  ComentariosPitComponent },
   {path : 'correcaoPit', component :  CorrecaoPitComponent },
    {path : 'listagemDePit', component :  TelaListagemDePitComponent },
-  {path : 'finalizacaoRAD', component :  ListagemRADComponent },
+
   {path : 'finalizacao', component :  FinalizacaoDeEnvioComponent },
   {path : 'listagemC', component :  ListagemDeAtividadesComponent},
   {path : 'telaAtividades', component :TelaAtividadesComponent},

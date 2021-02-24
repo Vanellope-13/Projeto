@@ -21,6 +21,10 @@ import { ExtensaoService } from '../services/extensao.service';
 
 import { Administrativo } from '../modelos/administrativo';
 import { AdministrativoService } from '../services/administrativo.service';
+
+import {CursosService} from '../services/cursos.service'
+import {ComponenteCurricularService} from '../services/componente-curricular.service'
+import { PeriodoService } from '../services/periodo.service';
 @Component({
   selector: 'app-tela-pit',
   templateUrl: './tela-pit.component.html',
@@ -30,7 +34,19 @@ export class TelaPitComponent implements OnInit {
 //---------------------------Nome do professor---------------------------------- //
   nomeDeUsuario=this.usuarioService.nome;
   email=this.usuarioService.email;
+  componentesCurricularesEnviar:string='';
 
+  anoAulas=this.periodoService.ano;
+  anoApoioAoEnsino=this.periodoService.ano;
+  anoPesquisa=this.periodoService.ano;
+  anoExtensao=this.periodoService.ano;
+  anoAdministrativo=this.periodoService.ano;
+
+  periodoAulas=this.periodoService.periodoPeriodo;
+  periodoApoioAoEnsino=this.periodoService.periodoPeriodo;
+  periodoPesquisa=this.periodoService.periodoPeriodo;
+  periodoExtensao=this.periodoService.periodoPeriodo;
+  periodoAdministrativo=this.periodoService.periodoPeriodo;
 
   //------------------Objetos para cadastro das atividades----------------------------//
   aulas:Aulas={
@@ -39,21 +55,27 @@ export class TelaPitComponent implements OnInit {
     chTotaldoComponente:0,
     componenteCurricular:'',
     curso:'',
-    emailProfessor:this.email
+    emailProfessor:this.email,
+    periodo:this.periodoAulas,
+    ano:this.anoAulas
   }
  
   apoioAoEnsino:ApoioAoEnsino={
     atividade:'',
     lhp:'',
     chSemanal:0,
-    emailProfessor:this.email
+    emailProfessor:this.email,
+    periodo:this.periodoApoioAoEnsino,
+    ano:this.anoApoioAoEnsino
   }
 
 
   pesquisa:Pesquisa={
     atividade:'',
     chSemanal:0,
-    emailProfessor:this.email
+    emailProfessor:this.email,
+    periodo:this.periodoPesquisa,
+    ano:this.anoPesquisa
   }
 
   extensao:Extensao={
@@ -62,7 +84,9 @@ export class TelaPitComponent implements OnInit {
     inicio:'',
     termino:'',
     participacao:'',
-    emailProfessor:this.email
+    emailProfessor:this.email,
+    periodo:this.periodoExtensao,
+    ano:this.anoExtensao
   }
 
   administrativo:Administrativo={
@@ -71,7 +95,9 @@ export class TelaPitComponent implements OnInit {
     inicio:'',
     termino:'',
     portaria:'',
-    emailProfessor:this.email
+    emailProfessor:this.email,
+    periodo:this.periodoAdministrativo,
+    ano:this.anoAdministrativo
   }
 
   
@@ -80,8 +106,8 @@ export class TelaPitComponent implements OnInit {
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
   atividades:Atividade[];
   posicao=0;
-
-
+cursos=[];
+componentesCurriculares=[];
   editState:boolean =false;
   ArrayAulas:Aulas[];
   aulaToEdit: Aulas;
@@ -108,7 +134,7 @@ export class TelaPitComponent implements OnInit {
   AulasDoProf:Aulas[];
 
 
-  constructor(public  usuarioService : UsuarioService,public router:Router,public atividadesService:AtividadesService,public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, public administrativoService:AdministrativoService) { 
+  constructor(public periodoService:PeriodoService,public componenteCurricularService:ComponenteCurricularService,public cursosService:CursosService,public  usuarioService : UsuarioService,public router:Router,public atividadesService:AtividadesService,public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, public administrativoService:AdministrativoService) { 
   
   }
  
@@ -116,6 +142,11 @@ export class TelaPitComponent implements OnInit {
   ngOnInit(): void {
  
    this.direcionamentoDeAtividades();
+ 
+   this.cursosService.getCursos().subscribe(curso =>{  
+    this.cursos=curso;
+  });
+
  
    this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoio =>{  
     this.ArrayApoioAoEnsino=apoio;
@@ -287,13 +318,20 @@ this.clearStateAdministrativo();
 }
 
 
+componentesCurricularesDoCurso=[];
+pegarComponentes(nome){
+  this.componentesCurricularesDoCurso=[];
+this.componenteCurricularService.getComponenteCurricular().subscribe(componentes =>{
+    this.componentesCurriculares=componentes;
+  for(var cont=0;cont<=this.componentesCurriculares.length;cont++){
+    if(this.componentesCurriculares[cont].curso==nome){
+     this.componentesCurricularesDoCurso.push(this.componentesCurriculares[cont].nome);
+ 
+    }
+    }
+});
 
-
-
-
-
-
-
+}
 
 
 

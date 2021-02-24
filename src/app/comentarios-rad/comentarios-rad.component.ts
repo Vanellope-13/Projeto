@@ -7,7 +7,7 @@ import {UsuarioService} from '../services/usuario.service'
   styleUrls: ['./comentarios-rad.component.css']
 })
 export class ComentariosRadComponent implements OnInit {
-
+rad="rad"
   email=this.usuarioService.email;
   ArrayComentarios=[];
     constructor(public comentariosService:ComentariosService, public usuarioService:UsuarioService) { }

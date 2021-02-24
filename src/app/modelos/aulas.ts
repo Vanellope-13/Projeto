@@ -6,6 +6,7 @@ export interface Aulas{
     componenteCurricular:string;
     curso:string;
     emailProfessor:string;
-
+    periodo?:String;
+    ano?:string;
     
 }

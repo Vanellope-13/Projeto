@@ -16,25 +16,31 @@
     <app-navbar></app-navbar>
 
   
-    <div class="row"  *ngFor="let comentario of ArrayComentarios">
-        <div *ngIf="comentario.emailProfessor==email">
+  
+ 
 
-     <div class="col s12 m6">
-       <div class="card green darken-1">
-         <div class="card-content black-text">
-           <span class="card-title">Relatório de Atividades Desenvolvidas</span>
-           <p> {{comentario.comentario}}</p>
-         </div>
-         <div class="card-action black-text">
-        <button value="deletar" name="deletar" class="btn-large green" (click)="deletarComentario(comentario)">Deletar</button>
-         </div>
-       </div>
-     </div>
+<div  *ngFor="let comentario of ArrayComentarios">
+  <div *ngIf="comentario.emailProfessor==email && comentario.documento==rad">
 
+    <div class="col s12 m6">
+ <div class="card darken-1">
+   <div class="card-content black-text">
+     <span class="card-title">Relatório de Atividades Desenvolvidas</span>
+     <p>Perído:{{comentario.periodo}}</p>
+     <p>Ano:{{comentario.ano}}</p>
+     <p>Avaliação: {{comentario.comentario}}</p>
+    
    </div>
+   <div class="card-action black-text">
+  <button value="deletar" name="deletar" class="btn-large green" (click)="deletarComentario(comentario)">OK</button>
+   </div>
+   
+   </div>
+ </div>
 </div>
-    
-    
+
+</div>
+
 
 </body>
 </html>

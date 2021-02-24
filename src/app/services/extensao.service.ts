@@ -8,6 +8,9 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class ExtensaoService {
+  periodo;
+  ano;
+
   extensaoCollection:AngularFirestoreCollection<Extensao>;
   extensao: Observable<Extensao[]>;
   extensaoDoc: AngularFirestoreDocument<Extensao>;

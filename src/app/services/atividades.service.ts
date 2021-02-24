@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 })
 export class AtividadesService {
 
-
+  
 
 
   atividadesCollection:AngularFirestoreCollection<Atividade>;
