@@ -3,7 +3,7 @@ export interface ApoioAoEnsino{
       atividade?:string;
     lhp?:string;
     chSemanal?:number;
-    emailProfessor:string;
+    emailProfessor?:string;
     periodo?:string;
     ano?:string;
   }

@@ -18,7 +18,7 @@ import { PesquisaService } from '../services/pesquisa.service';
 
 import { Extensao } from '../modelos/extensao';
 import { ExtensaoService } from '../services/extensao.service';
-
+import {CursosService} from '../services/cursos.service'
 import { Administrativo } from '../modelos/administrativo';
 import { AdministrativoService } from '../services/administrativo.service';
 import {ComponenteCurricularService} from '../services/componente-curricular.service'
@@ -48,7 +48,6 @@ componentesCurriculares=[];
 
 
 AulasDoProf:Aulas[];
-
 
 
 
@@ -127,9 +126,11 @@ periodoAdministrativo=this.periodoService.periodoPeriodo;
     ano:''
   }
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
-
-
-
+idUtilizadoApoio;
+idUtilizadoAulas;
+idUtilizadoPesquisa;
+idUtilizadoExtensao;
+idUtilizadoAdministrativo;
 editState:boolean =false;
 ArrayAulas=[];
 aulaToEdit: Aulas;
@@ -156,7 +157,7 @@ chTotal=0;
 
 
 
-  constructor(public componenteCurricularService:ComponenteCurricularService,public periodoService:PeriodoService,public  usuarioService : UsuarioService, public atividadesService:AtividadesService,
+  constructor(public cursosService:CursosService,public componenteCurricularService:ComponenteCurricularService,public periodoService:PeriodoService,public  usuarioService : UsuarioService, public atividadesService:AtividadesService,
     public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, 
     public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, 
     public administrativoService:AdministrativoService,public router:Router, public estadoPit:EstadoDoPitService) { 
@@ -166,8 +167,8 @@ chTotal=0;
 
 //------------------Aqui os arrays de cada tipo de atividade recebe suas atividades específicas-----------//
   ngOnInit(){
-  
-
+    
+    this.direcionamentoDeAtividades();
     this.apoioAoEnsinoService.getApoioAoEnsino().subscribe(apoioAoEnsino =>{
       this.arrayApoioAoEnsino= apoioAoEnsino;
       
@@ -228,7 +229,10 @@ chTotal=0;
         
     });
 
-    
+    this.cursosService.getCursos().subscribe(cursos =>{
+      this.cursos= cursos;
+        
+    });
 
 }
 
@@ -267,6 +271,7 @@ deleteAula( event, atividade :Aulas){
 editAula( event, aula:Aulas){
 this.editState=true;
 this.aulaToEdit=aula;
+this.idUtilizadoAulas=this.aulaToEdit.id;
 }
 clearStateAula(){
 this.editState=false;
@@ -299,6 +304,7 @@ deleteApoioAoEnsino( event, atividade :ApoioAoEnsino){
 editApoioAoEnsino( event, apoioAoEnsino:ApoioAoEnsino){
 this.editState=true;
 this.apoioAoEnsinoToEdit=apoioAoEnsino;
+this.idUtilizadoApoio=this.apoioAoEnsinoToEdit.id;
 }
 clearStateApoioAoEnsino(){
 this.editState=false;
@@ -328,6 +334,7 @@ deletePesquisa( event, atividade :Pesquisa){
 editPesquisa( event, pesquisa:Pesquisa){
 this.editState=true;
 this.pesquisaToEdit=pesquisa;
+this.idUtilizadoPesquisa=this.pesquisaToEdit.id;
 }
 clearStatePesquisa(){
 this.editState=false;
@@ -355,6 +362,7 @@ deleteExtensao( event, extensao :Extensao){
 editExtensao( event, extensao:Extensao){
 this.editState=true;
 this.extensaoToEdit=extensao;
+this.idUtilizadoExtensao=this.extensaoToEdit.id;
 }
 clearStateExtensao(){
 this.editState=false;
@@ -381,6 +389,7 @@ deleteAdministrativo( event, administrativo :Administrativo){
 editAdministrativo( event, administrativo:Administrativo){
 this.editState=true;
 this.administrativoToEdit=administrativo;
+this.idUtilizadoAdministrativo=this.administrativoToEdit.id;
 }
 clearStateAdministrativo(){
 this.editState=false;
