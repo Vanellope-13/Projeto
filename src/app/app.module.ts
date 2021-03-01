@@ -54,8 +54,12 @@ import { TelaCadastroDeCursosComponent } from './tela-cadastro-de-cursos/tela-ca
 import { TelaCadastroDeComponenteCurricularComponent } from './tela-cadastro-de-componente-curricular/tela-cadastro-de-componente-curricular.component';
 import { TelaSelecaoDoPitParaRadComponent } from './tela-selecao-do-pit-para-rad/tela-selecao-do-pit-para-rad.component';
 import { TelaDocumentosAprovadosComponent } from './tela-documentos-aprovados/tela-documentos-aprovados.component';
+import { ListagemPitAprovadoComponent } from './listagem-pit-aprovado/listagem-pit-aprovado.component';
+import { ListagemRadAprovadoComponent } from './listagem-rad-aprovado/listagem-rad-aprovado.component';
 
 const routes: Routes = [
+  {path : 'ListagemRadAprovado', component : ListagemRadAprovadoComponent },
+   {path : 'ListagemPitAprovado', component : ListagemPitAprovadoComponent },
   {path : 'TelaDocumentosAprovados', component : TelaDocumentosAprovadosComponent},
   {path : 'TelaSelecaoDoPitParaRad', component : TelaSelecaoDoPitParaRadComponent},
   {path : 'cadastroDeComponenteCurricular', component : TelaCadastroDeComponenteCurricularComponent},
@@ -109,7 +113,9 @@ const routes: Routes = [
     TelaCadastroDeCursosComponent,
     TelaCadastroDeComponenteCurricularComponent,
     TelaSelecaoDoPitParaRadComponent,
-    TelaDocumentosAprovadosComponent
+    TelaDocumentosAprovadosComponent,
+    ListagemPitAprovadoComponent,
+    ListagemRadAprovadoComponent
   ],
   imports: [
     BrowserModule,

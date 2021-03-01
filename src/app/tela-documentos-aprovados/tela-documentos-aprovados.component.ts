@@ -35,7 +35,7 @@ export class TelaDocumentosAprovadosComponent implements OnInit {
    irParaPit(ano,periodo){
  this.periodoService.ano=ano;
  this.periodoService.periodoPeriodo=periodo
- this.router.navigate([ '/listagemC']);
+ this.router.navigate([ '/ListagemPitAprovado']);
  
    }
 
@@ -70,8 +70,8 @@ for(var cont=0;cont<=tamanho;cont++){
 
 irParaRad(ano,periodo){
   this.periodoService.ano=ano;
-  this.periodoService.periodoPeriodo=periodo
-  this.router.navigate([ '/telaRad']);
+  this.periodoService.periodoPeriodo=periodo;
+  this.router.navigate([ '/ListagemRadAprovado']);
   
     }
 }
