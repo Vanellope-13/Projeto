@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {PeriodoService} from '../services/periodo.service';
 import {UsuarioService} from '../services/usuario.service';
+import {EstadoDoRadService} from '../services/estado-do-rad.service'
 @Component({
   selector: 'app-tela-selecao-do-pit-para-rad',
   templateUrl: './tela-selecao-do-pit-para-rad.component.html',
@@ -11,11 +12,20 @@ export class TelaSelecaoDoPitParaRadComponent implements OnInit {
 
   email=this.usuarioService.email;
   ArrayPeriodos=[];
-    constructor(public router:Router,public periodoService:PeriodoService,public usuarioService:UsuarioService) { }
+  ArrayEstados=[];
+  EstadoDoPeriodo=[];
+    constructor(public estadoDoRadService:EstadoDoRadService,public router:Router,public periodoService:PeriodoService,public usuarioService:UsuarioService) { }
   
     ngOnInit(): void {
       this.periodoService.getPeriodo().subscribe(periodo =>{  
         this.ArrayPeriodos=periodo;
+       
+      });
+
+      this.estadoDoRadService.getEstadoDoRad().subscribe(estado =>{  
+
+        this.ArrayEstados=estado;
+        console.log(this.ArrayEstados)
       });
     }
 
@@ -26,5 +36,32 @@ export class TelaSelecaoDoPitParaRadComponent implements OnInit {
   this.router.navigate([ '/telaRad']);
   
     }
+
+    pegarEstado(periodo){
     
+
+for(var cont=0;cont<=this.ArrayEstados.length;cont++){
+if(periodo.emailProfessor==this.ArrayEstados[cont].emailProfessor && periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
+
+  var tamanho=this.ArrayEstados.length
+  for(var cont=0;cont<=tamanho;cont++){
+      if(periodo.emailProfessor==this.ArrayEstados[cont].emailProfessor && periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
+          return this.ArrayEstados[cont].aprovado
+            } } 
+          }else{
+            return false;
+          }
+
 }
+
+
+}
+
+
+
+
+    
+
+
+
+    }

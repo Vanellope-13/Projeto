@@ -207,9 +207,11 @@
       <div *ngIf="aulas.emailProfessor==email && aulas.ano==anoAulas  && aulas.periodo==periodoAulas ">
         <div class="card"  (change)="preencheId(aulas.id)">
             <a>Componente Currícular:{{aulas.componenteCurricular}}</a><br><a>Curso:{{aulas.curso}}</a>
+          
           <textarea  id="textarea"class="textarea" name="textarea" [(ngModel)]="comentarioRad.comentario"></textarea>
+        
               <input type="submit" value="Comentar" class="btn green" name="comentar">
-      
+            
     </div>
   </div>
 </div>
@@ -286,10 +288,12 @@
           <a class="titulo">Atividade:{{administrativo.atividade}}</a> 
     <br>
     <a class="titulo">Portaria:{{administrativo.portaria}}</a> 
+    
         <textarea class="textarea white" name="textarea" [(ngModel)]="comentarioRad.comentario"></textarea>
+      </div>
         <input type="submit" value="Comentar" class="btn green" name="comentar">
 
-    </div>
+    
     </div>
     </div>
   </div>

@@ -23,6 +23,7 @@ import { Administrativo } from '../modelos/administrativo';
 import { AdministrativoService } from '../services/administrativo.service';
 import {ComponenteCurricularService} from '../services/componente-curricular.service'
 import {PeriodoService} from '../services/periodo.service';
+
 @Component({
   selector: 'app-listagem-de-atividades',
   templateUrl: './listagem-de-atividades.component.html',
@@ -123,7 +124,8 @@ periodoAdministrativo=this.periodoService.periodoPeriodo;
     enviado:true,
     emailProfessor:this.email,
     periodo:'',
-    ano:''
+    ano:'',
+    aprovado:false
   }
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
 idUtilizadoApoio;
@@ -513,4 +515,6 @@ this.administrativo.chSemanal=atividades[cont].ch;
 
 
 }
+
+
 }

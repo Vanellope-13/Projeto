@@ -172,9 +172,27 @@ chTotal=0;
     enviarCorrecaoParaProfessor(){
       this.comentario.documento="rad"
       this.comentariosService.addComentario(this.comentario);
-      this.estadoDoRadService.deleteEstadoDoRad(this.estado);
       this.router.navigate([ '/listagemDeRad']);
     }
+    reenviarParaAlteracao(){
+      console.log("reprovar")
+      this.estadoDoRadService.deleteEstadoDoRad(this.estado)
+      this.estado.enviado=false;
+      this.estado.aprovado=false;
+      this.estadoDoRadService.addEstadoDoRad(this.estado);
+  
     
+  
+     
+    }
+    aprovar(){
+  console.log("aprovar")
+  this.estadoDoRadService.deleteEstadoDoRad(this.estado)
+  this.estado.enviado=false;
+      this.estado.aprovado=true;
+      this.estadoDoRadService.addEstadoDoRad(this.estado);
+  
+   
+  }
 
 }

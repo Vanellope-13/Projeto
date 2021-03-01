@@ -4,4 +4,5 @@ export interface  EstadoDoRad{
     emailProfessor:string;
     periodo:string;
     ano:string;
+    aprovado:boolean;
 }

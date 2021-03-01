@@ -36,7 +36,8 @@
 
     <div *ngIf="ArrayPeriodos?.length > 0;else noAtividades">
       <div *ngFor="let periodo of ArrayPeriodos" >
-     <ul *ngIf=" periodo.emailProfessor==email" class="collection">
+     
+     <ul *ngIf="periodo.emailProfessor==email && pegarEstado(periodo)==false" class="collection">
 
 
       <div class="row" >
@@ -59,7 +60,8 @@
 
     </ul>
     </div>
-    </div>
+    
+  </div>
     <ng-template #noAtividades>
     <hr>
     <h5>Não há nenhum PIT cadastrado por vocÊ ainda.</h5>

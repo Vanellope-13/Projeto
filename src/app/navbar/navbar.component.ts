@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   posicao3;
    posicao4;
   posicao5;
+  posicao6;
   link1;
   link2;
   entrarSair : boolean;
@@ -72,6 +73,9 @@ export class NavbarComponent implements OnInit {
   linkTelaRad(){
     this.router.navigate([ '/TelaSelecaoDoPitParaRad']);
   }
+  linkTelaDocumentosAprovados(){
+    this.router.navigate([ '/TelaDocumentosAprovados']);
+  }
   linkTelaPerfil(){
     this.router.navigate([ '/telaPerfilC']);
   }
@@ -117,6 +121,7 @@ this.posicao5="Cadastrar Componente Currícular"
   this.posicao3="RAD"
   this.posicao4="Comentários do Pit"
   this.posicao5="Comentários do Rad"
+  this.posicao6="Documentos Aprovados"
 }if(a==3){
   this.posicao1="Quadro de Avisos";
   this.posicao2="Plano Individual de Trabalho"
@@ -154,5 +159,7 @@ if(posicao=="Relatório de Atividades Desenvolvidas"){
     this.linkTelaCadastroDeCursos()
   }if(posicao=="Cadastrar Componente Currícular"){
     this.linkTelaCadastroDeComponente()
+  }if(posicao=="Documentos Aprovados"){
+    this.linkTelaDocumentosAprovados()
   }
 }}

@@ -161,8 +161,34 @@ chTotal=0;
     this.comentario.ano=this.periodoService.ano;
     this.comentario.periodo=this.periodoService.periodoPeriodo;
     this.comentariosService.addComentario(this.comentario);
-    this.estadoDoPitService.deleteEstadoDoPit(this.estado);
+
     this.router.navigate([ '/listagemDePit']);
   }
+
+  valor;
+  enviarValor(valor){
+    this.valor=valor;
+  }
+  //não fuinciona por isso não está listando
+  //atribuir
+  reenviarParaAlteracao(){
+    console.log("reprovar")
+    this.estadoDoPitService.deleteEstadoDoPit(this.estado)
+    this.estado.enviado=false;
+    this.estado.aprovado=false;
+    this.estadoDoPitService.addEstadoDoPit(this.estado);
+
   
+
+   
+  }
+  aprovar(){
+console.log("aprovar")
+this.estadoDoPitService.deleteEstadoDoPit(this.estado)
+this.estado.enviado=false;
+    this.estado.aprovado=true;
+    this.estadoDoPitService.addEstadoDoPit(this.estado);
+
+ 
+}
 }

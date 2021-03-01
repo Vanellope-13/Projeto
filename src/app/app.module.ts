@@ -53,7 +53,10 @@ import { EscolhaDoPitComponent } from './escolha-do-pit/escolha-do-pit.component
 import { TelaCadastroDeCursosComponent } from './tela-cadastro-de-cursos/tela-cadastro-de-cursos.component';
 import { TelaCadastroDeComponenteCurricularComponent } from './tela-cadastro-de-componente-curricular/tela-cadastro-de-componente-curricular.component';
 import { TelaSelecaoDoPitParaRadComponent } from './tela-selecao-do-pit-para-rad/tela-selecao-do-pit-para-rad.component';
+import { TelaDocumentosAprovadosComponent } from './tela-documentos-aprovados/tela-documentos-aprovados.component';
+
 const routes: Routes = [
+  {path : 'TelaDocumentosAprovados', component : TelaDocumentosAprovadosComponent},
   {path : 'TelaSelecaoDoPitParaRad', component : TelaSelecaoDoPitParaRadComponent},
   {path : 'cadastroDeComponenteCurricular', component : TelaCadastroDeComponenteCurricularComponent},
   {path : 'cadastroDeCursos', component : TelaCadastroDeCursosComponent },
@@ -105,7 +108,8 @@ const routes: Routes = [
     EscolhaDoPitComponent,
     TelaCadastroDeCursosComponent,
     TelaCadastroDeComponenteCurricularComponent,
-    TelaSelecaoDoPitParaRadComponent
+    TelaSelecaoDoPitParaRadComponent,
+    TelaDocumentosAprovadosComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +120,6 @@ const routes: Routes = [
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule
-   
   ],
   providers: [UsuarioService, AtividadesService,AulasService,ApoioAoEnsinoService,PesquisaService,ExtensaoService,AdministrativoService,EstadoDoPitService,ComentariosService,EstadoDoRadService,AvisosService,PeriodoService,CursosService,ComponenteCurricularService,ComentariosRadService],
   bootstrap: [AppComponent],

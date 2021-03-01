@@ -200,10 +200,17 @@
         <input value={{email}} [(ngModel)]="comentario.emailProfessor" disabled="disabled" class="invisible"
         name="email">
         <div class="card black">
-           
-            <input type="submit" value="Enviar"  name="enviar"class="btn black" >
+          <input type="submit" value="Enviar avaliação para ajuste" (click)="reenviarParaAlteracao()"name="enviarParaAjuste"class="btn black" >
+         <br>
+
+        </div>
+        <div class="card black">
+         <input type="submit" value="Enviar avaliação e aprovar " (click)="aprovar()"name="enviarParaAprovacao"class="btn black" >
+           <br>
+
         </div>
     </form>
+  
       </div>
     </div>
   

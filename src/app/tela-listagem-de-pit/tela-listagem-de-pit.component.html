@@ -21,10 +21,12 @@
              
            </div>
        </div>
-       <div *ngIf="ArrayEstados?.length > 0;else noAtividades">
+       <div *ngIf="ArrayEstados?.length >0 ">
+     
        <div class="row"  *ngFor="let acesso of ArrayEstados">
-        <div class="col s12 m6">
-          <div class="card green darken-1">
+        <div  *ngIf="acesso.aprovado==false && acesso.enviado==true">
+        <div class="col s12 m12">
+          <div class="card  horizontal green darken-1">
             <div class="card-content black-text">
               <span class="card-title">Plano Individual de Trabalho</span>
               <p>Servidor: {{acesso.emailProfessor}}</p>
@@ -35,11 +37,11 @@
      <button  type="submit" name="action" class="btn-large black" (click)="telaCorrecao(acesso.emailProfessor)">Corrigir
       <i class="material-icons right">send</i>
      </button>
+    </div>  
             
-            </div>
-          </div>
         </div>
-
+        </div>
+      </div>
         
       </div>
        </div>

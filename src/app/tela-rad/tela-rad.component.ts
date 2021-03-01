@@ -43,7 +43,8 @@ export class TelaRadComponent implements OnInit {
   enviado:true,
   emailProfessor:this.email,
   periodo:'',
-  ano:''
+  ano:'',
+  aprovado:false
 
 }
 

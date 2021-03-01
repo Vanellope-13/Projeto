@@ -21,8 +21,9 @@
              
            </div>
        </div>
-       <div *ngIf="ArrayEstados?.length > 0;else noAtividades">
+       <div *ngIf="ArrayEstados?.length > 0">
        <div class="row"  *ngFor="let acesso of ArrayEstados">
+        <div  *ngIf="acesso.aprovado==false && acesso.enviado==true">
         <div class="col s12 m6">
           <div class="card green darken-1">
             <div class="card-content black-text">
@@ -37,6 +38,7 @@
                 <i class="material-icons right">send</i>
               </button>
             </div>
+          </div>
           </div>
         </div>
 

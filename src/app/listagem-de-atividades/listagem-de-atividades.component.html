@@ -4,6 +4,7 @@
 <title>PIT</title>
 <meta charset="utf-8">
 <!-- Compiled and minified CSS -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
@@ -86,8 +87,8 @@
                   <input [(ngModel)]="aula.chDePreparacao" placeholder="CH de preparação" name="chDePreparacao">
                 
                   <input value={{email}} [(ngModel)]="aula.emailProfessor" disabled="disabled" class="invisible" name="email">
-                  
-                  <input type="submit" value="Atualizar" class="btn green" style="margin-right:10px ;">
+              
+                  <input type="submit" (click)="edicao"value="Atualizar" class="btn green" style="margin-right:10px ;">
                   <button (click)="deleteAula($event,aula)" class="btn red">Deletar Atividade</button>
               </div>
   </div>
@@ -102,7 +103,9 @@
       </ul>
      
     </div>
-
+<ng-template #edicao>
+  <span>I am toast content</span><button class="btn-flat toast-action">Undo</button>
+</ng-template>
     <ng-template #noAtividades>
       <hr>
       <h5>Não há atividades cadastradas</h5>
@@ -304,7 +307,9 @@
           <li>
           <ul>
             <div *ngIf="editState && idUtilizadoExtensao== extensao.id">
-              <form (ngSubmit)="updateExtensao(extensao)">
+
+          
+              <form  (ngSubmit)="updateExtensao(extensao)">
                 <li>
                   <div class="row">
                     <div class="input-field col s6">
@@ -317,14 +322,19 @@
                       <h6>Termino</h6>
                       <input type="date" [(ngModel)]="extensao.termino" name="termino">
                       <input value={{email}} [(ngModel)]="extensao.emailProfessor" disabled="disabled" class="invisible" name="email">
-                      
-                      <input type="submit" value="Atualizar" class="btn green" style="margin-right:10px ;">
-                      <button (click)="deleteExtensao($event,extensao)" class="btn red">Deletar Atividade</button>
-                       
+                    </div>
                   </div>
-                 </div>
-              </li>
+               </li>
+
+
+    <button id="atualizar"value="submit" class="btn btn-info green" data-toggle="modal" style="margin-right:10px ;">Atualizar</button>
+                    
+               <button id="excluir"(click)="deleteExtensao($event,extensao)" class="btn red">Deletar Atividade</button>
               </form>
+
+               
+
+  
             </div>
         </ul>
         </li>
@@ -334,21 +344,18 @@
     </ul>
    
   </div>
-  
+ 
+              
+
   <ng-template #noAtividades>
     
     <h5>Não há atividades cadastradas</h5>
   </ng-template>
+
   </div>
+ 
   
   
-  
-
-
-
-
-
-
 
       <!----------------------------------------Atividade de Administrativo-------------------------------------------->
 
