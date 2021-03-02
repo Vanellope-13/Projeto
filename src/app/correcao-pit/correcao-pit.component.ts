@@ -169,8 +169,7 @@ chTotal=0;
   enviarValor(valor){
     this.valor=valor;
   }
-  //não fuinciona por isso não está listando
-  //atribuir
+ 
   reenviarParaAlteracao(){
     console.log("reprovar")
     this.estadoDoPitService.deleteEstadoDoPit(this.estado)

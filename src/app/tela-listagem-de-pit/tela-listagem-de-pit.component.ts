@@ -22,10 +22,12 @@ export class TelaListagemDePitComponent implements OnInit {
 
   }
 
-  telaCorrecao(email){
+  telaCorrecao(email,periodo,ano){
     this.estadoDoPit.emailParaCorrecao=email;
+    this.estadoDoPit.periodoParaCorrecao=periodo;
+    this.estadoDoPit.anoParaCorrecao=ano;
     for(var cont=0;cont<=this.ArrayEstados.length;cont++){
-      if(this.ArrayEstados[cont].emailProfessor==email){
+      if(this.ArrayEstados[cont].emailProfessor==email && this.ArrayEstados[cont].periodo==periodo && this.ArrayEstados[cont].ano==ano){
         this.estadoDoPit.estadoDoPitParaCorrecao=this.ArrayEstados[cont];
         break;
       }

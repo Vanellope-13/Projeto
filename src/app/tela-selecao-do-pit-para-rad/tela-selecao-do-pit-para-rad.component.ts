@@ -39,21 +39,23 @@ export class TelaSelecaoDoPitParaRadComponent implements OnInit {
 
     pegarEstado(periodo){
     
-
+if(this.ArrayEstados.length>0){
 for(var cont=0;cont<=this.ArrayEstados.length;cont++){
-if(periodo.emailProfessor==this.ArrayEstados[cont].emailProfessor && periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
+if( periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
 
-  var tamanho=this.ArrayEstados.length
+  var tamanho=this.ArrayPeriodos.length
   for(var cont=0;cont<=tamanho;cont++){
-      if(periodo.emailProfessor==this.ArrayEstados[cont].emailProfessor && periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
+      if(periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
           return this.ArrayEstados[cont].aprovado
-            } } 
-          }else{
-            return false;
-          }
+            
+          
+    }
+        }  }
 
 }
-
+}else{
+  return false
+}
 
 }
 

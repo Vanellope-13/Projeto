@@ -12,7 +12,11 @@ estados=[];
 estado;
 email=this.usuarioService.email;
 emailParaCorrecao;
-estadoDoPitParaCorrecao;
+anoParaCorrecao;
+periodoParaCorrecao;
+
+estadoDoPitParaCorrecao:EstadoDoPit;
+
   estadoDoPitCollection:AngularFirestoreCollection<EstadoDoPit>;
   estadoDoPit: Observable<EstadoDoPit[]>;
   estadoDoPitDoc: AngularFirestoreDocument<EstadoDoPit>;
@@ -62,5 +66,23 @@ estadoDoPitParaCorrecao;
 }
     
    });   
+  }
+
+
+  estadoPegar(){
+    this.getEstadoDoPit().subscribe(estados =>{
+      this.estados=estados;
+      console.log("estados:"+this.estados)
+   
+      for(var cont=0;cont<=this.estados.length;cont++){
+        console.log("estados:"+this.estados[cont])
+        if(this.estados[cont].emailProfessor==this.emailParaCorrecao && this.estados[cont].ano==this.anoParaCorrecao && this.estados[cont].periodo==this.periodoParaCorrecao){
+        
+        this.estadoDoPitParaCorrecao=this.estados[cont];
+       
+        }
+      }
+    });
+  
   }
 }
