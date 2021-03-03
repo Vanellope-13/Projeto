@@ -175,7 +175,12 @@ componentesCurriculares=[];
 //____________________________________________Aulas________________________________________________________________//
 onSubmitAulas(){
   this.aulas.emailProfessor=this.email;
-  this.aulasService.addAula(this.aulas);
+  if(this.aulas.chSemanal>0 && this.aulas.chDePreparacao>0  && this.aulas.chTotaldoComponente>0 ){
+    this.aulasService.addAula(this.aulas);
+  }else{
+alert("A carga horária informada é inválida, o cadastro desta atividade não foi realizado!")
+  }
+
   this.aulas.chDePreparacao=0;
   this.aulas.chSemanal=0;
   this.aulas.chTotaldoComponente=0;
@@ -209,7 +214,13 @@ this.clearStateAula();
 //____________________________________________Apoio ao Ensino________________________________________________________//
 onSubmitApoioAoEnsino(){
   this.apoioAoEnsino.emailProfessor=this.email;
-  this.apoioAoEnsinoService.addApoioAoEnsino(this.apoioAoEnsino);
+  if(this.apoioAoEnsino.chSemanal>0){
+    this.apoioAoEnsinoService.addApoioAoEnsino(this.apoioAoEnsino);
+  }else{
+alert("A carga horária informada é inválida, o cadastro desta atividade não foi realizado!")
+  
+  }
+
   this.apoioAoEnsino.atividade='',
   this.apoioAoEnsino.chSemanal=0,
   this.apoioAoEnsino.lhp=''
@@ -241,7 +252,12 @@ this.clearStateApoioAoEnsino();
 //____________________________________________Pesquisa__________________________________________________________________//
 onSubmitPesquisa(){
   this.pesquisa.emailProfessor=this.email;
-  this.pesquisaService.addPesquisa(this.pesquisa);
+  if(this.pesquisa.chSemanal>0){
+    this.pesquisaService.addPesquisa(this.pesquisa);
+  }else{
+alert("A carga horária informada é inválida, o cadastro desta atividade não foi realizado!")
+  
+  }
   this.pesquisa.atividade='',
   this.pesquisa.chSemanal=0
  
@@ -268,7 +284,13 @@ this.clearStatePesquisa();
 //____________________________________________Extensão__________________________________________________________________//
 onSubmitExtensao(){
   this.extensao.emailProfessor=this.email;
-  this.extensaoService.addExtensao(this.extensao);
+  if(this.extensao.chSemanal>0){
+    this.extensaoService.addExtensao(this.extensao);
+  }else{
+alert("A carga horária informada é inválida, o cadastro desta atividade não foi realizado!")
+  
+  }
+
   this.extensao.projeto='',
   this.extensao.chSemanal=0,
  this.extensao.participacao=''
@@ -294,7 +316,13 @@ this.clearStateExtensao();
 //____________________________________________Administrativo-Pedagógico__________________________________________________________________//
 onSubmitAdministrativo(){
   this.administrativo.emailProfessor=this.email;
-  this.administrativoService.addAdministrativo(this.administrativo);
+  if(this.administrativo.chSemanal>0){
+    this.administrativoService.addAdministrativo(this.administrativo);
+  }else{
+alert("A carga horária informada é inválida, o cadastro desta atividade não foi realizado!")
+  
+  }
+
   this.administrativo.atividade='',
   this.administrativo.chSemanal=0,
  this.administrativo.portaria=''

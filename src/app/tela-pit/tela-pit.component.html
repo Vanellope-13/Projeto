@@ -148,7 +148,7 @@
         <input type="text" name="participacao" [(ngModel)]="extensao.participacao">
         <br>
         <p>Inicio(M/A) : </p>
-        <input type="date" name="inicio" [(ngModel)]="extensao.inicio">
+        <input type="date" name="inicio"  [(ngModel)]="extensao.inicio">
         <br>
         <p>Término(M/A) : </p>
         <input type="date" name="termino" [(ngModel)]="extensao.termino">
@@ -197,7 +197,7 @@
         <input type="date" name="inicio" [(ngModel)]="administrativo.inicio">
         <br>
         <p>Término(M/A) : </p>
-        <input type="date" name="termino" [(ngModel)]="administrativo.termino">
+        <input type="date" name="termino" min="administrativo.inicio" [(ngModel)]="administrativo.termino">
         <br>
         <p>C.H Semanal : </p>
         <input value={{administrativo.chSemanal}} name="chSemanal" [(ngModel)]="administrativo.chSemanal">
