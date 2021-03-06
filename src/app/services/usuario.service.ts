@@ -70,14 +70,23 @@ nome;
             this.users=2;
         
            
-          }if(tp=="Coordenador"){
+          }if(tp=="Coordenador(a) Geral"){
             this.users=3;
+
+          }if(tp=="Diretor(a) De Ensino"){
+            this.users=4;
+
+           }if(tp=="Coordenador(a) De Pesquisa"){
+            this.users=5;
+
+           }if(tp=="Coordenador(a) De Extensão"){
+            this.users=6;
            }
           
            return tp;
           }
 
-          if(this.user[cont].tipoDeUser=="Coordenador"){ 
+          if(this.user[cont].tipoDeUser=="Coordenador(a) Geral"){ 
             this.nomeCoordenador=this.user[cont].nome;
           }
         }

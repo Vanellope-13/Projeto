@@ -9,23 +9,19 @@ import {EstadoDoRadService} from '../services/estado-do-rad.service'
   styleUrls: ['./tela-selecao-do-pit-para-rad.component.css']
 })
 export class TelaSelecaoDoPitParaRadComponent implements OnInit {
-
+  periodoNaoExistente
   email=this.usuarioService.email;
-  ArrayPeriodos=[];
+  
   ArrayEstados=[];
-  EstadoDoPeriodo=[];
+
     constructor(public estadoDoRadService:EstadoDoRadService,public router:Router,public periodoService:PeriodoService,public usuarioService:UsuarioService) { }
   
     ngOnInit(): void {
-      this.periodoService.getPeriodo().subscribe(periodo =>{  
-        this.ArrayPeriodos=periodo;
-       
-      });
 
       this.estadoDoRadService.getEstadoDoRad().subscribe(estado =>{  
 
         this.ArrayEstados=estado;
-        console.log(this.ArrayEstados)
+       
       });
     }
 
@@ -37,33 +33,16 @@ export class TelaSelecaoDoPitParaRadComponent implements OnInit {
   
     }
 
-    pegarEstado(periodo){
-    
-if(this.ArrayEstados.length>0){
-for(var cont=0;cont<=this.ArrayEstados.length;cont++){
-if( periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
-
-  var tamanho=this.ArrayPeriodos.length
-  for(var cont=0;cont<=tamanho;cont++){
-      if(periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
-          return this.ArrayEstados[cont].aprovado
-            
-          
-    }
-        }  }
-
-}
-}else{
-  return false
-}
-
-}
-
-
-
-
-    
-
-
-
+    pegarEstado(estado){
+   
+      if(estado.aprovadoDirecaoDeEnsino==true && estado.aprovadoGeral==true && 
+        estado.aprovadoExtensao==true && estado.aprovadoPesquisa==true){
+        return true
+  
+  }else{
+    return false
+  }
+      }
+  
+     
     }

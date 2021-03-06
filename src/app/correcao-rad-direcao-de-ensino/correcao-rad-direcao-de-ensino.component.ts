@@ -3,12 +3,11 @@ import {EstadoDoRadService} from '../services/estado-do-rad.service';
 import {UsuarioService} from '../services/usuario.service';
 import {Router} from '@angular/router';
 @Component({
-  selector: 'app-tela-listagem-de-rad',
-  templateUrl: './tela-listagem-de-rad.component.html',
-  styleUrls: ['./tela-listagem-de-rad.component.css']
+  selector: 'app-correcao-rad-direcao-de-ensino',
+  templateUrl: './correcao-rad-direcao-de-ensino.component.html',
+  styleUrls: ['./correcao-rad-direcao-de-ensino.component.css']
 })
-export class TelaListagemDeRadComponent implements OnInit {
-
+export class CorrecaoRadDirecaoDeEnsinoComponent implements OnInit {
   nomeDeUsuario=this.usuarioService.nome;
   ArrayEstados=[];
  
@@ -34,6 +33,7 @@ export class TelaListagemDeRadComponent implements OnInit {
    }
     this.router.navigate([ '/correcaoRad']);
   }
+
 
 
 

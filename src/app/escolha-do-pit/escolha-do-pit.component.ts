@@ -37,20 +37,16 @@ this.router.navigate([ '/listagemC']);
 
   }
 
-  pegarEstado(periodo){
+  pegarEstado(estado){
   
-    var tamanho=this.ArrayPeriodos.length
-for(var cont=0;cont<=tamanho;cont++){
-    if(periodo.emailProfessor==this.ArrayEstados[cont].emailProfessor && periodo.ano==this.ArrayEstados[cont].ano && periodo.periodo==this.ArrayEstados[cont].periodo){
-        return this.ArrayEstados[cont].aprovado
-          
-      }  
-  }
-  
+    if(estado.aprovadoDirecaoDeEnsino==true && estado.aprovadoGeral==true && 
+      estado.aprovadoExtensao==true && estado.aprovadoPesquisa==true){
+      return true
 
-
-
+}else{
+  return false
 }
+    }
 
   
 }

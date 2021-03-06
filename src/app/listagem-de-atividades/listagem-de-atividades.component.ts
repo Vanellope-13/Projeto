@@ -125,7 +125,10 @@ periodoAdministrativo=this.periodoService.periodoPeriodo;
     emailProfessor:this.email,
     periodo:'',
     ano:'',
-    aprovado:false
+    aprovadoGeral:false,
+    aprovadoDirecaoDeEnsino:false,
+    aprovadoExtensao:false,
+    aprovadoPesquisa:false
   }
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
 idUtilizadoApoio;
@@ -185,7 +188,7 @@ chTotal=0;
 
     this.aulasService.getAulas().subscribe(aulas =>{
       this.ArrayAulas=aulas;
-       
+      console.log(this.periodo +"  " + this.ano)
       for(var cont=0;cont<=this.ArrayAulas.length;cont++){
         if(this.ArrayAulas[cont].emailProfessor==this.email && this.ArrayAulas[cont].ano==this.ano && this.ArrayAulas[cont].periodo==this.periodo){
         this.chTotalDeAulas=this.chTotalDeAulas + parseInt(this.ArrayAulas[cont].chSemanal);

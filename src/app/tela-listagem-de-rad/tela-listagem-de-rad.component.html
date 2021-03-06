@@ -23,7 +23,7 @@
        </div>
        <div *ngIf="ArrayEstados?.length > 0">
        <div class="row"  *ngFor="let acesso of ArrayEstados">
-        <div  *ngIf="acesso.aprovado==false && acesso.enviado==true">
+        <div  *ngIf="acesso.aprovadoGeral==false && acesso.enviado==true">
         <div class="col s12 m6">
           <div class="card green darken-1">
             <div class="card-content black-text">
@@ -34,7 +34,7 @@
             </div>
             <div class="card-action black-text">
     
-              <button (click)="telaCorrecao(acesso.emailProfessor)"class="btn-large black" type="submit" name="action">Corrigir
+              <button (click)="telaCorrecao(acesso.emailProfessor,acesso.periodo,acesso.ano)"class="btn-large black" type="submit" name="action">Corrigir
                 <i class="material-icons right">send</i>
               </button>
             </div>

@@ -13,6 +13,8 @@ export class EstadoDoRadService {
   email=this.usuarioService.email;
   emailParaCorrecao;
   estadoDoRadParaCorrecao;
+  anoParaCorrecao;
+periodoParaCorrecao;
   estadoDoRadCollection:AngularFirestoreCollection<EstadoDoRad>;
   estadoDoRad: Observable<EstadoDoRad[]>;
   estadoDoRadDoc: AngularFirestoreDocument<EstadoDoRad>;

@@ -40,28 +40,23 @@ export class TelaDocumentosAprovadosComponent implements OnInit {
    }
 
    pegarEstadoPit(periodo){
+
+    if(periodo.aprovadoDirecaoDeEnsino==true && periodo.aprovadoGeral==true && 
+      periodo.aprovadoExtensao==true && periodo.aprovadoPesquisa==true){
+          return true
+        }else{
+          return false
+        }
+
   
-    var tamanho=this.ArrayPits.length
-for(var cont=0;cont<=tamanho;cont++){
-    if(periodo.emailProfessor==this.ArrayPits[cont].emailProfessor && periodo.ano==this.ArrayPits[cont].ano && periodo.periodo==this.ArrayPits[cont].periodo){
-        return this.ArrayPits[cont].aprovado
-          
-      }  
-
-      
-
-  }
 }
   pegarEstadoRad(periodo){
     
-    var tamanho=this.ArrayRads.length
-for(var cont=0;cont<=tamanho;cont++){
-    if(periodo.emailProfessor==this.ArrayRads[cont].emailProfessor && periodo.ano==this.ArrayRads[cont].ano && periodo.periodo==this.ArrayRads[cont].periodo){
-        return this.ArrayRads[cont].aprovado
-          
-      }  
-
-    
+    if(periodo.aprovadoDirecaoDeEnsino==true && periodo.aprovadoGeral==true && 
+      periodo.aprovadoExtensao==true && periodo.aprovadoPesquisa==true){
+          return true
+        }else{
+          return false
 
 }
    

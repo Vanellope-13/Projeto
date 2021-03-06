@@ -4,5 +4,8 @@ export interface  EstadoDoPit{
     emailProfessor:string;
     periodo:string;
     ano:string;
-    aprovado:boolean;
+    aprovadoGeral:boolean;
+    aprovadoDirecaoDeEnsino:boolean;
+    aprovadoExtensao:boolean;
+    aprovadoPesquisa:boolean;
 }

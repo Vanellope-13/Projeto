@@ -36,10 +36,10 @@
 
     <div *ngIf="ArrayPeriodos?.length > 0;else noAtividades">
       <div *ngFor="let periodo of ArrayPeriodos" >
-     
-     <ul *ngIf="periodo.emailProfessor==email && pegarEstado(periodo)==false" class="collection">
-
-
+        <div *ngFor="let estados of ArrayEstados" >
+     <ul *ngIf="periodo.emailProfessor==email && estados.emailProfessor==email && pegarEstado(estados)==false && 
+     periodo.ano==estados.ano && periodo.periodo==estados.periodo " class="collection">
+    
       <div class="row" >
         <div class="col s12 m6">
          <div class="card green darken">
@@ -60,7 +60,7 @@
 
     </ul>
     </div>
-    
+  </div>
   </div>
     <ng-template #noAtividades>
     <hr>

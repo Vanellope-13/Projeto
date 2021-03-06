@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -21,10 +23,9 @@
              
            </div>
        </div>
-       <div *ngIf="ArrayEstados?.length >0 ">
-     
+       
        <div class="row"  *ngFor="let acesso of ArrayEstados">
-        <div  *ngIf="acesso.aprovadoGeral==false && acesso.enviado==true">
+        <div  *ngIf="acesso.aprovadoGeral==true && acesso.aprovadoDirecaoDeEnsino==false">
         <div class="col s12 m12">
           <div class="card  horizontal green darken-1">
             <div class="card-content black-text">
@@ -44,7 +45,7 @@
       </div>
         
       </div>
-       </div>
+       
        <ng-template #noAtividades>
         <hr>
         <h5 class="center-align">Não há mais trabalhos a serem corrigidos!</h5>
@@ -52,3 +53,4 @@
    
 </body>
 </html>
+

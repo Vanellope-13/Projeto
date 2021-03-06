@@ -21,27 +21,27 @@
              
            </div>
        </div>
-       <div *ngIf="ArrayEstados?.length >0 ">
-     
+       <div *ngIf="ArrayEstados?.length > 0">
        <div class="row"  *ngFor="let acesso of ArrayEstados">
-        <div  *ngIf="acesso.aprovadoGeral==false && acesso.enviado==true">
-        <div class="col s12 m12">
-          <div class="card  horizontal green darken-1">
+        <div  *ngIf="acesso.aprovadoGeral==true && acesso.aprovadoDirecaoDeEnsino==false">
+        <div class="col s12 m6">
+          <div class="card green darken-1">
             <div class="card-content black-text">
-              <span class="card-title">Plano Individual de Trabalho</span>
+              <span class="card-title">Relatório de Atividades Desenvolvidas</span>
               <p>Servidor: {{acesso.emailProfessor}}</p>
-              <p>Período: {{acesso.periodo}}</p>
+              <p>Periodo: {{acesso.periodo}}</p>
               <p>Ano: {{acesso.ano}}</p>
             </div>
             <div class="card-action black-text">
-     <button  type="submit" name="action" class="btn-large black" (click)="telaCorrecao(acesso.emailProfessor,acesso.periodo,acesso.ano)">Corrigir
-      <i class="material-icons right">send</i>
-     </button>
-    </div>  
-            
+    
+              <button (click)="telaCorrecao(acesso.emailProfessor,acesso.periodo,acesso.ano)"class="btn-large black" type="submit" name="action">Corrigir
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+          </div>
         </div>
-        </div>
-      </div>
+
         
       </div>
        </div>

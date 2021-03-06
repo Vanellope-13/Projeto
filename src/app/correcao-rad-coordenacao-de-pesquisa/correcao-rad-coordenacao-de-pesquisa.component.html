@@ -24,7 +24,8 @@
        <div *ngIf="ArrayEstados?.length >0 ">
      
        <div class="row"  *ngFor="let acesso of ArrayEstados">
-        <div  *ngIf="acesso.aprovadoGeral==false && acesso.enviado==true">
+         <div *ngFor="let pesquisa of ArrayPesquisa"  >
+        <div  *ngIf="pesquisa.emailProfessor==acesso.emailProfessor && pesquisa.periodo==acesso.periodo && pesquisa.ano==acesso.ano  && acesso.aprovadoGeral==true && acesso.aprovadoDirecaoDeEnsino==true && acesso.aprovadoPesquisa==false">
         <div class="col s12 m12">
           <div class="card  horizontal green darken-1">
             <div class="card-content black-text">
@@ -42,7 +43,7 @@
         </div>
         </div>
       </div>
-        
+    </div>
       </div>
        </div>
        <ng-template #noAtividades>
@@ -52,3 +53,6 @@
    
 </body>
 </html>
+
+
+

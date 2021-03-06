@@ -94,6 +94,31 @@ export class NavbarComponent implements OnInit {
   linkTelaCadastroDeComponente(){
     this.router.navigate([ '/cadastroDeComponenteCurricular']);
   }
+
+
+
+  correcaoPitDirecaoDeEnsino(){
+    this.router.navigate([ '/CorrecaoPitDirecaoDeEnsino']);
+  }
+  correcaoPitCoordenadorDeExtensao(){
+    this.router.navigate([ '/CorrecaoPitCoordenacaoDeExtensao']);
+  }
+  correcaoPitCoordenadorDePesquisa(){
+    this.router.navigate([ '/CorrecaoPitCoordenacaoDePesquisa']);
+  }
+  correcaoRadDirecaoDeEnsino(){
+    this.router.navigate([ '/CorrecaoRadDirecaoDeEnsino']);
+  }
+  correcaoRadCoordenadorDeExtensao(){
+    this.router.navigate([ '/CorrecaoRadCoordenacaoDeExtensao']);
+  }
+  correcaoRadCoordenadorDePesquisa(){
+    this.router.navigate([ '/CorrecaoRadCoordenacaoDePesquisa']);
+  }
+
+
+
+
   openSlideMenu(){
     document.getElementById('side-menu').style.width='250px';
     document.getElementById('main').style.marginLeft='250px';
@@ -126,6 +151,21 @@ this.posicao5="Cadastrar Componente Currícular"
   this.posicao1="Quadro de Avisos";
   this.posicao2="Plano Individual de Trabalho"
   this.posicao3="Relatório de Atividades Desenvolvidas"
+  this.posicao4="Editor de Avisos"
+}if(a==4){
+  this.posicao1="Quadro de Avisos";
+  this.posicao2="Plano Individual de Trabalho "
+  this.posicao3="Relatório de Atividades Desenvolvidas "
+  this.posicao4="Editor de Avisos"
+}if(a==5){
+  this.posicao1="Quadro de Avisos";
+  this.posicao2="Plano Individual de Trabalho  "
+  this.posicao3="Relatório de Atividades Desenvolvidas  "
+  this.posicao4="Editor de Avisos"
+}if(a==6){
+  this.posicao1="Quadro de Avisos";
+  this.posicao2="Plano Individual de Trabalho   "
+  this.posicao3="Relatório de Atividades Desenvolvidas   "
   this.posicao4="Editor de Avisos"
 }
  return a  ;
@@ -161,5 +201,20 @@ if(posicao=="Relatório de Atividades Desenvolvidas"){
     this.linkTelaCadastroDeComponente()
   }if(posicao=="Documentos Aprovados"){
     this.linkTelaDocumentosAprovados()
+
+  }if(posicao=="Plano Individual de Trabalho "){
+    this.correcaoPitDirecaoDeEnsino()
+  }if(posicao=="Plano Individual de Trabalho  "){
+    this.correcaoPitCoordenadorDePesquisa()
+  }if(posicao=="Plano Individual de Trabalho   "){
+    this.correcaoPitCoordenadorDeExtensao()
+  }if(posicao=="Relatório de Atividades Desenvolvidas "){
+    this.correcaoRadDirecaoDeEnsino()
+  }if(posicao=="Relatório de Atividades Desenvolvidas  "){
+    this.correcaoRadCoordenadorDePesquisa()
+  }if(posicao=="Relatório de Atividades Desenvolvidas   "){
+    this.correcaoRadCoordenadorDeExtensao()
   }
+
+  
 }}

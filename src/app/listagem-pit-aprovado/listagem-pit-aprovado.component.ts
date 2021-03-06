@@ -121,7 +121,10 @@ estado:EstadoDoPit={
   emailProfessor:this.email,
   periodo:'',
   ano:'',
-  aprovado:false
+  aprovadoGeral:false,
+    aprovadoDirecaoDeEnsino:false,
+    aprovadoExtensao:false,
+    aprovadoPesquisa:false
 }
 //------------------------Arrays e objetos para utilização do CRUD------------------------------//
 idUtilizadoApoio;

@@ -56,8 +56,21 @@ import { TelaSelecaoDoPitParaRadComponent } from './tela-selecao-do-pit-para-rad
 import { TelaDocumentosAprovadosComponent } from './tela-documentos-aprovados/tela-documentos-aprovados.component';
 import { ListagemPitAprovadoComponent } from './listagem-pit-aprovado/listagem-pit-aprovado.component';
 import { ListagemRadAprovadoComponent } from './listagem-rad-aprovado/listagem-rad-aprovado.component';
+import { CorrecaoPitDirecaoDeEnsinoComponent } from './correcao-pit-direcao-de-ensino/correcao-pit-direcao-de-ensino.component';
+import { CorrecaoRadDirecaoDeEnsinoComponent } from './correcao-rad-direcao-de-ensino/correcao-rad-direcao-de-ensino.component';
+import { CorrecaoPitCoordenacaoDeExtensaoComponent } from './correcao-pit-coordenacao-de-extensao/correcao-pit-coordenacao-de-extensao.component';
+import { CorrecaoRadCoordenacaoDeExtensaoComponent } from './correcao-rad-coordenacao-de-extensao/correcao-rad-coordenacao-de-extensao.component';
+import { CorrecaoPitCoordenacaoDePesquisaComponent } from './correcao-pit-coordenacao-de-pesquisa/correcao-pit-coordenacao-de-pesquisa.component';
+import { CorrecaoRadCoordenacaoDePesquisaComponent } from './correcao-rad-coordenacao-de-pesquisa/correcao-rad-coordenacao-de-pesquisa.component';
 
 const routes: Routes = [
+  {path : 'CorrecaoRadCoordenacaoDePesquisa', component : CorrecaoRadCoordenacaoDePesquisaComponent },
+  {path : 'CorrecaoPitCoordenacaoDePesquisa', component : CorrecaoPitCoordenacaoDePesquisaComponent },
+  {path : 'CorrecaoRadCoordenacaoDeExtensao', component : CorrecaoRadCoordenacaoDeExtensaoComponent },
+  {path : 'CorrecaoPitCoordenacaoDeExtensao', component : CorrecaoPitCoordenacaoDeExtensaoComponent },
+  {path : 'CorrecaoRadDirecaoDeEnsino', component : CorrecaoRadDirecaoDeEnsinoComponent },
+  {path : 'CorrecaoPitDirecaoDeEnsino', component : CorrecaoPitDirecaoDeEnsinoComponent },
+
   {path : 'ListagemRadAprovado', component : ListagemRadAprovadoComponent },
    {path : 'ListagemPitAprovado', component : ListagemPitAprovadoComponent },
   {path : 'TelaDocumentosAprovados', component : TelaDocumentosAprovadosComponent},
@@ -115,7 +128,14 @@ const routes: Routes = [
     TelaSelecaoDoPitParaRadComponent,
     TelaDocumentosAprovadosComponent,
     ListagemPitAprovadoComponent,
-    ListagemRadAprovadoComponent
+    ListagemRadAprovadoComponent,
+
+    CorrecaoPitDirecaoDeEnsinoComponent,
+    CorrecaoRadDirecaoDeEnsinoComponent,
+    CorrecaoPitCoordenacaoDeExtensaoComponent,
+    CorrecaoRadCoordenacaoDeExtensaoComponent,
+    CorrecaoPitCoordenacaoDePesquisaComponent,
+    CorrecaoRadCoordenacaoDePesquisaComponent
   ],
   imports: [
     BrowserModule,
