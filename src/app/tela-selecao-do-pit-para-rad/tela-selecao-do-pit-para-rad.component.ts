@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {PeriodoService} from '../services/periodo.service';
 import {UsuarioService} from '../services/usuario.service';
 import {EstadoDoRadService} from '../services/estado-do-rad.service'
+import {EstadoDoPitService} from '../services/estado-do-pit.service'
 @Component({
   selector: 'app-tela-selecao-do-pit-para-rad',
   templateUrl: './tela-selecao-do-pit-para-rad.component.html',
@@ -13,16 +14,18 @@ export class TelaSelecaoDoPitParaRadComponent implements OnInit {
   email=this.usuarioService.email;
   
   ArrayEstados=[];
-
-    constructor(public estadoDoRadService:EstadoDoRadService,public router:Router,public periodoService:PeriodoService,public usuarioService:UsuarioService) { }
+  ArrayEstadosPit=[]
+    constructor(public estadoDoPitService:EstadoDoPitService,public estadoDoRadService:EstadoDoRadService,public router:Router,public periodoService:PeriodoService,public usuarioService:UsuarioService) { }
   
     ngOnInit(): void {
 
-      this.estadoDoRadService.getEstadoDoRad().subscribe(estado =>{  
-
+      this.estadoDoRadService.getEstadoDoRad().subscribe(estado =>{
         this.ArrayEstados=estado;
-       
       });
+      this.estadoDoPitService.getEstadoDoPit().subscribe(estado =>{
+        this.ArrayEstadosPit=estado;
+      });
+
     }
 
   

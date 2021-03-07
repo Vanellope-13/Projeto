@@ -12,7 +12,7 @@ export class TelaAtividadesComponent implements OnInit {
    ch:0,
    tipo:''
  }
-
+pesquisar;
   atividades:Atividade[];
   editState:boolean =false;
   atividadeToEdit: Atividade;

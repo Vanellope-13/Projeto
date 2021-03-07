@@ -61,8 +61,32 @@
     <div class="card-action center-align green">
       <h3>Lista de Atividades</h3>
     </div>
+    <br>
+
+ 
+
+    
+        <form>
+          <h6 class="white">Determine o tipo de Atividade:</h6>
+          <div class="input-field white">
+            
+            <select class="form-control" id="" type="text" placeholder="Pesquisar por tipo"  name="Tipo" [(ngModel)]="pesquisar" required>
+              <option></option>
+              <option>Atividades de apoio ao ensino</option>
+              <option>Atividades de extensão</option>
+              <option>Atividades de pesquisa e pós-graduação</option>
+              <option>Atividades administrativo-pedagógicas</option>
+              </select>
+          </div>
+        </form>
+      
+    
+
+<br>
+
   <div *ngIf="atividades?.length > 0;else noAtividades">
-    <ul *ngFor="let atividade of atividades" class="collection">
+    <ul *ngFor="let atividade of atividades" >
+      <div *ngIf="atividade.tipo==pesquisar">
       <ul class="collection-atividade">
         <li><a class="titulo">Nome:</a> {{atividade.nome}}     
           <button class="secondary-content">
@@ -107,7 +131,7 @@
         </ul>
         </li>
       </ul>
-   
+    </div> 
     </ul>
   </div>
 </div>
