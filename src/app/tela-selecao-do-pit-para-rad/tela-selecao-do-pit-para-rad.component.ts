@@ -29,11 +29,20 @@ export class TelaSelecaoDoPitParaRadComponent implements OnInit {
     }
 
   
-    irParaRad(ano,periodo){
+    irParaRad(email,ano,periodo){
   this.periodoService.ano=ano;
   this.periodoService.periodoPeriodo=periodo
-  this.router.navigate([ '/telaRad']);
-  
+
+  this.estadoDoRadService.emailParaCorrecao=email;
+    this.estadoDoRadService.periodoParaCorrecao=periodo;
+    this.estadoDoRadService.anoParaCorrecao=ano;
+    for(var cont=0;cont<=this.ArrayEstados.length;cont++){
+      if(this.ArrayEstados[cont].emailProfessor==email && this.ArrayEstados[cont].periodo==periodo && this.ArrayEstados[cont].ano==ano){
+        this.estadoDoRadService.estadoDoRadParaCorrecao=this.ArrayEstados[cont];
+        break;
+      }
+   }
+   this.router.navigate([ '/telaRad']);
     }
 
     pegarEstado(estado){

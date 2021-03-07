@@ -65,7 +65,22 @@ periodoParaCorrecao;
    });   
   }
   
-    
+  estadoPegar(){
+    this.getEstadoDoRad().subscribe(estados =>{
+      this.estados=estados;
+      console.log("estados:"+this.estados)
+   
+      for(var cont=0;cont<=this.estados.length;cont++){
+        console.log("estados:"+this.estados[cont])
+        if(this.estados[cont].emailProfessor==this.emailParaCorrecao && this.estados[cont].ano==this.anoParaCorrecao && this.estados[cont].periodo==this.periodoParaCorrecao){
+        
+        this.estadoDoRadParaCorrecao=this.estados[cont];
+       
+        }
+      }
+    });
+  
+  }
     
   
 }

@@ -9,6 +9,8 @@ import {Comentario} from '../modelos/comentario';
 import {ComentariosService} from '../services/comentarios.service';
 import { Router } from '@angular/router';
 
+import{EstadoDoRadService} from '../services/estado-do-rad.service';
+import {EstadoDoRad} from '../modelos/estadoDoRad'
 
 import { Aulas } from '../modelos/aulas';
 import { AulasService } from '../services/aulas.service';
@@ -39,6 +41,20 @@ usuarioTipo=this.usuarioService.users;
 
 arrayExtensaoTrue=[]
 arrayPesquisaTrue=[]
+
+
+estadoDoRad:EstadoDoRad={
+  enviado:false,
+  emailProfessor:this.email,
+  periodo:'',
+  ano:'',
+  aprovadoGeral:false,
+    aprovadoDirecaoDeEnsino:false,
+    aprovadoExtensao:false,
+    aprovadoPesquisa:false
+
+}
+
 
 periodo=this.periodoService.periodoPeriodo;
 ano=this.periodoService.ano;
@@ -89,7 +105,7 @@ chTotal=0;
     documento:''
   }
 
-  constructor(public periodoService:PeriodoService,public comentariosService:ComentariosService,public estadoDoPitService:EstadoDoPitService,
+  constructor(public estadoRadService:EstadoDoRadService,public periodoService:PeriodoService,public comentariosService:ComentariosService,public estadoDoPitService:EstadoDoPitService,
     public  usuarioService : UsuarioService,public router:Router,public atividadesService:AtividadesService,
     public aulasService:AulasService, public apoioAoEnsinoService:ApoioAoEnsinoService, public pesquisaService:PesquisaService, public extensaoService:ExtensaoService, public administrativoService:AdministrativoService) { }
 
@@ -235,6 +251,10 @@ console.log(this.arrayExtensaoTrue.length)
   }if(this.arrayPesquisaTrue.length<=0){
  
     this.estado.aprovadoPesquisa=true
+  }if(this.arrayPesquisaTrue.length<=0 && this.arrayExtensaoTrue.length<=0){
+    this.estadoDoRad.ano=this.periodoService.ano
+  this.estadoDoRad.periodo=this.periodoService.periodoPeriodo
+  this.estadoRadService.addEstadoDoRad(this.estadoDoRad);
   }
 ///////////////////////////////////////////////
 
@@ -242,10 +262,20 @@ console.log(this.arrayExtensaoTrue.length)
 }if(this.usuarioTipo==5){
   this.estado.enviado=false;
   this.estado.aprovadoPesquisa=true;
+  if( this.arrayExtensaoTrue.length<=0){
+    this.estadoDoRad.ano=this.periodoService.ano
+  this.estadoDoRad.periodo=this.periodoService.periodoPeriodo
+  this.estadoRadService.addEstadoDoRad(this.estadoDoRad);
+  }
   this.router.navigate([ '/CorrecaoPitCoordenacaoDePesquisa']);
 }if(this.usuarioTipo==6){
   this.estado.enviado=false;
   this.estado.aprovadoExtensao=true;
+  if(this.arrayPesquisaTrue.length<=0){
+    this.estadoDoRad.ano=this.periodoService.ano
+  this.estadoDoRad.periodo=this.periodoService.periodoPeriodo
+  this.estadoRadService.addEstadoDoRad(this.estadoDoRad);
+  }
   this.router.navigate([ '/CorrecaoPitCoordenacaoDeExtensao']);
 }
 

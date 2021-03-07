@@ -31,19 +31,19 @@ import {ComentarioRad} from '../modelos/comentarioRad'
 export class TelaRadComponent implements OnInit {
   
  //---------------------------Nome do professor---------------------------------- //
-
+ estadoExcluir=this.estadoRadService.estadoDoRadParaCorrecao;
  nomeDeUsuario=this.usuarioService.nome;
  email=this.usuarioService.email;
  nomeCoordenador=this.usuarioService.nomeCoordenador;
 
-   ano=this.aulasService.ano;
-  periodo=this.aulasService.periodo;
+   ano=this.periodoService.ano;
+  periodo=this.periodoService.periodoPeriodo;
 
  estado:EstadoDoRad={
-  enviado:true,
+  enviado:false,
   emailProfessor:this.email,
-  periodo:'',
-  ano:'',
+  periodo:this.periodo,
+  ano:this.ano,
   aprovadoGeral:false,
     aprovadoDirecaoDeEnsino:false,
     aprovadoExtensao:false,
@@ -200,8 +200,9 @@ onSubmitComentariosRadFinal(){
   this.comentarioRadFinal.idDaAtividade=this.periodoService.ano+"/"+this.periodoService.periodoPeriodo;
   this.comentarioRadService.addComentario(this.comentarioRadFinal);
   this.comentarioRadFinal.comentario=''
-  this.estado.ano=this.periodoService.ano
-  this.estado.periodo=this.periodoService.periodoPeriodo
+  this.estadoRadService.deleteEstadoDoRad(this.estadoExcluir);
+  this.estado.enviado=true
+
   this.estadoRadService.addEstadoDoRad(this.estado);
   this.router.navigate([ '/finalizacao']);
  
